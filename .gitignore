@@ -1,0 +1,5 @@
+*.pyc
+.idea/
+db.sqlite3
+RiftScuttler/__pycache__/
+templates/
