@@ -75,7 +75,7 @@ CREATE TABLE competes (
   team1Region     VARCHAR(2),
   team2ID         VARCHAR(6),
   team2Region     VARCHAR(2),
-  winner	  VARCHAR(2),
+  winner    VARCHAR(2),
   CHECK (winner = team1ID OR winner = team2ID),
   PRIMARY KEY (team1ID, team1Region, team2ID, team2Region),
   FOREIGN KEY (team1Region, team1ID) REFERENCES teams(region, id),
@@ -147,9 +147,8 @@ CREATE TABLE scores (
   barons      INTEGER NOT NULL,
   dragons     INTEGER NOT NULL,
   nexus       INTEGER NOT NULL,
-  CHECK	(nexus = 0 OR nexus = 1),
+  CHECK (nexus = 0 OR nexus = 1),
   PRIMARY KEY (teamID, teamRegion, gameID, matchNumber),
   FOREIGN KEY (teamID, teamRegion)   REFERENCES teams(id, region),
   FOREIGN KEY (gameID, matchNumber)  REFERENCES matches(gameID, matchNumber)
 );
-
