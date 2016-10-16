@@ -6,7 +6,7 @@ CREATE TABLE champions (
   PRIMARY KEY (name)
 );
 
-CREATE TABLE games (
+CREATE TABLE series (
   id          INTEGER,
   bestOfCount INTEGER NOT NULL,
   PRIMARY KEY (id)
@@ -45,7 +45,6 @@ CREATE TABLE matches (
   gameID      INTEGER,
   matchNumber INTEGER,
   date        DATETIME  NOT NULL,
-  winner      VARCHAR(6),
   PRIMARY KEY (gameID, matchNumber),
   FOREIGN KEY (gameID) REFERENCES games(id)
 );
@@ -61,7 +60,7 @@ CREATE TABLE bans (
   FOREIGN KEY (gameID, matchNumber)  REFERENCES  matches(gameID, matchNumber)
 );
 
-CREATE TABLE tournamentGame (
+CREATE TABLE organizes (
   tournamentID  VARCHAR(256),
   year          INTEGER,
   gameID        INTEGER,
@@ -76,6 +75,8 @@ CREATE TABLE competes (
   team1Region     VARCHAR(2),
   team2ID         VARCHAR(6),
   team2Region     VARCHAR(2),
+  winner	  VARCHAR(2),
+  CHECK (winner = team1ID OR winner = team2ID),
   PRIMARY KEY (team1ID, team1Region, team2ID, team2Region),
   FOREIGN KEY (team1Region, team1ID) REFERENCES teams(region, id),
   FOREIGN KEY (team2Region, team2ID) REFERENCES teams(region, id)
@@ -145,7 +146,10 @@ CREATE TABLE scores (
   riftHeralds INTEGER NOT NULL,
   barons      INTEGER NOT NULL,
   dragons     INTEGER NOT NULL,
+  nexus       INTEGER NOT NULL,
+  CHECK	(nexus = 0 OR nexus = 1),
   PRIMARY KEY (teamID, teamRegion, gameID, matchNumber),
   FOREIGN KEY (teamID, teamRegion)   REFERENCES teams(id, region),
   FOREIGN KEY (gameID, matchNumber)  REFERENCES matches(gameID, matchNumber)
 );
+
