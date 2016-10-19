@@ -42,56 +42,58 @@ CREATE TABLE tournaments (
 );
 
 CREATE TABLE matches (
-  gameID      INTEGER,
+  seriesID    INTEGER,
   matchNumber INTEGER,
   date        DATETIME  NOT NULL,
-  PRIMARY KEY (gameID, matchNumber),
-  FOREIGN KEY (gameID) REFERENCES games(id)
+  PRIMARY KEY (seriesID, matchNumber),
+  FOREIGN KEY (seriesID) REFERENCES series(id)
 );
 
 -- Relations
 
 CREATE TABLE bans (
-  gameID        INTEGER,
+  seriesID        INTEGER,
   matchNumber   INTEGER,
   name          VARCHAR(16),
-  PRIMARY KEY (gameID, matchNumber, name),
+  PRIMARY KEY (seriesID, matchNumber, name),
   FOREIGN KEY (name)    REFERENCES  champions(name),
-  FOREIGN KEY (gameID, matchNumber)  REFERENCES  matches(gameID, matchNumber)
+  FOREIGN KEY (seriesID, matchNumber)  REFERENCES  matches(seriesID, matchNumber)
 );
 
 CREATE TABLE organizes (
   tournamentID  VARCHAR(256),
   year          INTEGER,
-  gameID        INTEGER,
+  seriesID      INTEGER,
   stage         TEXT,
-  PRIMARY KEY (tournamentID, year, gameID),
+  PRIMARY KEY (tournamentID, year, seriesID),
   FOREIGN KEY (tournamentID, year)  REFERENCES tournaments(id, year),
-  FOREIGN KEY (gameID)              REFERENCES games(id)
+  FOREIGN KEY (seriesID)              REFERENCES games(id)
 );
 
 CREATE TABLE competes (
+  seriesID        INTEGER,
   team1ID         VARCHAR(6),
   team1Region     VARCHAR(2),
   team2ID         VARCHAR(6),
   team2Region     VARCHAR(2),
   winner    VARCHAR(2),
   CHECK (winner = team1ID OR winner = team2ID),
-  PRIMARY KEY (team1ID, team1Region, team2ID, team2Region),
+  PRIMARY KEY (seriesID, team1ID, team1Region, team2ID, team2Region),
+  FOREIGN KEY (seriesID) REFERENCES series(id),
   FOREIGN KEY (team1Region, team1ID) REFERENCES teams(region, id),
   FOREIGN KEY (team2Region, team2ID) REFERENCES teams(region, id)
 );
 
 CREATE TABLE interacts (
-  gameID      INTEGER,
+  seriesID      INTEGER,
   matchNumber INTEGER,
   playerID    INTEGER,
   itemID      INTEGER,
   time        INTEGER,
   isBuy       BOOLEAN NOT NULL,
   spent       INTEGER NOT NULL,
-  PRIMARY KEY (gameID, matchNumber, playerID, itemID, time),
-  FOREIGN KEY (gameID, matchNumber) REFERENCES matches(gameID, matchNumber),
+  PRIMARY KEY (seriesID, matchNumber, playerID, itemID, time),
+  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
   FOREIGN KEY (playerID)            REFERENCES players(id),
   FOREIGN KEY (itemID)              REFERENCES items(id)
 );
@@ -108,7 +110,7 @@ CREATE TABLE participates (
 );
 
 CREATE TABLE plays (
-  gameID      INTEGER,
+  seriesID      INTEGER,
   matchNumber INTEGER,
   playerID    INTEGER,
   champion    VARCHAR(16),
@@ -119,8 +121,8 @@ CREATE TABLE plays (
   damageDealt INTEGER       NOT NULL,
   wardsPlaced INTEGER       NOT NULL,
   gold        INTEGER       NOT NULL,
-  PRIMARY KEY (gameID, matchNumber, playerID, champion),
-  FOREIGN KEY (gameID, matchNumber) REFERENCES matches(gameID, matchNumber),
+  PRIMARY KEY (seriesID, matchNumber, playerID, champion),
+  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
   FOREIGN KEY (playerID)            REFERENCES players(id),
   FOREIGN KEY (champion)            REFERENCES champions(name)
 );
@@ -139,7 +141,7 @@ CREATE TABLE registers (
 CREATE TABLE scores (
   teamID      VARCHAR(6),
   teamRegion  VARCHAR(6),
-  gameID      INTEGER,
+  seriesID      INTEGER,
   matchNumber INTEGER,
   inhibitors  INTEGER NOT NULL,
   towers      INTEGER NOT NULL,
@@ -148,7 +150,7 @@ CREATE TABLE scores (
   dragons     INTEGER NOT NULL,
   nexus       INTEGER NOT NULL,
   CHECK (nexus = 0 OR nexus = 1),
-  PRIMARY KEY (teamID, teamRegion, gameID, matchNumber),
+  PRIMARY KEY (teamID, teamRegion, seriesID, matchNumber),
   FOREIGN KEY (teamID, teamRegion)   REFERENCES teams(id, region),
-  FOREIGN KEY (gameID, matchNumber)  REFERENCES matches(gameID, matchNumber)
+  FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber)
 );
