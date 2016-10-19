@@ -1,0 +1,14 @@
+INSERT INTO players (id, name, careerStartDate)
+VALUES (2, 'MMD', 1980-01-01);
+
+INSERT INTO players (id, name, careerStartDate)
+VALUES (2, 'MMD', 1980-01-01);
+
+INSERT INTO players (id, name, careerStartDate)
+VALUES (2, 'MMD', 1980-01-01);
+
+INSERT INTO players (id, name, careerStartDate)
+VALUES (2, 'MMD', 1980-01-01);
+
+INSERT INTO players (id, name, careerStartDate)
+VALUES (2, 'MMD', 1980-01-01);
