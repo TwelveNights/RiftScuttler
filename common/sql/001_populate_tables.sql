@@ -1334,7 +1334,6 @@ VALUES (50, 3, 135, 'Zac', 'adc', 10, 7, 15, 27000, 23, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
 VALUES (50, 3, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
-VALUES (50, 3, 'Garen');
 
 -- Item buys/sells
 
@@ -1435,6 +1434,3 @@ VALUES (50, 4, 131, 3, 3848, 1, 7463);
 
 INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
 VALUES (50, 4, 132, 5, 6789, 1, 345);
-
-
-
