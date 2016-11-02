@@ -12,4 +12,4 @@ class Migration(migrations.Migration):
 
     operations = []
 
-    utils.set_operations(operations, "001_populate_tables")
+    utils.set_operations(operations, "common", "001_populate_tables")
