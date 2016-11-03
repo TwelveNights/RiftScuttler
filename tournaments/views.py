@@ -8,17 +8,27 @@ from common import utils
 def index(request):
     tournament = None
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * from tournaments")
-        tournament = utils.dictfetchall(cursor)
- 
-    return HttpResponse(tournament)
+        cursor.execute("SELECT id, year from tournaments")
+        tournament = utils.dictfetchone(cursor)
 
-def details(request, tournament_name, year):
-    return HttpResponse("You made it to tournament!")
+    return render(request, "index.html", { "tournament": tournament })
 
-def series(request, tournament_name, year, id):
+def details(request, id, year):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT s.id, t.name
+            FROM organizes o, series s, competes c
+            JOIN teams t
+            WHERE o.year=%s AND o.tournamentID = %s
+            GROUP BY s.id
+            ORDER BY s.id;
+            """, [year, id])
+        results = utils.dictfetchall(cursor)
+    return HttpResponse(results)
+
+def series(request, id, year, series):
     return HttpResponse("You made it to series!")
 
-def match(request, tournament_name, year, id, number):
+def match(request, id, year, series, number):
     return HttpResponse("You made it to match!")
 
