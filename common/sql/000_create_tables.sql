@@ -1,9 +1,9 @@
 -- Entities
 
 CREATE TABLE champions (
-  name      VARCHAR(16),
-  category  VARCHAR(10),
-  PRIMARY KEY (name)
+  id        INTEGER,
+  name      VARCHAR(16) NOT NULL UNIQUE,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE series (
@@ -14,8 +14,7 @@ CREATE TABLE series (
 
 CREATE TABLE items (
   id          INTEGER,
-  name        TEXT      NOT NULL,
-  basePrice   INTEGER   NOT NULL,
+  name        VARCHAR(64) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -90,7 +89,6 @@ CREATE TABLE interacts (
   playerID    INTEGER,
   itemID      INTEGER,
   time        INTEGER,
-  isBuy       BOOLEAN NOT NULL,
   spent       INTEGER NOT NULL,
   PRIMARY KEY (seriesID, matchNumber, playerID, itemID, time),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),

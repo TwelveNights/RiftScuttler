@@ -1,77 +1,7 @@
 INSERT INTO tournaments (id, year, location, prize)
 VALUES ('World Championship', 2015, 'Europe', 2130000);
 
--- Champions:
-
-INSERT INTO champions (name, category)
-VALUES ('Amumu', 'tank');
-
-INSERT INTO champions (name, category)
-VALUES ('Blitzcrank', 'tank');
-
-INSERT INTO champions (name, category)
-VALUES ('Caitlyn', 'marksman');
-
-INSERT INTO champions (name, category)
-VALUES ('Darius', 'fighter');
-
-INSERT INTO champions (name, category)
-VALUES ('Galio', 'marksman');
-
-INSERT INTO champions (name, category)
-VALUES ('Garen', 'fighter');
-
-INSERT INTO champions (name, category)
-VALUES ('Graves', 'marksman');
-
-INSERT INTO champions (name, category)
-VALUES ('Jinx', 'mage');
-
-INSERT INTO champions (name, category)
-VALUES ('Nami', 'assassin');
-
-INSERT INTO champions (name, category)
-VALUES ('Nidalee', 'assassin');
-
-INSERT INTO champions (name, category)
-VALUES ('Soraka', 'support');
-
-INSERT INTO champions (name, category)
-VALUES ('Thresh', 'support');
-
-INSERT INTO champions (name, category)
-VALUES ('Tristana', 'marksman');
-
-INSERT INTO champions (name, category)
-VALUES ('Twisted Fate', 'mage');
-
-INSERT INTO champions (name, category)
-VALUES ('Zac', 'tank');
-
-INSERT INTO champions (name, category)
-VALUES ('Zed', 'assassin');
-
-
---Items:
-
-INSERT INTO items (id, name, basePrice)
-VALUES (1, 'Quicksilver Sash', 2300);
-
-INSERT INTO items (id, name, basePrice)
-VALUES (2, 'Essence Reaver', 400);
-
-INSERT INTO items (id, name, basePrice)
-VALUES (3, 'Hextech Gunblade', 2900);
-
-INSERT INTO items (id, name, basePrice)
-VALUES (4, 'Amplifying Tome', 2300);
-
-INSERT INTO items (id, name, basePrice)
-VALUES (5, 'Statikk Shiv', 1900);
-
-
 -- Teams in Worlds 2015:
-
 
 -- AHQ
 
@@ -797,20 +727,20 @@ VALUES (1, 1, 16, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (1, 1, 14, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (1, 1, 14, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (1, 1, 13, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (1, 1, 13, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (1, 1, 12, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (1, 1, 12, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (1, 1, 10, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (1, 1, 10, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (1, 1, 3, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (1, 1, 3, 5, 6789, 345);
 
 -- AHQ vs C9:
 
@@ -890,20 +820,20 @@ VALUES (2, 1, 26, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (2, 1, 22, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (2, 1, 22, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (2, 1, 23, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (2, 1, 23, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (2, 1, 2, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (2, 1, 2, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (2, 1, 3, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (2, 1, 3, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (2, 1, 25, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (2, 1, 25, 5, 6789, 345);
 
 -- AHQ vs CLG:
 
@@ -983,20 +913,20 @@ VALUES (3, 1, 126, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (3, 1, 122, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (3, 1, 122, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (3, 1, 123, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (3, 1, 123, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (3, 1, 2, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (3, 1, 2, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (3, 1, 3, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (3, 1, 3, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (3, 1, 125, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (3, 1, 125, 5, 6789, 345);
 
 
 -- AHQ vs EDG:
@@ -1077,20 +1007,20 @@ VALUES (4, 1, 136, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (4, 1, 132, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (4, 1, 132, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (4, 1, 133, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (4, 1, 133, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (4, 1, 2, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (4, 1, 2, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (4, 1, 3, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (4, 1, 3, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (4, 1, 135, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (4, 1, 135, 5, 6789, 345);
 
 -- Series between FNC and EDG
 
@@ -1171,20 +1101,20 @@ VALUES (50, 1, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 1, 127, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 1, 127, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 1, 129, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 1, 129, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 1, 129, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 1, 129, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 1, 131, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 1, 131, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 1, 132, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 1, 132, 5, 6789, 345);
 
 -- FNC vs EDG match 2
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1254,20 +1184,20 @@ VALUES (50, 2, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 2, 127, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 2, 127, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 2, 129, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 2, 129, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 2, 129, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 2, 129, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 2, 131, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 2, 131, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 2, 132, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 2, 132, 5, 6789, 345);
 
 -- FNC vs EDG match 3
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1337,20 +1267,20 @@ VALUES (50, 3, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 3, 127, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 3, 127, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 3, 129, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 3, 129, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 3, 129, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 3, 129, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 3, 131, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 3, 131, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 3, 132, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 3, 132, 5, 6789, 345);
 
 -- FND vs EDG match 4
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1420,17 +1350,17 @@ VALUES (50, 4, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 4, 127, 4, 1426, 1, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 4, 127, 4, 1426, 400);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 4, 129, 1, 1928, 0, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 4, 129, 1, 1928, -1900);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 4, 129, 2, 2120, 1, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 4, 129, 2, 2120, 2348);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 4, 131, 3, 3848, 1, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 4, 131, 3, 3848, 7463);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, isBuy, spent)
-VALUES (50, 4, 132, 5, 6789, 1, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
+VALUES (50, 4, 132, 5, 6789, 345);
