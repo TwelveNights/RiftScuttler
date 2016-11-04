@@ -18,10 +18,16 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from .views import (form_home,
-                    view_tournaments_data,)
+                    login_page,
+                    view_add_tournaments_data,
+                    view_remove_tournaments_data,
+                    view_edit_tournaments_data,)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', form_home),
-    url(r'^tournament/$', view_tournaments_data),
+    url(r'^$', login_page),
+    url(r'^add_tournament/$', view_add_tournaments_data),
+    url(r'^remove_tournament/$', view_remove_tournaments_data),
+    url(r'^edit_tournament/$', view_edit_tournaments_data),
 ]
