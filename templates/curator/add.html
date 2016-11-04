@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<h1>Add {{ title }}</h1>
+<table>
+  <tr>
+    {% for attr in args %}
+      <th scope="col">{{ attr }}</th>
+    {% endfor %}
+  </tr>
+  <tr>
+    <form method="POST">{% csrf_token %}
+      {% for i in args %}
+        <td><input type="text"></td>
+      {% endfor %}
+  </tr>
+</table>
+<input type="submit" value="Add Tournament">
+</form>
+<table>
+  <tr>
+    {% for attr in args %}
+      <th scope="col">{{ attr }}</th>
+    {% endfor %}
+  </tr>
+  {% for obj in object_list %}
+      <tr>
+        {% for attr in obj %}
+          <td>{{ attr }}</td>
+        {% endfor %}
+      </tr>
+  {% endfor %}
+</table>
+</body>
+</html>

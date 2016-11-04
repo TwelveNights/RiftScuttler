@@ -18,12 +18,14 @@ def insert_tournament_data(request, id, year, location, prize):
     transaction.commit()
     cursor.execute("SELECT * FROM tournaments", [])
     list_of_tournament = cursor.fetchall()
+    args = ("id", "year", "location", "prize")
     context = {
         "object_list": list_of_tournament,
         "title": "Tournaments",
-        "args": ("id", "year", "location", "prize"),
+        "args": args,
+        "range": range(len(args)),
     }
-    return render(request, "curator/tournaments.html", context)
+    return render(request, "curator/add.html", context)
 
 
 def insert_series_data(id, bestOfCount):
@@ -401,7 +403,7 @@ def view_tournaments_data(request):
         "title": "Tournaments",
         "args": ("id", "year", "location", "prize")
     }
-    return render(request, "curator/tournaments.html", context)
+    return render(request, "curator/add.html", context)
 
 
 def form_home(request):
