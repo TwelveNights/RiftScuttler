@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^tournaments/', include('tournaments.urls')),
     url(r'series/', include('series.urls')),
     url(r'^playerstatistics/', include('playerstatistics.urls')),
-    # url(r'^admin/', admin.site.urls),
+    url(r'^curator/', include("form.urls")),
+    url(r'^admin/', admin.site.urls),
 ]
