@@ -23,7 +23,6 @@ def insert_tournament_data(request, id, year, location, prize):
         "object_list": list_of_tournament,
         "title": "Tournaments",
         "args": args,
-        "range": range(len(args)),
     }
     return render(request, "curator/add.html", context)
 
@@ -293,6 +292,17 @@ def delete_tournament_data(id, year):
     cursor.execute("DELETE FROM tournaments WHERE id=%s AND year=%s", [id, year])
     transaction.set_dirty()
     transaction.commit()
+    cursor.execute("SELECT * FROM tournaments", [])
+    list_of_tournament = cursor.fetchall()
+    args = ("id", "year", "location", "prize")
+    context = {
+        "object_list": list_of_tournament,
+        "title": "Tournaments",
+        "args": args,
+        "pk": [id,year],
+    }
+    return render(request, "curator/remove.html", context)
+
 
 
 def delete_series_data(id):
@@ -385,16 +395,8 @@ def delete_scores_data(teamID, teamRegion, seriesID, matchNumber):
     transaction.set_dirty()
     transaction.commit()
 
-"""
-def view_tournaments_data(request, id, year, location, prize):
-    # cursor = connection.cursor()
-    # cursor.execute("SELECT * FROM tournaments", [id, year, location, prize])
-    # row = cursor.fetchall()
-    return render(request, "index.html", {})
-"""
 
-
-def view_tournaments_data(request):
+def view_add_tournaments_data(request):
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM tournaments", [])
     list_of_tournament = cursor.fetchall()
@@ -406,15 +408,43 @@ def view_tournaments_data(request):
     return render(request, "curator/add.html", context)
 
 
+def view_remove_tournaments_data(request):
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM tournaments", [])
+    list_of_tournament = cursor.fetchall()
+    context = {
+        "object_list": list_of_tournament,
+        "title": "Tournaments",
+        "args": ("id", "year", "location", "prize"),
+        "pk": ("id","year"),
+    }
+    return render(request, "curator/remove.html", context)
+
+
+def view_edit_tournaments_data(request):
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM tournaments", [])
+    list_of_tournament = cursor.fetchall()
+    context = {
+        "object_list": list_of_tournament,
+        "title": "Tournaments",
+        "args": ("id", "year", "location", "prize"),
+        "pk": ("id","year"),
+    }
+    return render(request, "curator/edit.html", context)
+
+
+def login_page(request):
+    return
+
+
 def form_home(request):
     if request.user.is_authenticated():
         context = {
-            "title": "My User List",
-            "args": range(0),
+            "welcome": "Welcome to the curator's home page.",
         }
     else:
         context = {
-            "title": "List",
-            "args": range(0),
+            "welcome": "You are not authorized to view this page.",
         }
     return render(request, "curator/index.html", context)

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add {{ title }}</title>
+    <title>Edit {{ title }}</title>
 </head>
 <body>
 
-<h1>Add {{ title }}</h1>
+<h1>Edit {{ title }}</h1>
 <form method="POST">{% csrf_token %}
 <table>
   <tr>
@@ -14,13 +14,14 @@
       <th scope="col">{{ attr }}</th>
     {% endfor %}
   </tr>
+
   <tr>
       {% for i in args %}
         <td><input type="text"></td>
       {% endfor %}
-  </tr>
+  </tr>    
 </table>
-<input type="submit" value="Add Tournament">
+<input type="submit" value="Edit Tournament">
 </form>
 <table>
   <tr>

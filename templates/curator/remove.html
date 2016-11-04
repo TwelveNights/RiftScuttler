@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add {{ title }}</title>
+    <title>Remove {{ title }}</title>
 </head>
 <body>
-
-<h1>Add {{ title }}</h1>
-<form method="POST">{% csrf_token %}
+<h1>Remove {{ title }}</h1>
+<form method="DELETE">{% csrf_token %}
 <table>
   <tr>
-    {% for attr in args %}
+    {% for attr in pk %}
       <th scope="col">{{ attr }}</th>
     {% endfor %}
   </tr>
   <tr>
-      {% for i in args %}
+      {% for i in pk %}
         <td><input type="text"></td>
       {% endfor %}
   </tr>
 </table>
-<input type="submit" value="Add Tournament">
+<input type="submit" value="Remove Tournament">
 </form>
 <table>
   <tr>
@@ -36,5 +35,6 @@
       </tr>
   {% endfor %}
 </table>
+</form>
 </body>
 </html>
