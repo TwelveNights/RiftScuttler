@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<h1>Add {{ title }}</h1>
+<form method="POST">{% csrf_token %}
+<table>
+  <tr>
+    <th scope="col">{{ args.0 }}</th>
+    <th scope="col">{{ args.1 }}</th>
+    <th scope="col">{{ args.2 }}</th>
+    <th scope="col">{{ args.3 }}</th>
+  </tr>
+  {% for obj in object_list %}
+      <tr>
+          <td>{{ obj.0 }}</td>
+          <td>{{ obj.1 }}</td>
+          <td>{{ obj.2 }}</td>
+          <td>{{ obj.3 }}</td>
+      </tr>
+  {% endfor %}
+  <tr>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+    <td><input type="text"></td>
+  </tr>
+</table>
+<input type="submit">
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curator</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+
+{{ object_list }}
+
+
+
+<form method='POST'>{% csrf_token %}
+
+<input type='submit' value='Submit' />
+</form>
+
+</body>
+</html>
