@@ -403,7 +403,9 @@ def view_add_tournaments_data(request):
     context = {
         "object_list": list_of_tournament,
         "title": "Tournaments",
-        "args": ("id", "year", "location", "prize")
+        "args": ("id", "year", "location", "prize"),
+        "submit_value": "Tournament",
+        "table": "tournament",
     }
     return render(request, "curator/add.html", context)
 
@@ -416,7 +418,9 @@ def view_remove_tournaments_data(request):
         "object_list": list_of_tournament,
         "title": "Tournaments",
         "args": ("id", "year", "location", "prize"),
-        "pk": ("id","year"),
+        "pk": ("id", "year"),
+        "submit_value": "Tournament",
+        "table": "tournament",
     }
     return render(request, "curator/remove.html", context)
 
@@ -429,7 +433,9 @@ def view_edit_tournaments_data(request):
         "object_list": list_of_tournament,
         "title": "Tournaments",
         "args": ("id", "year", "location", "prize"),
-        "pk": ("id","year"),
+        "pk": ("id", "year"),
+        "submit_value": "Tournament",
+        "table": "tournament",
     }
     return render(request, "curator/edit.html", context)
 

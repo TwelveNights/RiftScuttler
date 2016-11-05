@@ -7,7 +7,7 @@
 <body>
 
 <h1>Edit {{ title }}</h1>
-<form method="POST">{% csrf_token %}
+<form method="POST" action="/edit_{{ table }}">{% csrf_token %}
 <table>
   <tr>
     {% for attr in args %}
@@ -17,11 +17,11 @@
 
   <tr>
       {% for i in args %}
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" required></td>
       {% endfor %}
   </tr>    
 </table>
-<input type="submit" value="Edit Tournament">
+<input type="submit" value="Edit {{ submit_value }}">
 </form>
 <table>
   <tr>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Remove {{ title }}</h1>
-<form method="DELETE">{% csrf_token %}
+<form method="POST" action="/remove_{{ table }}">{% csrf_token %}
 <table>
   <tr>
     {% for attr in pk %}
@@ -15,11 +15,11 @@
   </tr>
   <tr>
       {% for i in pk %}
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" required></td>
       {% endfor %}
   </tr>
 </table>
-<input type="submit" value="Remove Tournament">
+<input type="submit" value="Remove {{ submit_value }}">
 </form>
 <table>
   <tr>
