@@ -4,11 +4,17 @@ from django.db import connection, transaction
 
 # Create your views here.
 # http://maxivak.com/executing-raw-sql-in-django/
+# http://stackoverflow.com/questions/19845587/get-data-from-html-without-using-django-form-template
 # remove region attribute from teams
 # remove functions to do with organizes
 
 
-def insert_tournament_data(request, id, year, location, prize):
+def insert_tournament_data(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        year = request.POST['year']
+        location = request.POST['location']
+        prize = request.POST['prize']
     cursor = connection.cursor()
     cursor.execute("INSERT INTO tournaments VALUES (%s %s %s %s)",
                    (id,
