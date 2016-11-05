@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Add {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/base.css" />
 </head>
 <body>
 
 <h1>Add {{ title }}</h1>
-<form method="POST" action="/add_{{ table }}">{% csrf_token %}
+<form method="POST" action="&#x2F;add_{{ table }}">{% csrf_token %}
 <table>
   <tr>
     {% for attr in args %}
@@ -16,7 +17,7 @@
   </tr>
   <tr>
       {% for i in args %}
-          <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" required></td>
+          <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }}" required></td>
       {% endfor %}
   </tr>
 </table>
@@ -36,6 +37,6 @@
       </tr>
   {% endfor %}
 </table>
-<script src="js/add_data_handler.js"></script>
+<script src="&#x2F;static&#x2F;js&#x2F;add_data_handler.js"></script>
 </body>
 </html>
