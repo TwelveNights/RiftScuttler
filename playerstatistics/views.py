@@ -3,26 +3,29 @@ from django.http import HttpResponse
 from django.db import connection
 from django.template import Context, Template
 from .constant import *
+from django.shortcuts import render
 
 
 
 def index(request):
-    return HttpResponse("Hello, world. this will be the page show general play stat")
+    ranklist = []
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT id, name "
+                       "FROM players ")
+        player = cursor.fetchall()
+        for item in player:
+            context = dict({})
+            playerDetail = playdetail(item[0])
+            if 'rank' in playerDetail:
+                context.update({'name': item[1]})
+                context.update({'rank': playerDetail['rank']})
+                ranklist.append(context)
+    contextlist = {'ranklist': ranklist}
+    return render(request,'index.html',contextlist)
 
 def detailView(request, pid):
     context = playdetail(pid)
-    if context.get('error'):
-        template = Template('{{ error }}')
-        return HttpResponse(template.render(context))
-    else:
-        template = Template('the player show is {{ Id }}, Average Kill: {{ averageK }}, Average Death: {{ averageD }},'
-                            'Average Assists: {{ averageA }},'
-                            'Max Kill : {{ maxK }},'
-                            'Max Death: {{ maxD }},'
-                            'Max Assists: {{ maxA }},'
-                            'Most Played Roles: {{ role }},'
-                            'Ranking Points: {{ rank }} ')
-        return HttpResponse(template.render(context))
+    return render(request,'detail.html',context)
 
 
 
@@ -71,13 +74,13 @@ def calcranking(avgk, avgd, avga, maxk, maxd, maxa, role, wards, gold):
     avgkdaRatio = (avga + avgk) / (avga + avgd + avgk)
     maxkdaRatio = (maxa + maxk) / (maxa + maxd + maxk)
     return {
-            'support': BASE_POINT + SUPPORT_KDA_RATIO_WEIGHT*avgkdaRatio + SUPPORT_WARD_WEIGHT * wards,
-            'adc': BASE_POINT + gold * ADC_GOLD_WEIGHT + ADC_KDA_WEIGHT * avgkdaRatio + ADC_MAX_KDA_WEIGHT * maxkdaRatio,
-            'jungle': BASE_POINT + gold * JUNGLE_GOLD_WEIGHT + JUNGLE_AVG_KDA_WEIGHT * avgkdaRatio +
-                      JUNGLE_MAX_KDA_WEIGHT * maxkdaRatio,
-            'top': BASE_POINT + gold * TOP_GOLD_WEIGHT + TOP_AVG_KDA_WEIGHT * avgkdaRatio + TOP_MAX_KDA_WEIGHT * maxkdaRatio
-                   + TOP_WARDS_WEIGHT * wards,
-            'mid': BASE_POINT + MID_AVG_KDA_WEIGHT * avgkdaRatio + MID_MAX_KDA_WEIGHT * maxkdaRatio
+            'support': int(BASE_POINT + SUPPORT_KDA_RATIO_WEIGHT*avgkdaRatio + SUPPORT_WARD_WEIGHT * wards),
+            'adc': int(BASE_POINT + gold * ADC_GOLD_WEIGHT + ADC_KDA_WEIGHT * avgkdaRatio + ADC_MAX_KDA_WEIGHT * maxkdaRatio),
+            'jungle': int(BASE_POINT + gold * JUNGLE_GOLD_WEIGHT + JUNGLE_AVG_KDA_WEIGHT * avgkdaRatio +
+                      JUNGLE_MAX_KDA_WEIGHT * maxkdaRatio),
+            'top': int(BASE_POINT + gold * TOP_GOLD_WEIGHT + TOP_AVG_KDA_WEIGHT * avgkdaRatio + TOP_MAX_KDA_WEIGHT * maxkdaRatio
+                   + TOP_WARDS_WEIGHT * wards),
+            'mid': int(BASE_POINT + MID_AVG_KDA_WEIGHT * avgkdaRatio + MID_MAX_KDA_WEIGHT * maxkdaRatio)
     }.get(role)
 
 
