@@ -1,0 +1,10 @@
+{% if ranklist %}
+    <ul>
+    <p>Name: Ranking</p>
+    {% for playerR in ranklist %}
+        <li><a>{{ playerR.name }}: {{ playerR.rank }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No player has played any games</p>
+{% endif %}
