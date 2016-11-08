@@ -1,27 +1,18 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add {{ title }}</title>
-    <link rel="stylesheet" href="&#x2F;static&#x2F;css&#x2F;base.css" />
+    <link rel="stylesheet" href='{% static "css/base.css" %}' />
 </head>
 <body>
 
 <h1>Add {{ title }}</h1>
-<form method="POST" action="&#x2F;add_{{ table }}">{% csrf_token %}
-<table>
-  <tr>
-    {% for attr in args %}
-      <th scope="col">{{ attr }}</th>
-    {% endfor %}
-  </tr>
-  <tr>
-      {% for i in args %}
-          <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }}" required></td>
-      {% endfor %}
-  </tr>
-</table>
-<input type="submit" value="Add {{ submit_value }}">
+<form method="POST" action="#">
+    {% csrf_token %}
+    {{ form.as_table }}
+<input type="submit" value="Submit">
 </form>
 <table>
   <tr>

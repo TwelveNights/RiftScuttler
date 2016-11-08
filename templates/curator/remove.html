@@ -1,9 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Remove {{ title }}</title>
-    <link rel="stylesheet" href="&#x2F;static&#x2F;css&#x2F;base.css" />
+    <link rel="stylesheet" href='{% static "css/base.css" %}' />
 </head>
 <body>
 <h1>Remove {{ title }}</h1>
@@ -16,11 +17,11 @@
   </tr>
   <tr>
       {% for i in pk %}
-        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }}" required></td>
+        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }} attr" required></td>
       {% endfor %}
   </tr>
 </table>
-<input type="submit" value="Remove {{ submit_value }}">
+<input type="submit" value="Remove {{ submit_value }}" id="submit">
 </form>
 <table>
   <tr>
