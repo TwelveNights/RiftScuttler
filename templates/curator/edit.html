@@ -19,11 +19,11 @@
 
   <tr>
       {% for i in args %}
-        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }}" required></td>
+        <td><input type="text" placeholder="Enter {{ i }} here" id="{{ i }}" name="{{ i }}" class="{{ table }} attr" required></td>
       {% endfor %}
   </tr>    
 </table>
-<input type="submit" value="Edit {{ submit_value }}">
+<input type="submit" value="Edit {{ submit_value }}" id="submit">
 </form>
 <table>
   <tr>

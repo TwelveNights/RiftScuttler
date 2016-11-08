@@ -21,13 +21,15 @@ from .views import (form_home,
                     login_page,
                     view_add_tournaments_data,
                     view_remove_tournaments_data,
-                    view_edit_tournaments_data,)
+                    view_edit_tournaments_data,
+                    insert_tournament_data,)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', form_home),
     url(r'^$', login_page),
-    url(r'^add_tournament/$', view_add_tournaments_data),
+    # url(r'^add_tournament/$', view_add_tournaments_data),
     url(r'^remove_tournament/$', view_remove_tournaments_data),
     url(r'^edit_tournament/$', view_edit_tournaments_data),
+    url(r'^add_tournament/$', insert_tournament_data),
 ]

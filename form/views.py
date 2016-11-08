@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.db import connection, transaction
+from django.http import HttpResponseRedirect
+
+from .forms import AddData
 
 
 # Create your views here.
@@ -7,30 +10,49 @@ from django.db import connection, transaction
 # http://stackoverflow.com/questions/19845587/get-data-from-html-without-using-django-form-template
 # remove region attribute from teams
 # remove functions to do with organizes
-
+# search: how to retrieve data from forms in django without django forms
+# https://docs.djangoproject.com/en/dev/topics/forms/#form-objects
 
 def insert_tournament_data(request):
-    if request.method == 'POST':
-        id = request.POST['id']
-        year = request.POST['year']
-        location = request.POST['location']
-        prize = request.POST['prize']
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO tournaments VALUES (%s %s %s %s)",
-                   (id,
-                    year,
-                    location,
-                    prize))
-    transaction.commit()
-    cursor.execute("SELECT * FROM tournaments", [])
-    list_of_tournament = cursor.fetchall()
-    args = ("id", "year", "location", "prize")
-    context = {
-        "object_list": list_of_tournament,
-        "title": "Tournaments",
-        "args": args,
-    }
-    return render(request, "curator/add.html", context)
+    if request.method == 'POST':
+        form = AddData(request.POST)
+        if form.is_valid():
+            id = form.cleaned_data['id']
+            year = form.cleaned_data['year']
+            location = form.cleaned_data['location']
+            prize = form.cleaned_data['prize']
+            cursor.execute("INSERT INTO tournaments VALUES (%s %d %s %d)",
+                           [id,
+                            year,
+                            location,
+                            prize])
+            transaction.commit()
+            form = AddData()
+            cursor.execute("SELECT * FROM tournaments", [])
+            list_of_tournament = cursor.fetchall()
+            args = ("id", "year", "location", "prize")
+            context = {
+                "form": form,
+                "object_list": list_of_tournament,
+                "title": "Tournaments",
+                "submit_value": "tournament",
+                "args": args,
+            }
+            return render(request, "curator/add.html", context)
+    else:
+        form = AddData()
+        cursor.execute("SELECT * FROM tournaments", [])
+        list_of_tournament = cursor.fetchall()
+        args = ("id", "year", "location", "prize")
+        context = {
+            "form": form,
+            "object_list": list_of_tournament,
+            "title": "Tournaments",
+            "submit_value": "tournament",
+            "args": args,
+        }
+    return render(request, 'curator/add.html', context)
 
 
 def insert_series_data(id, bestOfCount):
