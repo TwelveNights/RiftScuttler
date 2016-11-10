@@ -39,6 +39,12 @@ def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
     raw_data = raw_data.decode('utf-8')
     json_data = json.loads(raw_data)
 
+    split_path = match_path.split('?')
+    timeline_url = 'https://acs.leagueoflegends.com/v1/stats/game/' + split_path[0] + '/timeline?' + split_path[1]
+    raw_timeline = urllib.request.urlopen(timeline_url).read()
+    raw_timeline = raw_data.decode('utf-8')
+    json_timeline = json.loads(raw_timeline)
+
     #SCORES
     team1_data = json_data['teams'][0]
     team1_inhibitors = team1_data['inhibitorKills']
@@ -64,7 +70,7 @@ def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
     plays_list = []
     for participant in json_data['participants']:
         player = {}
-        player['name'] = json_data['participantIdentities'][participant['participantId'] - 1]['player']['summonerName']
+        player['name'] = pid_to_summoner_name(json_data, participant['participantId'])
         player['champion'] = participant['championId']
 
         role = participant['timeline']['role']
@@ -90,10 +96,15 @@ def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
 
         plays_list.append(player)
 
-    #INTERACTS (This information will have to be parsed from the match history HTML
-        
+    #INTERACTS
+        interactions = []
+        for frame in json_timeline['frames']:
+            for event in frame['events']:
+                if event['type'] == 'ITEM_PURCHASED':
+                    interactions.append({'playerName': pid_to_summoner_name(event['participantId']), 'itemID' : event['itemId'], 'time' : event['timestamp']})
 
-
+def pid_to_summoner_name(json_object, pid):
+    return json_object['participantIdentities'][pid - 1]['player']['summonerName']
 
 
 
