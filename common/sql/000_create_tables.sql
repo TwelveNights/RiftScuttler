@@ -51,6 +51,7 @@ CREATE TABLE matches (
 
 -- Relations
 
+-- Add ban order?
 CREATE TABLE bans (
   seriesID        INTEGER,
   matchNumber   INTEGER,
@@ -103,6 +104,7 @@ CREATE TABLE participates (
   FOREIGN KEY (teamID) REFERENCES teams(id)
 );
 
+--Role should probably be stored in player?
 CREATE TABLE plays (
   seriesID      INTEGER,
   matchNumber INTEGER,
