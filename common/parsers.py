@@ -101,7 +101,13 @@ def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
         for frame in json_timeline['frames']:
             for event in frame['events']:
                 if event['type'] == 'ITEM_PURCHASED':
-                    interactions.append({'playerName': pid_to_summoner_name(event['participantId']), 'itemID' : event['itemId'], 'time' : event['timestamp']})
+                    interactions.append(
+                        {'playerName': pid_to_summoner_name(event['participantId']), 'itemID': event['itemId'],
+                         'time': event['timestamp'], 'isBuy': 1})
+                elif event['type'] == 'ITEM_SOLD':
+                    interactions.append(
+                        {'playerName': pid_to_summoner_name(event['participantId']), 'itemID': event['itemId'],
+                         'time': event['timestamp'], 'isBuy': 0})
 
 def pid_to_summoner_name(json_object, pid):
     return json_object['participantIdentities'][pid - 1]['player']['summonerName']
