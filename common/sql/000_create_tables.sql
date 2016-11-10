@@ -57,7 +57,7 @@ CREATE TABLE bans (
   matchNumber   INTEGER,
   championId    INTEGER,
   pickTurn      INTEGER,
-  PRIMARY KEY (seriesID, matchNumber, name),
+  PRIMARY KEY (seriesID, matchNumber, championId),
   FOREIGN KEY (championId)    REFERENCES  champions(id),
   FOREIGN KEY (seriesID, matchNumber)  REFERENCES  matches(seriesID, matchNumber)
 );

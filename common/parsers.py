@@ -45,7 +45,7 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
     split_path = match_path.split('?')
     timeline_url = 'https://acs.leagueoflegends.com/v1/stats/game/' + split_path[0] + '/timeline?' + split_path[1]
     raw_timeline = urllib.request.urlopen(timeline_url).read()
-    raw_timeline = raw_data.decode('utf-8')
+    raw_timeline = raw_timeline.decode('utf-8')
     json_timeline = json.loads(raw_timeline)
 
     #SCORES
@@ -103,7 +103,6 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
 
         pstats = p['stats']
 
-
         SQL_inserts.append("INSERT INTO plays VALUES({0}, {1}, {2}, "
                            "{3},{4}, {5}, "
                            "{6}, {7}, {8}, "
@@ -122,7 +121,7 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
                 is_buy = 1 if e['type'] == 'ITEM_PURCHASED' else 0
 
                 SQL_inserts.append("INSERT INTO interacts VALUES ({0}, {1}, {2}, "
-                                   "{3}, {4}, {5}, {6})\n".format(seriesID, matchNumber,
+                                   "{3}, {4}, {5})\n".format(seriesID, matchNumber,
                                                                   pid_to_sname(json_data, e['participantId']),
                                                                   e['itemId'], e['timeStamp'], is_buy))
 
