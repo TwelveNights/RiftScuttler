@@ -17,9 +17,11 @@ def index(request):
             context = dict({})
             playerDetail = playdetail(item[0])
             if 'rank' in playerDetail:
+                context.update({'Id': item[0]})
                 context.update({'name': item[1]})
                 context.update({'rank': playerDetail['rank']})
                 ranklist.append(context)
+    ranklist = sortRankList(ranklist);
     contextlist = {'ranklist': ranklist}
     return render(request,'index.html',contextlist)
 
@@ -84,4 +86,20 @@ def calcranking(avgk, avgd, avga, maxk, maxd, maxa, role, wards, gold):
     }.get(role)
 
 
+def sortRankList(ranklist):
+    less = []
+    equal = []
+    greater = []
+    if len(ranklist) > 1:
+        pivot = ranklist[0]['rank']
+        for x in ranklist:
+            if x['rank'] < pivot:
+                less.append(x)
+            if x['rank'] == pivot:
+                equal.append(x)
+            if x['rank'] > pivot:
+                greater.append(x)
+        return sortRankList(greater)+equal+sortRankList(less)
+    else:
+        return ranklist
 # Create your views here.
