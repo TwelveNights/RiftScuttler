@@ -32,7 +32,10 @@ def retrieve_items(key, value):
 
 
 #match_path is a url endpoint, for example TRLH1/1001890201?gameHash=6751c4ef7ef58654
-def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
+def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
+
+    SQL_inserts = []
+
     match_url = 'https://acs.leagueoflegends.com/v1/stats/game/' + match_path
 
     raw_data = urllib.request.urlopen(match_url).read()
@@ -46,70 +49,86 @@ def retrieve_match(seriesID, matchNumber, date, team1, team2, match_path):
     json_timeline = json.loads(raw_timeline)
 
     #SCORES
-    team1_data = json_data['teams'][0]
-    team1_inhibitors = team1_data['inhibitorKills']
-    team1_towers = team1_data['towerKills']
-    team1_riftHeralds = team1_data['riftHeraldKills']
-    team1_barons = team1_data['baronKills']
-    team1_dragons = team1_data['dragonKills']
-    team1_nexus = 1 if (team1_data['win'] == 'Win') else 0
+    t1_data = json_data['teams'][0]
+    t1_inhibitors = t1_data['inhibitorKills']
+    t1_towers = t1_data['towerKills']
+    t1_riftHeralds = t1_data['riftHeraldKills']
+    t1_barons = t1_data['baronKills']
+    t1_dragons = t1_data['dragonKills']
+    t1_nexus = 1 if (t1_data['win'] == 'Win') else 0
 
-    team2_data = json_data['teams'][1]
-    team2_inhibitors = team2_data['inhibitorKills']
-    team2_towers = team2_data['towerKills']
-    team2_riftHeralds = team2_data['riftHeraldKills']
-    team2_barons = team2_data['baronKills']
-    team2_dragons = team2_data['dragonKills']
-    team2_nexus = 1 if (team2_data['win'] == 'Win') else 0
+    t2_data = json_data['teams'][1]
+    t2_inhibitors = t2_data['inhibitorKills']
+    t2_towers = t2_data['towerKills']
+    t2_riftHeralds = t2_data['riftHeraldKills']
+    t2_barons = t2_data['baronKills']
+    t2_dragons = t2_data['dragonKills']
+    t2_nexus = 1 if (t2_data['win'] == 'Win') else 0
+
+    SQL_inserts.append("INSERT INTO scores VALUES({0}, {1}, {2}, {3},"
+                       " {4}, {5}, {6}, {7}, {8})\n".format(team1Id, seriesID, matchNumber, t1_inhibitors, t1_towers,
+                                                            t1_riftHeralds, t1_barons, t1_dragons, t1_nexus))
+    SQL_inserts.append("INSERT INTO scores VALUES({0}, {1}, {2}, {3},"
+                       " {4}, {5}, {6}, {7}, {8})\n".format(team2Id, seriesID, matchNumber, t2_inhibitors, t2_towers,
+                                                            t2_riftHeralds, t2_barons, t2_dragons, t2_nexus))
 
     #BANS
-    team1_bans = [b['championId'] for b in team1_data['bans']]
-    team2_bans = [b['championId'] for b in team2_data['bans']]
+    for ban in t1_data['bans']:
+        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championId'],
+                                                                                ban['pickTurn']))
+    for ban in t2_data['bans']:
+        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championId'],
+                                                                                ban['pickTurn']))
+
+
 
     #PLAYS (players are listed by summonerName only)
-    plays_list = []
-    for participant in json_data['participants']:
-        player = {}
-        player['name'] = pid_to_summoner_name(json_data, participant['participantId'])
-        player['champion'] = participant['championId']
 
-        role = participant['timeline']['role']
-        lane = participant['timeline']['lane']
+    for p in json_data['participants']:
+        p_name = pid_to_sname(json_data, p['participantId'])
+
+        role = p['timeline']['role']
+        lane = p['timeline']['lane']
+        p_role = "NONE"
         if lane == 'TOP':
-            player['role'] = "Top"
+            p_role = "Top"
         elif lane == 'MIDDLE':
-            player['role'] = "Mid"
+            p_role = "Mid"
         elif lane == 'JUNGLE':
-            player['role'] = "Jungle"
+            p_role = "Jungle"
         elif role == 'DUO_CARRY':
-            player['role'] = "ADC"
-        else:
-            player['role'] = "Support"
+            p_role = "ADC"
+        elif role == 'DUO_SUPPORT':
+            p_role = "Support"
 
-        pstats = participant['stats']
-        player['kills'] = pstats['kills']
-        player['deaths'] = pstats['deaths']
-        player['assists'] = pstats['assists']
-        player['damageDealt'] = pstats['totalDamageDealtToChampions']
-        player['wardsPlaced'] = pstats['wardsPlaced']
-        player['gold'] = pstats['goldEarned']
+        pstats = p['stats']
 
-        plays_list.append(player)
+
+        SQL_inserts.append("INSERT INTO plays VALUES({0}, {1}, {2}, "
+                           "{3},{4}, {5}, "
+                           "{6}, {7}, {8}, "
+                           "{9}, {10}}, {11},"
+                           "{12}, {13}, {14})\n".format(seriesID, matchNumber, p_name, p['championId'], p_role,
+                                                        pstats['kills'], pstats['deaths'], pstats['assists'],
+                                                        pstats['totalDamageDealtToChampions'], pstats['wardsPlaced'],
+                                                        pstats['wardsDestroyed'],pstats['totalMinionsKilled'],
+                                                        pstats['neutralMinionsKilledTeamJungle'],
+                                                        pstats['neutralMinionsKilledEnemyJungle'], pstats['goldEarned']))
+
 
     #INTERACTS
-        interactions = []
         for frame in json_timeline['frames']:
-            for event in frame['events']:
-                if event['type'] == 'ITEM_PURCHASED':
-                    interactions.append(
-                        {'playerName': pid_to_summoner_name(event['participantId']), 'itemID': event['itemId'],
-                         'time': event['timestamp'], 'isBuy': 1})
-                elif event['type'] == 'ITEM_SOLD':
-                    interactions.append(
-                        {'playerName': pid_to_summoner_name(event['participantId']), 'itemID': event['itemId'],
-                         'time': event['timestamp'], 'isBuy': 0})
+            for e in frame['events']:
+                is_buy = 1 if e['type'] == 'ITEM_PURCHASED' else 0
 
-def pid_to_summoner_name(json_object, pid):
+                SQL_inserts.append("INSERT INTO interacts VALUES ({0}, {1}, {2}, "
+                                   "{3}, {4}, {5}, {6})\n".format(seriesID, matchNumber,
+                                                                  pid_to_sname(json_data, e['participantId']),
+                                                                  e['itemId'], e['timeStamp'], is_buy))
+
+    return SQL_inserts
+
+def pid_to_sname(json_object, pid):
     return json_object['participantIdentities'][pid - 1]['player']['summonerName']
 
 

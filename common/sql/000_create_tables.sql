@@ -53,11 +53,12 @@ CREATE TABLE matches (
 
 -- Add ban order?
 CREATE TABLE bans (
-  seriesID        INTEGER,
+  seriesID      INTEGER,
   matchNumber   INTEGER,
-  name          VARCHAR(16),
+  championId    INTEGER,
+  pickTurn      INTEGER,
   PRIMARY KEY (seriesID, matchNumber, name),
-  FOREIGN KEY (name)    REFERENCES  champions(name),
+  FOREIGN KEY (championId)    REFERENCES  champions(id),
   FOREIGN KEY (seriesID, matchNumber)  REFERENCES  matches(seriesID, matchNumber)
 );
 
@@ -88,7 +89,8 @@ CREATE TABLE interacts (
   playerID    INTEGER,
   itemID      INTEGER,
   time        INTEGER,
-  spent       INTEGER NOT NULL,
+  isBuy       INTEGER,
+  CHECK (isBuy = 0 OR isBuy = 1),
   PRIMARY KEY (seriesID, matchNumber, playerID, itemID, time),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
   FOREIGN KEY (playerID)            REFERENCES players(id),
@@ -104,23 +106,26 @@ CREATE TABLE participates (
   FOREIGN KEY (teamID) REFERENCES teams(id)
 );
 
---Role should probably be stored in player?
 CREATE TABLE plays (
   seriesID      INTEGER,
   matchNumber INTEGER,
-  playerID    INTEGER,
-  champion    VARCHAR(16),
+  summonerName    VARCHAR(16),
+  championId    INTEGER,
   role        VARCHAR(6)    NOT NULL,
   kills       INTEGER       NOT NULL,
   deaths      INTEGER       NOT NULL,
   assists     INTEGER       NOT NULL,
   damageDealt INTEGER       NOT NULL,
   wardsPlaced INTEGER       NOT NULL,
+  wardsDestroyed INTEGER    NOT NULL,
+  cs          INTEGER       NOT NULL,
+  teamJungleMinions INTEGER NOT NULL,
+  enemyJungleMinions INTEGER NOT NULL,
   gold        INTEGER       NOT NULL,
-  PRIMARY KEY (seriesID, matchNumber, playerID, champion),
+  PRIMARY KEY (seriesID, matchNumber, summonerName, championId),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (playerID)            REFERENCES players(id),
-  FOREIGN KEY (champion)            REFERENCES champions(name)
+  FOREIGN KEY (summonerName)            REFERENCES players(name),
+  FOREIGN KEY (championId)            REFERENCES champions(id)
 );
 
 CREATE TABLE registers (
