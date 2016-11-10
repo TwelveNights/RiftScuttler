@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db import connection, transaction
 from django.http import HttpResponseRedirect
 
-from .forms import AddData
+from .forms import *
 
 
 # Create your views here.
@@ -16,42 +16,26 @@ from .forms import AddData
 def insert_tournament_data(request):
     cursor = connection.cursor()
     if request.method == 'POST':
-        form = AddData(request.POST)
+        form = AddDataTournament(request.POST)
         if form.is_valid():
             id = form.cleaned_data['id']
             year = form.cleaned_data['year']
             location = form.cleaned_data['location']
             prize = form.cleaned_data['prize']
-            cursor.execute("INSERT INTO tournaments VALUES (%s %d %s %d)",
-                           [id,
-                            year,
-                            location,
-                            prize])
+            cursor.execute("INSERT INTO tournaments VALUES (%s, %s, %s, %s)",
+                           (id, year, location, prize))
             transaction.commit()
-            form = AddData()
-            cursor.execute("SELECT * FROM tournaments", [])
-            list_of_tournament = cursor.fetchall()
-            args = ("id", "year", "location", "prize")
-            context = {
-                "form": form,
-                "object_list": list_of_tournament,
-                "title": "Tournaments",
-                "submit_value": "tournament",
-                "args": args,
-            }
-            return render(request, "curator/add.html", context)
-    else:
-        form = AddData()
-        cursor.execute("SELECT * FROM tournaments", [])
-        list_of_tournament = cursor.fetchall()
-        args = ("id", "year", "location", "prize")
-        context = {
-            "form": form,
-            "object_list": list_of_tournament,
-            "title": "Tournaments",
-            "submit_value": "tournament",
-            "args": args,
-        }
+    form = AddDataTournament()
+    cursor.execute("SELECT * FROM tournaments", [])
+    list_of_tournament = cursor.fetchall()
+    args = ("id", "year", "location", "prize")
+    context = {
+        "form": form,
+        "object_list": list_of_tournament,
+        "title": "Tournaments",
+        "submit_value": "tournament",
+        "args": args,
+    }
     return render(request, 'curator/add.html', context)
 
 
@@ -315,7 +299,7 @@ def update_scores_data(teamID, teamRegion, seriesID, matchNumber, inhibitors, to
     transaction.commit()
 
 
-def delete_tournament_data(id, year):
+def delete_tournament_data(request, id, year):
     cursor = connection.cursor()
     cursor.execute("DELETE FROM tournaments WHERE id=%s AND year=%s", [id, year])
     transaction.set_dirty()
@@ -438,11 +422,20 @@ def view_add_tournaments_data(request):
     return render(request, "curator/add.html", context)
 
 
-def view_remove_tournaments_data(request):
+def remove_tournaments_data(request):
     cursor = connection.cursor()
+    if request.method == 'POST':
+        form = RemoveDataTournament(request.POST)
+        if form.is_valid():
+            id_val = form.cleaned_data['id']
+            year_val = form.cleaned_data['year']
+            cursor.execute("DELETE FROM tournaments WHERE id =%s AND year=%s", [id_val, year_val])
+            transaction.commit()
+    form = RemoveDataTournament()
     cursor.execute("SELECT * FROM tournaments", [])
     list_of_tournament = cursor.fetchall()
     context = {
+        "form": form,
         "object_list": list_of_tournament,
         "title": "Tournaments",
         "args": ("id", "year", "location", "prize"),
@@ -453,11 +446,23 @@ def view_remove_tournaments_data(request):
     return render(request, "curator/remove.html", context)
 
 
-def view_edit_tournaments_data(request):
+def edit_tournaments_data(request):
     cursor = connection.cursor()
+    if request.method == 'POST':
+        form = EditDataTournament(request.POST)
+        if form.is_valid():
+            id_val = form.cleaned_data['id']
+            year_val = form.cleaned_data['year']
+            location_val = form.cleaned_data['location']
+            prize_val = form.cleaned_data['prize']
+            cursor.execute("UPDATE tournaments SET location=%s, prize=%s WHERE id = %s AND year = %s",
+                           (location_val, prize_val, id_val, year_val))
+            transaction.commit()
+    form = EditDataTournament()
     cursor.execute("SELECT * FROM tournaments", [])
     list_of_tournament = cursor.fetchall()
     context = {
+        "form": form,
         "object_list": list_of_tournament,
         "title": "Tournaments",
         "args": ("id", "year", "location", "prize"),
