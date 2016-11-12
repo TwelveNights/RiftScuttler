@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ul>
+    {% for t in tournaments %}
+        <a href="{% url 'tournaments:details' t.id %}">
+            {{t.name}} - {{t.year}}
+        </a>
+    {% empty %}
+        <div>Sorry, no tournaments available</div>
+    {% endfor %}
+</ul>
+{% endblock %}

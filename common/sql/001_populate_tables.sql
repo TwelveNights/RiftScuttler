@@ -657,8 +657,11 @@ VALUES (1, 1);
 INSERT INTO organizes (tournamentID, seriesID, stage)
 VALUES ('worlds2015', 1, 'groups');
 
-INSERT INTO competes (seriesID, team1ID, team2ID, winner)
-VALUES (1, 'AHQ', 'BKT', 'BKT');
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (1, 'AHQ', 1);
+
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (1, 'BKT', 0);
 
 INSERT INTO matches (seriesID, matchNumber, date)
 VALUES (1, 1, 1980-01-01);
@@ -750,8 +753,11 @@ VALUES (2, 1);
 INSERT INTO organizes (tournamentID, seriesID, stage)
 VALUES ('worlds2015', 2, 'groups');
 
-INSERT INTO competes (seriesID, team1ID, team2ID, winner)
-VALUES (2, 'AHQ', 'C9', 'C9');
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (2, 'AHQ', 1);
+
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (2, 'C9', 0);
 
 INSERT INTO matches (seriesID, matchNumber, date)
 VALUES (2, 1, 1980-01-01);
@@ -843,8 +849,11 @@ VALUES (3, 1);
 INSERT INTO organizes (tournamentID, seriesID, stage)
 VALUES ('worlds2015', 3, 'groups');
 
-INSERT INTO competes (seriesID, team1ID, team2ID, winner)
-VALUES (3, 'AHQ', 'CLG', 'CLG');
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (3, 'AHQ', 1);
+
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (3, 'CLG', 0);
 
 INSERT INTO matches (seriesID, matchNumber, date)
 VALUES (3, 1, 1980-01-01);
@@ -937,8 +946,11 @@ VALUES (4, 1);
 INSERT INTO organizes (tournamentID, seriesID, stage)
 VALUES ('worlds2015', 4, 'groups');
 
-INSERT INTO competes (seriesID, team1ID, team2ID, winner)
-VALUES (4, 'AHQ', 'EDG', 'EDG');
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (4, 'AHQ', 1);
+
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (4, 'EDG', 0);
 
 INSERT INTO matches (seriesID, matchNumber, date)
 VALUES (4, 1, 1980-01-01);
@@ -1030,8 +1042,11 @@ VALUES (50, 5);
 INSERT INTO organizes (tournamentID, seriesID, stage)
 VALUES ('worlds2015', 50, 'quarterfinals');
 
-INSERT INTO competes (seriesID, team1ID, team2ID, winner)
-VALUES (50, 'FNC', 'EDG', 'FNC');
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (50, 'FNC', 1);
+
+INSERT INTO competes (seriesID, teamID, blueSide)
+VALUES (50, 'EDG', 0);
 
 -- FNC vs EDG match 1
 INSERT INTO matches (seriesID, matchNumber, date)
