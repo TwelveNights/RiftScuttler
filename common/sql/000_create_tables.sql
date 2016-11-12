@@ -67,7 +67,7 @@ CREATE TABLE organizes (
   stage         TEXT,
   PRIMARY KEY (tournamentID, seriesID),
   FOREIGN KEY (tournamentID)  REFERENCES tournaments(id),
-  FOREIGN KEY (seriesID)      REFERENCES games(id)
+  FOREIGN KEY (seriesID)      REFERENCES series(id)
 );
 
 CREATE TABLE competes (
