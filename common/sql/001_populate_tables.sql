@@ -1,5 +1,5 @@
-INSERT INTO tournaments (id, name, year, location, prize)
-VALUES ('worlds2015', 'World Championship', 2015, 'Europe', 2130000);
+INSERT INTO tournaments (id, name, year, location)
+VALUES ('worlds2015', 'World Championship', 2015, 'Europe');
 
 -- Teams in Worlds 2015:
 
@@ -674,76 +674,76 @@ VALUES ('BKT', 1, 1, 2, 5, 0, 0, 1, 1);
 
 -- AHQ bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Zac');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '154');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Zed');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '238');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Twisted Fate');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '4');
 
 -- BKT bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Tristana');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '18');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Thresh');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '412');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (1, 1, 'Soraka');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (1, 1, '16');
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 2, 'Nidalee', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 2, '76', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 3, 'Nami', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 3, '267', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 4, 'Jinx', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 4, '222', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 5, 'Graves', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 5, '104', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 6, 'Garen', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 6, '86', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --BKT Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 12, 'Galio', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 12, '3', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 13, 'Darius', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 13, '122', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 14, 'Caitlyn', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 14, '51', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 15, 'Blitzcrank', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 15, '53', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (1, 1, 16, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (1, 1, 16, '32', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (1, 1, 14, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (1, 1, 14, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (1, 1, 13, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (1, 1, 13, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (1, 1, 12, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (1, 1, 12, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (1, 1, 10, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (1, 1, 10, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (1, 1, 3, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (1, 1, 3, 5, 6789);
 
 -- AHQ vs C9:
 
@@ -770,76 +770,76 @@ VALUES ('C9', 2, 1, 2, 5, 0, 0, 1, 1);
 
 -- AHQ bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Zac');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '154');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Zed');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '238');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Twisted Fate');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '4');
 
 -- C9 bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Tristana');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '18');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Thresh');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '412');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (2, 1, 'Soraka');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (2, 1, '16');
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 2, 'Nidalee', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 2, '76', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 3, 'Nami', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 3, '267', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 4, 'Jinx', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 4, '222', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 5, 'Graves', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 5, '104', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 6, 'Garen', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 6, '86', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --C9 Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 22, 'Galio', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 22, '3', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 23, 'Darius', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 23, '122', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 24, 'Caitlyn', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 24, '51', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 25, 'Blitzcrank', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 25, '53', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (2, 1, 26, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (2, 1, 26, '32', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (2, 1, 22, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (2, 1, 22, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (2, 1, 23, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (2, 1, 23, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (2, 1, 2, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (2, 1, 2, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (2, 1, 3, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (2, 1, 3, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (2, 1, 25, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (2, 1, 25, 5, 6789);
 
 -- AHQ vs CLG:
 
@@ -866,76 +866,76 @@ VALUES ('CLG', 3, 1, 2, 5, 0, 0, 1, 1);
 
 -- AHQ bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Zac');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '154');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Zed');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '238');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Twisted Fate');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '4');
 
 -- CLG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Tristana');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '18');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Thresh');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '412');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (3, 1, 'Soraka');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (3, 1, '16');
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 2, 'Nidalee', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 2, '76', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 3, 'Nami', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 3, '267', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 4, 'Jinx', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 4, '222', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 5, 'Graves', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 5, '104', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 6, 'Garen', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 6, '86', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --CLG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 122, 'Galio', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 122, '3', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 123, 'Darius', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 123, '122', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 124, 'Caitlyn', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 124, '51', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 125, 'Blitzcrank', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 125, '53', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (3, 1, 126, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (3, 1, 126, '32', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (3, 1, 122, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (3, 1, 122, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (3, 1, 123, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (3, 1, 123, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (3, 1, 2, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (3, 1, 2, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (3, 1, 3, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (3, 1, 3, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (3, 1, 125, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (3, 1, 125, 5, 6789);
 
 
 -- AHQ vs EDG:
@@ -963,76 +963,76 @@ VALUES ('EDG', 4, 1, 2, 5, 0, 0, 1, 1);
 
 -- AHQ bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Zac');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '154');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Zed');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '238');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Twisted Fate');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '4');
 
 -- EDG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Tristana');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '18');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Thresh');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '412');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (4, 1, 'Soraka');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (4, 1, '16');
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 2, 'Nidalee', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 2, '76', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 3, 'Nami', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 3, '267', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 4, 'Jinx', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 4, '222', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 5, 'Graves', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 5, '104', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 6, 'Garen', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 6, '86', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 132, 'Galio', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 132, '3', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 133, 'Darius', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 133, '122', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 134, 'Caitlyn', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 134, '51', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 135, 'Blitzcrank', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 135, '53', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (4, 1, 136, 'Amumu', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (4, 1, 136, '32', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (4, 1, 132, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (4, 1, 132, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (4, 1, 133, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (4, 1, 133, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (4, 1, 2, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (4, 1, 2, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (4, 1, 3, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (4, 1, 3, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (4, 1, 135, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (4, 1, 135, 5, 6789);
 
 -- Series between FNC and EDG
 
@@ -1060,76 +1060,76 @@ VALUES ('EDG', 50, 1, 2, 5, 0, 0, 1, 0);
 
 -- FNC bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Amumu');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '32');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Blitzcrank');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '53');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Caitlyn');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '51');
 
 -- EDG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Darius');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '122');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Galio');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '3');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 1, 'Garen');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 1, '86');
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 127, 'Graves', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 127, '104', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 128, 'Jinx', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 128, '222', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 129, 'Nami', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 129, '267', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 130, 'Nidalee', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 130, '76', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 131, 'Soraka', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 131, '16', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 132, 'Thresh', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 132, '412', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 133, 'Tristana', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 133, '18', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 134, 'Twisted Fate', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 134, '4', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 135, 'Zac', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 135, '154', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 1, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 1, 136, '238', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 1, 127, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 1, 127, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 1, 129, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 1, 129, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 1, 129, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 1, 129, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 1, 131, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 1, 131, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 1, 132, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 1, 132, 5, 6789);
 
 -- FNC vs EDG match 2
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1143,76 +1143,76 @@ VALUES ('EDG', 50, 2, 2, 5, 0, 0, 1, 0);
 
 -- FNC bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Amumu');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '32');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Blitzcrank');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '53');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Caitlyn');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '51');
 
 -- EDG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Darius');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '122');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Galio');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '3');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 2, 'Garen');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 2, '86');
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 127, 'Graves', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 127, '104', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 128, 'Jinx', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 128, '222', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 129, 'Nami', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 129, '267', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 130, 'Nidalee', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 130, '76', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 131, 'Soraka', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 131, '16', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 132, 'Thresh', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 132, '412', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 133, 'Tristana', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 133, '18', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 134, 'Twisted Fate', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 134, '4', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 135, 'Zac', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 135, '154', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 2, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 2, 136, '238', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 2, 127, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 2, 127, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 2, 129, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 2, 129, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 2, 129, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 2, 129, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 2, 131, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 2, 131, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 2, 132, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 2, 132, 5, 6789);
 
 -- FNC vs EDG match 3
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1226,76 +1226,76 @@ VALUES ('EDG', 50, 3, 2, 11, 0, 0, 1, 1);
 
 -- FNC bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Amumu');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '32');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Blitzcrank');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '53');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Caitlyn');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '51');
 
 -- EDG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Darius');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '122');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Galio');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '3');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 3, 'Garen');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 3, '86');
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 127, 'Graves', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 127, '104', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 128, 'Jinx', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 128, '222', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 129, 'Nami', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 129, '267', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 130, 'Nidalee', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 130, '76', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 131, 'Soraka', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 131, '16', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 132, 'Thresh', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 132, '412', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 133, 'Tristana', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 133, '18', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 134, 'Twisted Fate', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 134, '4', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 135, 'Zac', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 135, '154', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 3, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 3, 136, '238', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 3, 127, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 3, 127, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 3, 129, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 3, 129, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 3, 129, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 3, 129, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 3, 131, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 3, 131, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 3, 132, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 3, 132, 5, 6789);
 
 -- FND vs EDG match 4
 INSERT INTO matches (seriesID, matchNumber, date)
@@ -1309,73 +1309,73 @@ VALUES ('EDG', 50, 4, 2, 5, 0, 0, 1, 0);
 
 -- FNC bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Amumu');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '32');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Blitzcrank');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '53');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Caitlyn');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '51');
 
 -- EDG bans
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Darius');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '122');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Galio');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '3');
 
-INSERT INTO bans (seriesID, matchNumber, name)
-VALUES (50, 4, 'Garen');
+INSERT INTO bans (seriesID, matchNumber, championId)
+VALUES (50, 4, '86');
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 127, 'Graves', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 127, '104', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 128, 'Jinx', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 128, '222', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 129, 'Nami', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 129, '267', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 130, 'Nidalee', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 130, '76', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 131, 'Soraka', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 131, '16', 'support', 10, 7, 15, 27000, 23, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 132, 'Thresh', 'top', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 132, '412', 'top', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 133, 'Tristana', 'jungle', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 133, '18', 'jungle', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 134, 'Twisted Fate', 'mid', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 134, '4', 'mid', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 135, 'Zac', 'adc', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 135, '154', 'adc', 10, 7, 15, 27000, 23, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, playerID, champion, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
-VALUES (50, 4, 136, 'Zed', 'support', 10, 7, 15, 27000, 23, 14700);
+INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, gold)
+VALUES (50, 4, 136, '238', 'support', 10, 7, 15, 27000, 23, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 4, 127, 4, 1426, 400);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 4, 127, 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 4, 129, 1, 1928, -1900);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 4, 129, 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 4, 129, 2, 2120, 2348);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 4, 129, 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 4, 131, 3, 3848, 7463);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 4, 131, 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time, spent)
-VALUES (50, 4, 132, 5, 6789, 345);
+INSERT INTO interacts (seriesID, matchNumber, playerID, itemID, time)
+VALUES (50, 4, 132, 5, 6789);

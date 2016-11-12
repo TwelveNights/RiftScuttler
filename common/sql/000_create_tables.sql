@@ -37,7 +37,6 @@ CREATE TABLE tournaments (
   name      VARCHAR(256),
   year      INTEGER,
   location  TEXT    NOT NULL,
-  prize     INTEGER NOT NULL,
   PRIMARY KEY (id)
 );
 
