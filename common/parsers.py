@@ -1,5 +1,6 @@
-import urllib.request
 import json
+from urllib import request
+from bs4 import BeautifulSoup
 
 def parse_data(func, data, file_name):
     "Parses data for static data"
@@ -38,7 +39,7 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
 
     match_url = 'https://acs.leagueoflegends.com/v1/stats/game/' + match_path
 
-    raw_data = urllib.request.urlopen(match_url).read()
+    raw_data = request.urlopen(match_url).read()
     raw_data = raw_data.decode('utf-8')
     json_data = json.loads(raw_data)
 
@@ -83,7 +84,6 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
 
 
     #PLAYS (players are listed by summonerName only)
-
     for p in json_data['participants']:
         p_name = pid_to_sname(json_data, p['participantId'])
 
@@ -132,4 +132,8 @@ def pid_to_sname(json_object, pid):
 
 
 
+
+def tournament_crawler(starting_url):
+    html = request.urlopen(starting_url).read()
+    soup = BeautifulSoup(html)
 
