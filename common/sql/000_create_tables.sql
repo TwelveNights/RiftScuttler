@@ -71,14 +71,11 @@ CREATE TABLE organizes (
 
 CREATE TABLE competes (
   seriesID        INTEGER,
-  team1ID         VARCHAR(6),
-  team2ID         VARCHAR(6),
-  winner    VARCHAR(2),
-  CHECK (winner = team1ID OR winner = team2ID),
-  PRIMARY KEY (seriesID, team1ID, team2ID),
+  teamID          VARCHAR(6),
+  blueSide        BOOLEAN,
+  PRIMARY KEY (seriesID, teamID),
   FOREIGN KEY (seriesID) REFERENCES series(id),
-  FOREIGN KEY (team1ID) REFERENCES teams(id),
-  FOREIGN KEY (team2ID) REFERENCES teams(id)
+  FOREIGN KEY (teamID) REFERENCES teams(id)
 );
 
 CREATE TABLE interacts (
