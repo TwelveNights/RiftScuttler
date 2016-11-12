@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db import connection
 from django.http import HttpResponse, Http404
 from common import utils
- 
+
 # Create your views here.
  
 def index(request):
@@ -10,7 +10,8 @@ def index(request):
         cursor.execute("SELECT * from tournaments")
         tournaments = utils.dictfetchall(cursor)
 
-    return render(request, "tournaments/index.html", { "tournaments": tournaments })
+    return render(request, "tournaments/index.html", {"tournaments": tournaments})
+
 
 def details(request, id):
     with connection.cursor() as cursor:
@@ -24,15 +25,15 @@ def details(request, id):
         if not results:
             raise Http404("There are no games with id '{0}'".format(id))
 
-    allSeries = {}
+    all_series = {}
 
     for result in results:
         series = result["series"]
         team = result["team"]
         blue = result["blueSide"]
 
-        if series not in allSeries:
-            allSeries[series] = {}
+        if series not in all_series:
+            all_series[series] = {}
 
         with connection.cursor() as cursor:
             cursor.execute("SELECT s.seriesID series, s.teamID team, SUM(s.nexus) score "
@@ -42,16 +43,10 @@ def details(request, id):
                            "GROUP BY s.seriesID, s.teamID", [series, team])
             score = utils.dictfetchone(cursor)
 
-        allSeries[series]["blue" if blue == 1 else "purple"] = {
+        all_series[series]["blue" if blue == 1 else "purple"] = {
             "team": team,
             "score": score["score"]
         }
 
-    return render(request, "tournaments/details.html", { "data": allSeries, "tournament": id })
 
-def series(request, id, series):
-    return HttpResponse("You made it to series!")
-
-def match(request, id, series, number):
-    return HttpResponse("You made it to match!")
-
+    return render(request, "tournaments/details.html", {"data": all_series, "tournament": id})

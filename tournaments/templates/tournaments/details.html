@@ -15,7 +15,7 @@
                 <td>{{ v.blue.team }}</td>
                 <td>{{ v.blue.score }} - {{ v.purple.score }}</td>
                 <td>{{ v.purple.team }}</td>
-                <td><a href="{% url 'tournaments:series' tournament k %}">See Details</a></td>
+                <td><a href="{% url 'series:series' k %}">See Details</a></td>
             </tr>
     {% endfor %}
     </tbody>
