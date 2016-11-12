@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'curator',
 ]
 
 MIDDLEWARE = [
@@ -127,8 +126,3 @@ STATICFILES_DIRS = [
     # '/var/www/static/',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
-
-MEDIA_URL = "/media/"
