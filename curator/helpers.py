@@ -107,12 +107,19 @@ def get_non_pk_args(table):
     return args
 
 
-def reset_table(table):
-    for attr, value in table.__dict__.items():
-        if isinstance(attr, str):
-            value[0] = ""
-        elif isinstance(attr, list):
-            value[0] = []
+def create_reverse_name_add(table_name):
+    name = "add-" + table_name
+    return name
+
+
+def create_reverse_name_remove(table_name):
+    name = "remove-" + table_name
+    return name
+
+
+def create_reverse_name_edit(table_name):
+    name = "edit-" + table_name
+    return name
 
 
 def check_page_and_return_table(request):
