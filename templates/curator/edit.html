@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit {{ title }}</title>
-    <link rel="stylesheet" href='{% static "css/base.css" %}' />
+    <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
 </head>
 <body>
-
 <h1>Edit {{ title }}</h1>
 <form method="POST" action="#">
     {% csrf_token %}

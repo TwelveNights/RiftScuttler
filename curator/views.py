@@ -117,5 +117,3 @@ def curator_home(request):
             "welcome": "You are not authorized to view this page.",
         }
     return render(request, "curator/index.html", context)
-
-# Create navigation bar for home page
