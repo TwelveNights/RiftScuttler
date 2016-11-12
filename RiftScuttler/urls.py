@@ -16,9 +16,8 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from tournaments.views import index
 from curator.views import login_page
-
+from tournaments.views import index
 
 urlpatterns = [
     url(r'^$', index),
