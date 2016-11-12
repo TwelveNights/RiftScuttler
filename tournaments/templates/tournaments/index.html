@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<ul>
+<ul class="text-center">
     {% for t in tournaments %}
         <a href="{% url 'tournaments:details' t.id %}">
             {{t.name}} - {{t.year}}

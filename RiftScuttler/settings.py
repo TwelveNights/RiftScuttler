@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'playerstatistics.apps.PlayerstatisticsConfig',
     'tournaments.apps.TournamentsConfig',
+    'series.apps.SeriesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
