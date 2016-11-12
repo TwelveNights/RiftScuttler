@@ -16,9 +16,11 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
+from tournaments.views import index
 
 urlpatterns = [
+    url(r'^$', index),
+    url(r'^tournaments/', include('tournaments.urls')),
     url(r'^playerstatistics/', include('playerstatistics.urls')),
-    url(r'^', include("tournaments.urls")),
     # url(r'^admin/', admin.site.urls),
 ]

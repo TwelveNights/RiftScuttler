@@ -17,15 +17,17 @@ def index(request):
             context = dict({})
             playerDetail = playdetail(item[0])
             if 'rank' in playerDetail:
+                context.update({'id': item[0]})
                 context.update({'name': item[1]})
                 context.update({'rank': playerDetail['rank']})
                 ranklist.append(context)
     contextlist = {'ranklist': ranklist}
-    return render(request,'index.html',contextlist)
+    return render(request,'playerstatistics/index.html',contextlist)
+
 
 def detailView(request, pid):
     context = playdetail(pid)
-    return render(request,'detail.html',context)
+    return render(request,'playerstatistics/detail.html',context)
 
 
 
