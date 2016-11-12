@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -11,9 +13,10 @@ from .helpers import *
 # https://docs.djangoproject.com/en/dev/topics/forms/#form-objects
 # dynamic SQL: http://stackoverflow.com/questions/8320136/django-raw-sql-queries-with-a-dynamic-number-of-variables
 # Get current URL: http://stackoverflow.com/questions/3248682/django-get-url-of-current-page-including-parameters-in-a-template
+# Authentication and login page: https://www.fir3net.com/Web-Development/Django/django.html
 # TODO: authentication and error handling
 
-
+@login_required(login_url='/login/')
 def add_data_page(request):
     if request.user.is_staff or request.user.is_superuser:
         cursor = connection.cursor()
@@ -36,6 +39,7 @@ def add_data_page(request):
         return redirect(login_page, permanent=True)
 
 
+@login_required(login_url='/login/')
 def remove_data_page(request):
     if request.user.is_staff or request.user.is_superuser:
         cursor = connection.cursor()
@@ -58,6 +62,7 @@ def remove_data_page(request):
         return redirect(login_page, permanent=True)
 
 
+@login_required(login_url='/login/')
 def edit_data_page(request):
     if request.user.is_staff or request.user.is_superuser:
         cursor = connection.cursor()
@@ -82,12 +87,26 @@ def edit_data_page(request):
 
 
 def login_page(request):
-    context = {
-        "welcome": "You should login.",
-    }
-    return render(request, "curator/login.html", context)
+    logout(request)
+    username = password = ''
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect('/curator/')
+    return render(request, "curator/login.html")
 
 
+def logout_view(request):
+    logout(request)
+
+
+@login_required(login_url='/login/')
 def curator_home(request):
     if request.user.is_staff or request.user.is_superuser:
         context = {

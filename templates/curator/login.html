@@ -8,6 +8,11 @@
 </head>
 <body>
 <p>Curator's login page is under construction.</p>
-{{ welcome }}
+<form action="/login/" method="post">
+    {% csrf_token %}
+    <input type="text" id="username" name="username"  placeholder="Username">
+    <input type="password" name="password" id="password" placeholder="Password">
+    <input type="submit" value="Login">
+</form>
 </body>
 </html>

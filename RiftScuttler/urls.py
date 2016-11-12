@@ -19,6 +19,8 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from tournaments.views import index
+from curator.views import login_page
+
 
 urlpatterns = [
     url(r'^$', index),
@@ -26,6 +28,7 @@ urlpatterns = [
     url(r'series/', include('series.urls')),
     url(r'^playerstatistics/', include('playerstatistics.urls')),
     url(r'^curator/', include("curator.urls")),
+    url(r'^login/$', login_page),
     url(r'^admin/', admin.site.urls),
 ]
 

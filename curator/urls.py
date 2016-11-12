@@ -21,8 +21,7 @@ from .views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/$', curator_home),
-    url(r'^$', login_page),
+    url(r'^$', curator_home),
     url(r'^add_tournaments/$', add_data_page, name='add-tournaments'),
     url(r'^remove_tournaments/$', remove_data_page, name='remove-tournaments'),
     url(r'^edit_tournaments/$', edit_data_page, name='edit-tournaments'),
