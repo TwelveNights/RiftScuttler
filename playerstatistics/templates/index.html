@@ -3,7 +3,7 @@
     <h>LEADER BORAD</h>
     <p>Name: Ranking</p>
     {% for playerR in ranklist %}
-        <li><a href="http://127.0.0.1:8000/playerstatistics/{{ playerR.Id }}">{{ playerR.name }}</a>: {{ playerR.rank }}</li>
+        <li><a href="{% url 'detail' playerR.Id %}">{{ playerR.name }}</a>: {{ playerR.rank }}</li>
     {% endfor %}
     </ul>
 {% else %}
