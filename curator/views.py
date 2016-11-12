@@ -4,6 +4,8 @@ from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+from django import template
+
 from .forms import *
 from .helpers import *
 
@@ -117,3 +119,13 @@ def curator_home(request):
             "welcome": "You are not authorized to view this page.",
         }
     return render(request, "curator/index.html", context)
+
+
+register = template.Library()
+
+
+@register.simple_tag
+def navactive(request, urls):
+    if request.path in ( reverse(url) for url in urls.split() ):
+        return "active"
+    return ""
