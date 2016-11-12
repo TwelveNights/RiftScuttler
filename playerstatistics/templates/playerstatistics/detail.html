@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block content %} 
+
 {% if error %}
     <p>{{ error }}</p>
 {% else %}
@@ -11,3 +14,5 @@
     <p>Max Assists : {{ maxA }}</p>
     <p>Ranking Point: {{ rank }}</p>
 {% endif %}
+
+{% endblock %}

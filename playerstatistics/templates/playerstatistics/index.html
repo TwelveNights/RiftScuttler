@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %} 
+
+{% if ranklist %}
+    <ul>
+    <p>Name: Ranking</p>
+    {% for playerR in ranklist %}
+        <li><a href="{% url 'playerstatistics:detail' playerR.id %}">{{ playerR.name }}: {{ playerR.rank }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No player has played any games</p>
+{% endif %}
+
+{% endblock %}
