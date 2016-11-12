@@ -2,6 +2,37 @@
 {% block content %} 
 
 {% if ranklist %}
+    <p><b>LEADER BOARD</b></p>
+    {% if  bestAdc.name %}
+        <p>Best Adc: <a href="{% url 'playerstatistics:detail' bestAdc.id %}">{{ bestAdc.name }}</a></p>
+    {% else %}
+        <p>Best Adc: {{ bestAdc }}</p>
+    {% endif %}
+
+    {% if  bestSupport.name %}
+        <p>Best Support: <a href="{% url 'playerstatistics:detail' bestSupport.id %}">{{ bestSupport.name }}</a></p>
+    {% else %}
+        <p>Best Support: {{ bestSupport }}</p>
+    {% endif %}
+
+    {% if  bestMid.name %}
+        <p>Best Mid: <a href="{% url 'playerstatistics:detail' bestMid.id %}">{{ bestMid.name }}</a></p>
+    {% else %}
+        <p>Best Mid: {{ bestMid }}</p>
+    {% endif %}
+
+    {% if  bestTop.name %}
+        <p>Best Top: <a href="{% url 'playerstatistics:detail' bestTop.id %}">{{ bestTop.name }}</a></p>
+    {% else %}
+        <p>Best Top: {{ bestTop }}</p>
+    {% endif %}
+
+    {% if  bestJungle.name %}
+        <p>Best Jungle: <a href="{% url 'playerstatistics:detail' bestJungle.id %}">{{ bestJungle.name }}</a></p>
+    {% else %}
+        <p>Best Jungle: {{ bestJungle }}</p>
+    {% endif %}
+
     <ul>
     <p>Name: Ranking</p>
     {% for playerR in ranklist %}

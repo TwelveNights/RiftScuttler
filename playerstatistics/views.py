@@ -20,9 +20,20 @@ def index(request):
                 context.update({'id': item[0]})
                 context.update({'name': item[1]})
                 context.update({'rank': playerDetail['rank']})
+                context.update({'role': playerDetail['role']})
                 ranklist.append(context)
-    ranklist = sortRankList(ranklist);
-    contextlist = {'ranklist': ranklist}
+    ranklist = sortRankList(ranklist)
+    bestAdc = searchBestPlayer(ranklist,'adc')
+    bestSupport = searchBestPlayer(ranklist, 'support')
+    bestJungle = searchBestPlayer(ranklist, 'jungle')
+    bestTop = searchBestPlayer(ranklist, 'top')
+    bestMid = searchBestPlayer(ranklist, 'mid')
+    contextlist = {'ranklist': ranklist,
+                   'bestAdc': bestAdc,
+                   'bestSupport': bestSupport,
+                   'bestJungle': bestJungle,
+                   'bestTop': bestTop,
+                   'bestMid': bestMid}
     return render(request,'playerstatistics/index.html',contextlist)
 
 
@@ -103,4 +114,13 @@ def sortRankList(ranklist):
         return sortRankList(greater)+equal+sortRankList(less)
     else:
         return ranklist
+
+
+def searchBestPlayer(ranklist, role):
+    for x in ranklist:
+        if x['role'] == role:
+            return {'name': x['name'],
+                    'id': x['id']}
+    return 'N/A'
+
 # Create your views here.
