@@ -13,6 +13,21 @@
     <p>Max Death : {{ maxD }}</p>
     <p>Max Assists : {{ maxA }}</p>
     <p>Ranking Point: {{ rank }}</p>
+    <p>Team : <a href="{% url 'team:team' team %}">{{ team }}</a></p>
+       <table class="table">
+        <thead>
+            <tr>
+                <th>Series Played (SeriesID)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in series %}
+            <tr>
+                <td><a href="{% url 'series:series' item.seriesID %}">{{ item.seriesID }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endif %}
 
 {% endblock %}
