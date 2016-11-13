@@ -4,8 +4,6 @@ from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from django import template
-
 from .forms import *
 from .helpers import *
 
@@ -18,79 +16,67 @@ from .helpers import *
 # Authentication and login page: https://www.fir3net.com/Web-Development/Django/django.html
 # TODO: authentication and error handling
 
-@login_required(login_url='/login/')
+@login_required
 def add_data_page(request):
-    if request.user.is_staff or request.user.is_superuser:
-        cursor = connection.cursor()
-        table = check_page_and_return_table(request)
-        if request.method == 'POST':
-            form = AccessFormInput(request.POST, extra=table.cols)
-            if form.is_valid():
-                for (attribute, value) in form.extra_attributes():
-                    table.args.append([attribute, value])
-                table.args = reorder_dictionary(table)
-                insert_data(cursor, table)
-                name = create_reverse_name_add(table.tname)
-                return redirect(reverse(name), permanent=True)
-        form = AccessFormInput(extra=table.cols)
-        list_of_data = select_data(cursor, table.tname)
-        args = get_args(table.cols)
-        context = create_context(table.tname, form, list_of_data, args)
-        return render(request, 'curator/add.html', context)
-    else:
-        return redirect(login_page, permanent=True)
+    cursor = connection.cursor()
+    table = check_page_and_return_table(request)
+    if request.method == 'POST':
+        form = AccessFormInput(request.POST, extra=table.cols)
+        if form.is_valid():
+            for (attribute, value) in form.extra_attributes():
+                table.args.append([attribute, value])
+            table.args = reorder_dictionary(table)
+            insert_data(cursor, table)
+            name = create_reverse_name_add(table.tname)
+            return redirect(reverse(name), permanent=True)
+    form = AccessFormInput(extra=table.cols)
+    list_of_data = select_data(cursor, table.tname)
+    args = get_args(table.cols)
+    context = create_context(table.tname, form, list_of_data, args)
+    return render(request, 'curator/add.html', context)
 
 
-@login_required(login_url='/login/')
+@login_required
 def remove_data_page(request):
-    if request.user.is_staff or request.user.is_superuser:
-        cursor = connection.cursor()
-        table = check_page_and_return_table(request)
-        if request.method == 'POST':
-            form = AccessFormInput(request.POST, extra=table.pk)
-            if form.is_valid():
-                for (attribute, value) in form.extra_attributes():
-                    table.args.append([attribute, value])
-                table.args = reorder_dictionary(table)
-                delete_data(cursor, table)
-                name = create_reverse_name_remove(table.tname)
-                return redirect(reverse(name), permanent=True)
-        form = AccessFormInput(extra=table.pk)
-        list_of_data = select_data(cursor, table.tname)
-        args = get_args(table.cols)
-        context = create_context(table.tname, form, list_of_data, args)
-        return render(request, 'curator/remove.html', context)
-    else:
-        return redirect(login_page, permanent=True)
+    cursor = connection.cursor()
+    table = check_page_and_return_table(request)
+    if request.method == 'POST':
+        form = AccessFormInput(request.POST, extra=table.pk)
+        if form.is_valid():
+            for (attribute, value) in form.extra_attributes():
+                table.args.append([attribute, value])
+            table.args = reorder_dictionary(table)
+            delete_data(cursor, table)
+            name = create_reverse_name_remove(table.tname)
+            return redirect(reverse(name), permanent=True)
+    form = AccessFormInput(extra=table.pk)
+    list_of_data = select_data(cursor, table.tname)
+    args = get_args(table.cols)
+    context = create_context(table.tname, form, list_of_data, args)
+    return render(request, 'curator/remove.html', context)
 
-
-@login_required(login_url='/login/')
+@login_required
 def edit_data_page(request):
-    if request.user.is_staff or request.user.is_superuser:
-        cursor = connection.cursor()
-        table = check_page_and_return_table(request)
-        if request.method == 'POST':
-            form = AccessFormInput(request.POST, extra=table.cols)
-            if form.is_valid():
-                for (attribute, value) in form.extra_attributes():
-                    table.args.append([attribute, value])
-                table.args = reorder_dictionary(table)
-                table.non_pk_args = get_non_pk_args(table)
-                edit_data(cursor, table)
-                name = create_reverse_name_edit(table.tname)
-                return redirect(reverse(name), permanent=True)
-        form = AccessFormInput(extra=table.cols)
-        list_of_data = select_data(cursor, table.tname)
-        args = get_args(table.cols)
-        context = create_context(table.tname, form, list_of_data, args)
-        return render(request, 'curator/edit.html', context)
-    else:
-        return redirect(login_page, permanent=True)
+    cursor = connection.cursor()
+    table = check_page_and_return_table(request)
+    if request.method == 'POST':
+        form = AccessFormInput(request.POST, extra=table.cols)
+        if form.is_valid():
+            for (attribute, value) in form.extra_attributes():
+                table.args.append([attribute, value])
+            table.args = reorder_dictionary(table)
+            table.non_pk_args = get_non_pk_args(table)
+            edit_data(cursor, table)
+            name = create_reverse_name_edit(table.tname)
+            return redirect(reverse(name), permanent=True)
+    form = AccessFormInput(extra=table.cols)
+    list_of_data = select_data(cursor, table.tname)
+    args = get_args(table.cols)
+    context = create_context(table.tname, form, list_of_data, args)
+    return render(request, 'curator/edit.html', context)
 
 
 def login_page(request):
-    logout(request)
-    username = password = ''
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
@@ -108,24 +94,14 @@ def logout_view(request):
     logout(request)
 
 
-@login_required(login_url='/login/')
 def curator_home(request):
-    if request.user.is_staff or request.user.is_superuser:
+    if request.user.is_authenticated:
         context = {
             "welcome": "Welcome to the curator's home page.",
         }
     else:
         context = {
-            "welcome": "You are not authorized to view this page.",
+           "welcome": "You are not authorized to view this page.",
         }
     return render(request, "curator/index.html", context)
 
-
-register = template.Library()
-
-
-@register.simple_tag
-def navactive(request, urls):
-    if request.path in ( reverse(url) for url in urls.split() ):
-        return "active"
-    return ""

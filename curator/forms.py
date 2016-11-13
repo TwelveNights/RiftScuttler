@@ -19,6 +19,8 @@ class AccessFormInput(forms.Form):
                 self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=10)
             elif attribute[1] == 'charfield16':
                 self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=16)
+            elif attribute[1] == 'charfield64':
+                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=64)
             elif attribute[1] == 'charfield256':
                 self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=256)
             elif attribute[1] == 'text':

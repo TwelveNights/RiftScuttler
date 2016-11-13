@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
+    'curator.apps.CuratorConfig',
     'playerstatistics.apps.PlayerstatisticsConfig',
     'tournaments.apps.TournamentsConfig',
     'series.apps.SeriesConfig',
