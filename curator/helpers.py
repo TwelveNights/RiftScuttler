@@ -87,7 +87,7 @@ def get_args(column_list):
     return args
 
 
-def create_context(request, tname, form, list_of_data, args):
+def create_context(tname, form, list_of_data, args):
     value = tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
@@ -109,6 +109,31 @@ def create_context(request, tname, form, list_of_data, args):
         "object_list": list_of_data,
         "title": value,
         "args": args,
+        "nav_list_add": nav_list_add,
+        "nav_list_remove": nav_list_remove,
+        "nav_list_edit": nav_list_edit,
+    }
+    return context
+
+
+def create_context_index():
+    nav_list_raw = get_nav_list_raw()
+    nav_list_edit_raw = get_nav_list_edit_raw()
+    nav_list_add = []
+    nav_list_remove = []
+    nav_list_edit = []
+
+    for i, table in enumerate(nav_list_raw):
+        nav_list_add.append(("add-"+table, "Add "+table.title()))
+
+    for i, table in enumerate(nav_list_raw):
+        nav_list_remove.append(("remove-" + table, "Remove " + table.title()))
+
+    for i, table2 in enumerate(nav_list_edit_raw):
+        nav_list_edit.append(("edit-" + table2, "Edit " + table2.title()))
+
+    context = {
+        "welcome": "Welcome to the curator's home page.",
         "nav_list_add": nav_list_add,
         "nav_list_remove": nav_list_remove,
         "nav_list_edit": nav_list_edit,

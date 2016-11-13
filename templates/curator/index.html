@@ -11,65 +11,29 @@
 <h2>Curator's Home Page</h2>
 <nav>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'curator-home' %}">Home</a></li>
         <li class="dropdown">
             <a href="#" class="dropbtn">Add Data</a>
             <div class="dropdown-content">
-                <a href="add_tournaments">Add Tournaments</a>
-                <a href="add_series">Add Series</a>
-                <a href="add_champions">Add Champions</a>
-                <a href="add_items">Add Items</a>
-                <a href="add_players">Add Players</a>
-                <a href="add_teams">Add Teams</a>
-                <a href="add_matches">Add Matches</a>
-                <a href="add_bans">Add Bans</a>
-                <a href="add_organizes">Add Organizes</a>
-                <a href="add_competes">Add Competes</a>
-                <a href="add_interacts">Add Interacts</a>
-                <a href="add_participates">Add Participates</a>
-                <a href="add_plays">Add Plays</a>
-                <a href="add_registers">Add Registers</a>
-                <a href="add_scores">Add Scores</a>
+                {% for item in nav_list_add %}
+                    <a href="{% url item.0 %}">{{ item.1 }}</a>
+                {% endfor %}
             </div>
         </li>
         <li class="dropdown">
             <a href="#" class="dropbtn">Remove Data</a>
             <div class="dropdown-content">
-                <a href="remove_tournaments">Remove Tournaments</a>
-                <a href="remove_series">Remove Series</a>
-                <a href="remove_champions">Remove Champions</a>
-                <a href="remove_items">Remove Items</a>
-                <a href="remove_players">Remove Players</a>
-                <a href="remove_teams">Remove Teams</a>
-                <a href="remove_matches">Remove Matches</a>
-                <a href="remove_bans">Remove Bans</a>
-                <a href="remove_organizes">Remove Organizes</a>
-                <a href="remove_competes">Remove Competes</a>
-                <a href="remove_interacts">Remove Interacts</a>
-                <a href="remove_participates">Remove Participates</a>
-                <a href="remove_plays">Remove Plays</a>
-                <a href="remove_registers">Remove Registers</a>
-                <a href="remove_scores">Remove Scores</a>
+                {% for item in nav_list_remove %}
+                    <a href="{% url item.0 %}">{{ item.1 }}</a>
+                {% endfor %}
             </div>
         </li>
         <li class="dropdown">
             <a href="#" class="dropbtn">Edit Data</a>
             <div class="dropdown-content">
-                <a href="edit_tournaments">Edit Tournaments</a>
-                <a href="edit_series">Edit Series</a>
-                <a href="edit_champions">Edit Champions</a>
-                <a href="edit_items">Edit Items</a>
-                <a href="edit_players">Edit Players</a>
-                <a href="edit_teams">Edit Teams</a>
-                <a href="edit_matches">Edit Matches</a>
-                <a href="edit_bans">Edit Bans</a>
-                <a href="edit_organizes">Edit Organizes</a>
-                <a href="edit_competes">Edit Competes</a>
-                <a href="edit_interacts">Edit Interacts</a>
-                <a href="edit_participates">Edit Participates</a>
-                <a href="edit_plays">Edit Plays</a>
-                <a href="edit_registers">Edit Registers</a>
-                <a href="edit_scores">Edit Scores</a>
+                {% for item in nav_list_edit %}
+                    <a href="{% url item.0 %}">{{ item.1 }}</a>
+                {% endfor %}
             </div>
         </li>
         <li><a href="{% url 'logout-page' %}">Logout</a></li>

@@ -33,7 +33,7 @@ def add_data_page(request):
     form = AccessFormInput(extra=table.cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table.tname, form, list_of_data, args)
+    context = create_context(table.tname, form, list_of_data, args)
     return render(request, 'curator/add.html', context)
 
 
@@ -54,7 +54,7 @@ def remove_data_page(request):
     form = AccessFormInput(extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table.tname, form, list_of_data, args)
+    context = create_context(table.tname, form, list_of_data, args)
     return render(request, 'curator/remove.html', context)
 
 
@@ -76,7 +76,7 @@ def edit_data_page(request):
     form = AccessFormInput(extra=table.cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table.tname, form, list_of_data, args)
+    context = create_context(table.tname, form, list_of_data, args)
     return render(request, 'curator/edit.html', context)
 
 
@@ -104,4 +104,5 @@ def logout_view(request):
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_superuser)
 def curator_home(request):
-    return render(request, "curator/index.html", {"welcome": "Welcome to the curator's home page."})
+    context = create_context_index()
+    return render(request, "curator/index.html", context)
