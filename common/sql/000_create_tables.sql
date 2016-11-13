@@ -37,7 +37,6 @@ CREATE TABLE tournaments (
   name      VARCHAR(256),
   year      INTEGER,
   location  TEXT    NOT NULL,
-  prize     INTEGER NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -68,7 +67,7 @@ CREATE TABLE organizes (
   stage         TEXT,
   PRIMARY KEY (tournamentID, seriesID),
   FOREIGN KEY (tournamentID)  REFERENCES tournaments(id),
-  FOREIGN KEY (seriesID)      REFERENCES games(id)
+  FOREIGN KEY (seriesID)      REFERENCES series(id)
 );
 
 CREATE TABLE competes (

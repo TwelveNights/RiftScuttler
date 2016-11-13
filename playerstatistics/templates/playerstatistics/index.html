@@ -2,6 +2,7 @@
 {% block content %} 
 
 {% if ranklist %}
+<<<<<<< HEAD
     <p><b>LEADER BOARD</b></p>
     {% if  bestAdc.name %}
         <p>Best Adc: <a href="{% url 'playerstatistics:detail' bestAdc.id %}">{{ bestAdc.name }}</a></p>
@@ -39,6 +40,24 @@
         <li><a href="{% url 'playerstatistics:detail' playerR.id %}">{{ playerR.name }}: {{ playerR.rank }}</a></li>
     {% endfor %}
     </ul>
+=======
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ranking</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for playerR in ranklist %}
+            <tr>
+                <td><a href="{% url 'playerstatistics:detail' playerR.id %}">{{ playerR.name }}</a></td>
+                <td>{{ playerR.rank }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+>>>>>>> master
 {% else %}
     <p>No player has played any games</p>
 {% endif %}
