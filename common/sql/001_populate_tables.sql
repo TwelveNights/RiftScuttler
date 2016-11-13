@@ -697,36 +697,36 @@ VALUES (1, 1, 16);
 --AHQ picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 2, 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 3, 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 4, 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 5, 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 6, 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --BKT Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 12, 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Warl0ck', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 13, 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, '007x', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 14, 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'G4', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 15, 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Lloyd', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (1, 1, 16, 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (1, 1, 'Moss', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -889,36 +889,36 @@ VALUES (3, 1, 16);
 --AHQ picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 2, 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 3, 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 4, 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 5, 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 6, 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --CLG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 122, 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'ZionSpartan', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 123, 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Xmithie', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 124, 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Pobelter', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 125, 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Doublelift', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (3, 1, 126, 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (3, 1, 'Aphromoo', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -986,36 +986,36 @@ VALUES (4, 1, 16);
 --AHQ picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 2, 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 3, 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 4, 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 5, 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 6, 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 132, 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Koro1', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 133, 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Clearlove', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 134, 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'PawN', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 135, 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Deft', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (4, 1, 136, 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (4, 1, 'Meiko', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -1083,36 +1083,36 @@ VALUES (50, 1, 86);
 --FNC picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 127, 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 128, 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 129, 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 130, 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 131, 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 132, 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 133, 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 134, 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 135, 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 1, 136, 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 1, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -1166,36 +1166,36 @@ VALUES (50, 2, 86);
 --FNC picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 127, 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 128, 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 129, 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 130, 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 131, 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 132, 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 133, 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 134, 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 135, 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 2, 136, 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 2, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -1249,36 +1249,36 @@ VALUES (50, 3, 86);
 --FNC picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 127, 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 128, 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 129, 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 130, 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 131, 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 132, 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 133, 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 134, 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 135, 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 3, 136, 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 3, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
@@ -1332,36 +1332,36 @@ VALUES (50, 4, 86);
 --FNC picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 127, 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 128, 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 129, 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 130, 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 131, 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'YellOwStart', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 132, 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 133, 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 134, 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 135, 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 INSERT INTO plays (seriesID, matchNumber, summonerName, championId, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
-VALUES (50, 4, 136, 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
+VALUES (50, 4, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
