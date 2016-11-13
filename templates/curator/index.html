@@ -3,11 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Curator</title>
+    <title>RiftScuttler: Curator</title>
     <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
 </head>
 <body>
-<h1>Data Entry</h1>
+<h1>RiftScuttler</h1>
+<h2>Curator's Home Page</h2>
 <nav>
     <ul>
         <li><a href="#">Home</a></li>
@@ -71,7 +72,7 @@
                 <a href="edit_scores">Edit Scores</a>
             </div>
         </li>
-        <li><a href="logout">Logout</a></li>
+        <li><a href="{% url 'logout-page' %}">Logout</a></li>
     </ul>
 </nav>
 <p>{{ welcome }}</p>
