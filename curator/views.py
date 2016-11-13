@@ -76,17 +76,20 @@ def edit_data_page(request):
 
 
 def login_page(request):
-    if request.POST:
-        username = request.POST['username']
-        password = request.POST['password']
+    if request.user.is_superuser:
+        return redirect(reverse('curator-home'))
+    else:
+        if request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password)
 
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return redirect('/curator/')
-    return render(request, "curator/login.html")
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('/curator/')
+        return render(request, "curator/login.html")
 
 
 @login_required(login_url='/login/')
