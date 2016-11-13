@@ -21,6 +21,7 @@ def index(request):
                 context.update({'rank': playerDetail['rank']})
                 context.update({'role': playerDetail['role']})
                 ranklist.append(context)
+
     ranklist = sortRankList(ranklist)
     bestAdc = searchBestPlayer(ranklist,'adc')
     bestSupport = searchBestPlayer(ranklist, 'support')
