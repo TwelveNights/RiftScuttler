@@ -1,7 +1,3 @@
-# remove region attribute from teams
-# remove functions to do with organizes
-
-
 class StructData:
     tname = ""
     cols = []

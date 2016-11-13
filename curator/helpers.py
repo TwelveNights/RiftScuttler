@@ -1,8 +1,6 @@
 from .tables import *
 from django.db import transaction
 
-# Helper functions:
-
 
 def insert_data(cursor, table):
     sql = "INSERT INTO " + table.tname + " VALUES ("

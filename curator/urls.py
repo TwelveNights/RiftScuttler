@@ -68,6 +68,3 @@ urlpatterns = [
     url(r'^remove_organizes/$', remove_data_page, name='remove-organizes'),
     url(r'^edit_organizes/$', edit_data_page, name='edit-organizes'),
 ]
-
-# Cannot edit bans because all attributes are part of the primary key
-# Fix redirect issues by adding names to urlpatterns

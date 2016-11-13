@@ -7,14 +7,8 @@ from django.urls import reverse
 from .forms import *
 from .helpers import *
 
-
 # Create your views here.
-# http://maxivak.com/executing-raw-sql-in-django/
-# https://docs.djangoproject.com/en/dev/topics/forms/#form-objects
-# dynamic SQL: http://stackoverflow.com/questions/8320136/django-raw-sql-queries-with-a-dynamic-number-of-variables
-# Get current URL: http://stackoverflow.com/questions/3248682/django-get-url-of-current-page-including-parameters-in-a-template
-# Authentication and login page: https://www.fir3net.com/Web-Development/Django/django.html
-# TODO: authentication and error handling
+
 
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_superuser)

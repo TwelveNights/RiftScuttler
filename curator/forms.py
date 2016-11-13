@@ -1,8 +1,9 @@
 from django import forms
 
-# References:
-# https://jacobian.org/writing/dynamic-form-generation/
-# fix different character limits (Not all 256)
+"""
+References:
+https://jacobian.org/writing/dynamic-form-generation/
+"""
 
 
 class AccessFormInput(forms.Form):
