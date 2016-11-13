@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^curator/', include("curator.urls")),
     url(r'^login/$', login_page, name='curator-login'),
     url(r'^admin/', admin.site.urls),
+    url(r'^team/', include('team.urls'))
 ]
