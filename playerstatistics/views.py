@@ -4,6 +4,7 @@ from django.db import connection
 from django.template import Context, Template
 from .constant import *
 from django.shortcuts import render
+from common import utils
 
 
 
@@ -62,6 +63,18 @@ def playdetail(pname):
                        "WHERE summonerName = %s ", [pname])
         role = cursor.fetchall()
 
+        cursor.execute("SELECT DISTINCT seriesID "
+                       "FROM plays "
+                       "WHERE summonerName = %s", [pname])
+        series = utils.dictfetchall(cursor)
+
+        cursor.execute("SELECT teamID "
+                       "FROM players p, registers r "
+                       "WHERE r.playerID =  p.id AND p.name = %s ", [pname])
+        team = cursor.fetchone()
+
+
+
         if not player:
             return Context({'error': 'There is no such player with SummonerName: %s' % pname})
         elif role[0][1] is None:
@@ -79,7 +92,9 @@ def playdetail(pname):
                 'maxD': maxkda[0][1],
                 'maxA': maxkda[0][2],
                 'role': role[0][1],
-                'rank': rank}
+                'rank': rank,
+                'team': team[0],
+                'series': series}
             return Context(context)
 
 
