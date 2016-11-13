@@ -8,8 +8,34 @@ body {
 }
 
 table {
-
+    position: static;
+    margin: auto;
 }
+
+#table {
+    padding: 2em 1em 1em 1em;
+}
+
+td {
+    padding: 1em;
+}
+
+p {
+    display: block;
+}
+
+.form {
+    position: static;
+    margin: auto;
+    padding: 0.75em 0.75em 3em 0.75em;
+    display: block;
+}
+
+#submit {
+    position: static;
+    margin: auto auto auto 47%;
+}
+
 
 /*
     CSS code below from w3schools.com

@@ -39,11 +39,17 @@
         <li><a href="{% url 'logout-page' %}">Logout</a></li>
     </ul>
 </nav>
-<form method="POST" action="#">
-    {% csrf_token %}
-    {{ form.as_p }}
-<input type="submit" value="Submit">
-</form>
+<div class="form">
+
+    <form method="POST" action="#">
+        <table>
+            {% csrf_token %}
+            <td>{{ form }}</td>
+        </table>
+        <input id="submit" type="submit" value="Submit">
+    </form>
+
+</div>
 <table>
   <tr>
     {% for attr in args %}
@@ -58,6 +64,5 @@
       </tr>
   {% endfor %}
 </table>
-{{ current_path }}
 </body>
 </html>
