@@ -10,56 +10,68 @@ from django.shortcuts import render
 def index(request):
     ranklist = []
     with connection.cursor() as cursor:
-        cursor.execute("SELECT id, name "
+        cursor.execute("SELECT name "
                        "FROM players ")
         player = cursor.fetchall()
         for item in player:
             context = dict({})
             playerDetail = playdetail(item[0])
             if 'rank' in playerDetail:
-                context.update({'id': item[0]})
-                context.update({'name': item[1]})
+                context.update({'name': item[0]})
                 context.update({'rank': playerDetail['rank']})
+                context.update({'role': playerDetail['role']})
                 ranklist.append(context)
-    contextlist = {'ranklist': ranklist}
+
+    ranklist = sortRankList(ranklist)
+    bestAdc = searchBestPlayer(ranklist,'adc')
+    bestSupport = searchBestPlayer(ranklist, 'support')
+    bestJungle = searchBestPlayer(ranklist, 'jungle')
+    bestTop = searchBestPlayer(ranklist, 'top')
+    bestMid = searchBestPlayer(ranklist, 'mid')
+    contextlist = {'ranklist': ranklist,
+                   'bestAdc': bestAdc,
+                   'bestSupport': bestSupport,
+                   'bestJungle': bestJungle,
+                   'bestTop': bestTop,
+                   'bestMid': bestMid}
     return render(request,'playerstatistics/index.html',contextlist)
 
 
-def detailView(request, pid):
-    context = playdetail(pid)
+def detailView(request, pname):
+    context = playdetail(pname)
     return render(request,'playerstatistics/detail.html',context)
 
 
 
-def playdetail(pid):
+def playdetail(pname):
     with connection.cursor() as cursor:
         cursor.execute("SELECT name "
                        "FROM players "
-                       "WHERE id = %s", [pid])
+                       "WHERE name = %s", [pname])
         player = cursor.fetchall()
         cursor.execute("SELECT AVG(ps.kills) AS avgk, AVG(ps.deaths) AS avgd, AVG(ps.assists) AS avga "
                        "FROM players p, plays ps "
-                       "WHERE p.id = %s AND p.id = ps.playerID ", [pid])
+                       "WHERE p.name = %s AND p.name = ps.summonerName ", [pname])
         avgkda = cursor.fetchall()
         cursor.execute("SELECT MAX(ps.kills) AS maxk, MAX(ps.deaths) AS maxd, MAX(ps.assists) AS maxa "
                        "FROM players p, plays ps "
-                       "WHERE p.id = %s AND p.id = ps.playerID ", [pid])
+                       "WHERE p.name = %s AND p.name = ps.summonerName ", [pname])
         maxkda = cursor.fetchall()
-        cursor.execute("SELECT playerID, role, MAX(rolecount), avgw, avgg "
+        cursor.execute("SELECT summonerName, role, MAX(rolecount), avgw, avgg "
                        "FROM roles "
-                       "WHERE playerID = %s ", [pid])
+                       "WHERE summonerName = %s ", [pname])
         role = cursor.fetchall()
 
         if not player:
-            return Context({'error': 'There is no such player with playerID: %s' % pid})
+            return Context({'error': 'There is no such player with SummonerName: %s' % pname})
         elif role[0][1] is None:
-            return Context({'error': 'The player: %s, has not played any game before' % player[0][0]})
+            return Context({'error': 'The player: %s, has not played any game before' % pname})
         else:
             rank = calcranking(avgkda[0][0], avgkda[0][1], avgkda[0][2],
                                maxkda[0][0], maxkda[0][1], maxkda[0][2],
                                role[0][1], role[0][3], role[0][4])
             context = {
-                'Id': player[0][0],
+                'name': pname,
                 'averageK': avgkda[0][0],
                 'averageD': avgkda[0][1],
                 'averageA': avgkda[0][2],
@@ -85,5 +97,29 @@ def calcranking(avgk, avgd, avga, maxk, maxd, maxa, role, wards, gold):
             'mid': int(BASE_POINT + MID_AVG_KDA_WEIGHT * avgkdaRatio + MID_MAX_KDA_WEIGHT * maxkdaRatio)
     }.get(role)
 
+
+def sortRankList(ranklist):
+    less = []
+    equal = []
+    greater = []
+    if len(ranklist) > 1:
+        pivot = ranklist[0]['rank']
+        for x in ranklist:
+            if x['rank'] < pivot:
+                less.append(x)
+            if x['rank'] == pivot:
+                equal.append(x)
+            if x['rank'] > pivot:
+                greater.append(x)
+        return sortRankList(greater)+equal+sortRankList(less)
+    else:
+        return ranklist
+
+
+def searchBestPlayer(ranklist, role):
+    for x in ranklist:
+        if x['role'] == role:
+            return {'name': x['name']}
+    return 'N/A'
 
 # Create your views here.
