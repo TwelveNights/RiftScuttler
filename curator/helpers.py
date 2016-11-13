@@ -14,7 +14,6 @@ def insert_data(cursor, table):
             break
         sql += ", "
     sql += ")"
-    print(sql)
     cursor.execute(sql, [])
     transaction.commit()
 
@@ -58,6 +57,23 @@ def edit_data(cursor, table):
         sql += " AND "
     cursor.execute(sql, [])
     transaction.commit()
+
+
+def check_if_pk_exists(cursor, table):
+    sql = "SELECT * FROM "
+    sql += table.tname
+    sql += " WHERE "
+    for i, pk in enumerate(table.pk):
+        if isinstance(table.args[i][1], str):
+            sql += pk[0]+"="+"\'"+table.args[i][1]+"\'"
+        else:
+            sql += pk[0] + "=" + "\'" + str(table.args[i][1]) + "\'"
+    cursor.execute(sql, [])
+    data = cursor.fetchall()
+    if not data:
+        return False
+    else:
+        return True
 
 
 def select_data(cursor, tname):

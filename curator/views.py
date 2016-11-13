@@ -21,8 +21,9 @@ def add_data_page(request):
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
-            insert_data(cursor, table)
             name = create_reverse_name_add(table.tname)
+            if not check_if_pk_exists:
+                insert_data(cursor, table)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(extra=table.cols)
     list_of_data = select_data(cursor, table.tname)
