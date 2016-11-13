@@ -22,7 +22,7 @@ def add_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
-            if not check_if_pk_exists:
+            if not check_if_pk_exists(cursor, table):
                 insert_data(cursor, table)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(extra=table.cols)

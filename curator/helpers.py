@@ -1,5 +1,5 @@
 from .tables import *
-from django.db import transaction
+from django.db import connection, transaction
 
 
 def insert_data(cursor, table):
