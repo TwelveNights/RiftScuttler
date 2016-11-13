@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'series/', include('series.urls')),
     url(r'^playerstatistics/', include('playerstatistics.urls')),
     url(r'^curator/', include("curator.urls")),
-    url(r'^login/$', login_page),
+    url(r'^login/$', login_page, name='curator-login'),
     url(r'^admin/', admin.site.urls),
 ]

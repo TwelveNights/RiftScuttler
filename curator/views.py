@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -16,7 +16,8 @@ from .helpers import *
 # Authentication and login page: https://www.fir3net.com/Web-Development/Django/django.html
 # TODO: authentication and error handling
 
-@login_required
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
 def add_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
@@ -36,7 +37,8 @@ def add_data_page(request):
     return render(request, 'curator/add.html', context)
 
 
-@login_required
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
 def remove_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
@@ -55,7 +57,9 @@ def remove_data_page(request):
     context = create_context(table.tname, form, list_of_data, args)
     return render(request, 'curator/remove.html', context)
 
-@login_required
+
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
 def edit_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
@@ -90,10 +94,15 @@ def login_page(request):
     return render(request, "curator/login.html")
 
 
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
 def logout_view(request):
     logout(request)
+    return redirect(reverse('curator-login'))
 
 
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
 def curator_home(request):
     if request.user.is_authenticated:
         context = {
@@ -104,4 +113,3 @@ def curator_home(request):
            "welcome": "You are not authorized to view this page.",
         }
     return render(request, "curator/index.html", context)
-
