@@ -2,6 +2,38 @@
 {% block content %} 
 
 {% if ranklist %}
+    <p><b>LEADER BOARD</b></p>
+    {% if  bestAdc.name %}
+        <p>Best Adc: <a href="{% url 'playerstatistics:detail' bestAdc.name %}">{{ bestAdc.name }}</a></p>
+    {% else %}
+        <p>Best Adc: {{ bestAdc }}</p>
+    {% endif %}
+
+    {% if  bestSupport.name %}
+        <p>Best Support: <a href="{% url 'playerstatistics:detail' bestSupport.name %}">{{ bestSupport.name }}</a></p>
+    {% else %}
+        <p>Best Support: {{ bestSupport }}</p>
+    {% endif %}
+
+    {% if  bestMid.name %}
+        <p>Best Mid: <a href="{% url 'playerstatistics:detail' bestMid.name %}">{{ bestMid.name }}</a></p>
+    {% else %}
+        <p>Best Mid: {{ bestMid }}</p>
+    {% endif %}
+
+    {% if  bestTop.name %}
+        <p>Best Top: <a href="{% url 'playerstatistics:detail' bestTop.name %}">{{ bestTop.name }}</a></p>
+    {% else %}
+        <p>Best Top: {{ bestTop }}</p>
+    {% endif %}
+
+    {% if  bestJungle.name %}
+        <p>Best Jungle: <a href="{% url 'playerstatistics:detail' bestJungle.name %}">{{ bestJungle.name }}</a></p>
+    {% else %}
+        <p>Best Jungle: {{ bestJungle }}</p>
+    {% endif %}
+
+
     <table class="table">
         <thead>
             <tr>
@@ -12,7 +44,7 @@
         <tbody>
             {% for playerR in ranklist %}
             <tr>
-                <td><a href="{% url 'playerstatistics:detail' playerR.id %}">{{ playerR.name }}</a></td>
+                <td><a href="{% url 'playerstatistics:detail' playerR.name %}">{{ playerR.name }}</a></td>
                 <td>{{ playerR.rank }}</td>
             </tr>
             {% endfor %}
