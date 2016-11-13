@@ -14,7 +14,7 @@
     <p>Max Assists : {{ maxA }}</p>
     {% if role == 'adc' %}
         <p>Average Damage: {{ avgdmg }}</p>
-        <p>Average cs: {{ avgcs }}</p>
+        <p>Average CreepScore: {{ avgcs }}</p>
         <p>Average Gold: {{ avgg }}</p>
     {% endif %}
 
@@ -38,6 +38,7 @@
         <p>Average Gold: {{ avgg }}</p>
     {% endif %}
 
+    <img src="{% url 'playerstatistics:plot' name %}" alt="HTML5 Icon" style="width:500px;height:500px;">
     <p>Ranking Point: {{ rank }}</p>
     <p>Team : <a href="{% url 'team:team' team %}">{{ team }}</a></p>
        <table class="table">
@@ -54,6 +55,7 @@
             {% endfor %}
         </tbody>
     </table>
+
 {% endif %}
 
 {% endblock %}
