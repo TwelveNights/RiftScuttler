@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-center">Teams</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">Teams</th>
+            <th class="text-center">Region</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        {% for t in data %}
+        <tr>
+            <td><a href="{% url 'teams:detail' t.id %}">{{t.name}}</a></td>
+            <td>{{t.region}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

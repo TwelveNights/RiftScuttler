@@ -13,11 +13,12 @@
 <body>
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="{% url 'teams:index' %}">Teams</a></li>
         <li role="presentation"><a href="{% url 'playerstatistics:index' %}">Statistics</a></li>
         <li role="presentation"><a href="{% url 'curator-login' %}">Curator</a></li>
     </ul>
 
-    <div id="content">
+    <div id="content" class="container">
         {% block content %}
         Welcome to RiftScuttler!
         {% endblock %}

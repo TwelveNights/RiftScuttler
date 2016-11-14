@@ -4,56 +4,66 @@
 {% if error %}
     <p>{{ error }}</p>
 {% else %}
-    <p>The player showing is {{ name }}</p>
-    <p>Most played role: {{ role }}</p>
-    <p>Average Kill: {{ averageK }}</p>
-    <p>Average Death: {{ averageD }}</p>
-    <p>Average Assists: {{ averageA }}</p>
-    <p>Max Kill : {{ maxK }}</p>
-    <p>Max Death : {{ maxD }}</p>
-    <p>Max Assists : {{ maxA }}</p>
-    {% if role == 'adc' %}
-        <p>Average Damage: {{ avgdmg }}</p>
-        <p>Average cs: {{ avgcs }}</p>
-        <p>Average Gold: {{ avgg }}</p>
-    {% endif %}
+    <h1 class="text-center">{{ name }} - <a href="{% url 'teams:detail' team %}">{{ team }}</a></h1>
+    <h2 class="text-center">Ranking Points: {{ rank }}</h2>
 
-    {% if role == 'support' %}
-        <p>Average Ward Placed: {{ avgw }}</p>
-        <p>Average Ward Destroyed: {{ avgwd }}</p>
-    {% endif %}
+    <div class="list-inline text-center">
+        <li>Most played role: {{ role }}</li>
+        <li>Average Kill: {{ averageK }}</li>
+        <li>Average Death: {{ averageD }}</li>
+        <li>Average Assists: {{ averageA }}</li>
+        <li>Max Kill : {{ maxK }}</li>
+        <li>Max Death : {{ maxD }}</li>
+        <li>Max Assists : {{ maxA }}</li>
+    </div>
+    <div class="list-inline text-center">
+        {% if role == 'adc' %}
+            <li>Average Damage: {{ avgdmg }}</li>
+            <li>Average CreepScore: {{ avgcs }}</li>
+            <li>Average Gold: {{ avgg }}</li>
+        {% endif %}
 
-    {% if role == 'jungle' %}
-        <p>Average Team Jungle Minion Killed: {{ avgtJungle }}</p>
-        <p>Average Enemy Jungle Minion Killed: {{ avgeJungle }}</p>
-        <p>Average Gold: {{ avgg }}</p>
-    {% endif %}
+        {% if role == 'support' %}
+            <li>Average Ward Placed: {{ avgw }}</li>
+            <li>Average Ward Destroyed: {{ avgwd }}</li>
+        {% endif %}
 
-    {% if role == 'mid' %}
-        <p>Average Damage: {{ avgdmg }}</p>
-    {% endif %}
+        {% if role == 'jungle' %}
+            <li>Average Team Jungle Minion Killed: {{ avgtJungle }}</li>
+            <li>Average Enemy Jungle Minion Killed: {{ avgeJungle }}</li>
+            <li>Average Gold: {{ avgg }}</li>
+        {% endif %}
 
-    {% if role == 'top' %}
-        <p>Average Ward Placed: {{ avgw }}</p>
-        <p>Average Gold: {{ avgg }}</p>
-    {% endif %}
+        {% if role == 'mid' %}
+            <li>Average Damage: {{ avgdmg }}</li>
+        {% endif %}
 
-    <p>Ranking Point: {{ rank }}</p>
-    <p>Team : <a href="{% url 'team:team' team %}">{{ team }}</a></p>
-       <table class="table">
-        <thead>
-            <tr>
-                <th>Series Played (SeriesID)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in series %}
-            <tr>
-                <td><a href="{% url 'series:series' item.seriesID %}">{{ item.seriesID }}</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        {% if role == 'top' %}
+            <li>Average Ward Placed: {{ avgw }}</li>
+            <li>Average Gold: {{ avgg }}</li>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <img class="col-md-10" src="{% url 'playerstatistics:plot' name %}" alt="HTML5 Icon" style="width:800px;height:800px;">
+        <div class="col-md-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Series Played (SeriesID)</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {% for item in series %}
+                    <tr>
+                        <td><a href="{% url 'series:detail' item.seriesID %}">{{ item.seriesID }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 {% endif %}
 
 {% endblock %}

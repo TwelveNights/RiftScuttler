@@ -3,9 +3,11 @@
 
 <ul class="text-center">
     {% for t in tournaments %}
-        <a href="{% url 'tournaments:details' t.id %}">
-            {{t.name}} - {{t.year}}
-        </a>
+        <h1>
+            <a href="{% url 'tournaments:detail' t.id %}">
+                {{t.name}} - {{t.year}}
+            </a>
+        </h1>
     {% empty %}
         <div>Sorry, no tournaments available</div>
     {% endfor %}
