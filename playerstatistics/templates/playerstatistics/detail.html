@@ -44,21 +44,25 @@
         {% endif %}
     </div>
 
-    <img class="center-block" src="{% url 'playerstatistics:plot' name %}" alt="HTML5 Icon" style="width:785px;height:785px;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="text-center">Series Played (SeriesID)</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {% for item in series %}
-            <tr>
-                <td><a href="{% url 'series:detail' item.seriesID %}">{{ item.seriesID }}</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <img class="col-md-10" src="{% url 'playerstatistics:plot' name %}" alt="HTML5 Icon" style="width:800px;height:800px;">
+        <div class="col-md-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Series Played (SeriesID)</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {% for item in series %}
+                    <tr>
+                        <td><a href="{% url 'series:detail' item.seriesID %}">{{ item.seriesID }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 {% endif %}
 
