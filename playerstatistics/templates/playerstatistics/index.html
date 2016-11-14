@@ -2,7 +2,7 @@
 {% block content %} 
 
 {% if ranklist %}
-    <h1 class="text-center"><b>LEADER BOARD</b></h1>
+    <h1 class="text-center">Leaderboard</h1>
     <div class="list-inline text-center">
         {% if bestAdc.name %}
             <li>Best Adc: <a href="{% url 'playerstatistics:detail' bestAdc.name %}">{{ bestAdc.name }}</a></li>
