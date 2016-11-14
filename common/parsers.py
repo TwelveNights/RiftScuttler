@@ -75,10 +75,10 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
 
     #BANS
     for ban in t1_data['bans']:
-        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championId'],
+        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championID'],
                                                                                 ban['pickTurn']))
     for ban in t2_data['bans']:
-        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championId'],
+        SQL_inserts.append("INSERT INTO bans VALUES({0},{1},{2},{3}))\n".format(seriesID, matchNumber, ban['championID'],
                                                                                 ban['pickTurn']))
 
 
@@ -107,7 +107,7 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
                            "{3},{4}, {5}, "
                            "{6}, {7}, {8}, "
                            "{9}, {10}}, {11},"
-                           "{12}, {13}, {14})\n".format(seriesID, matchNumber, p_name, p['championId'], p_role,
+                           "{12}, {13}, {14})\n".format(seriesID, matchNumber, p_name, p['championID'], p_role,
                                                         pstats['kills'], pstats['deaths'], pstats['assists'],
                                                         pstats['totalDamageDealtToChampions'], pstats['wardsPlaced'],
                                                         pstats['wardsDestroyed'],pstats['totalMinionsKilled'],

@@ -1,7 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Best of {{ data.0.bestOf }}</h1>
-<div>{{ data.0.date }}</div>
+<h1 class="text-center">{{ data.blue.team }} vs. {{ data.purple.team }}</h1>
+<p class="text-center">Best of {{ data.bestOfCount }}</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">Number</th>
+            <th class="text-center">Blue</th>
+            <th class="text-center">Bans</th>
+            <th class="text-center">Purple</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for match in data.matches %}
+    {% with blue=match.blue purple=match.purple %}
+        <tr class="text-center">
+            <td>{{match.number}}</td>
+            <td>{{blue.kills}}/{{blue.deaths}}/{{blue.assists}}</td>
+            <td>
+                {% for ban in match.bans %}
+                    <div>{{ ban }}</div>
+                {% endfor %}
+            </td>
+            <td>{{purple.kills}}/{{purple.deaths}}/{{purple.assists}}</td>
+        </tr>
+    {% endwith %}
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
