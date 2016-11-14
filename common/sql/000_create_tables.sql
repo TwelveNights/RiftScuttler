@@ -19,10 +19,9 @@ CREATE TABLE items (
 );
 
 CREATE TABLE players (
-  id                INTEGER,
   name              VARCHAR(16) NOT NULL,
   careerStartDate   DATETIME    NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (name)
 );
 
 CREATE TABLE teams (
@@ -82,14 +81,14 @@ CREATE TABLE competes (
 CREATE TABLE interacts (
   seriesID      INTEGER,
   matchNumber INTEGER,
-  playerID    INTEGER,
+  summonerName    VARCHAR(16),
   itemID      INTEGER,
   time        INTEGER,
   isBuy       INTEGER,
   CHECK (isBuy = 0 OR isBuy = 1),
-  PRIMARY KEY (seriesID, matchNumber, playerID, itemID, time),
+  PRIMARY KEY (seriesID, matchNumber, summonerName, itemID, time),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (playerID)            REFERENCES players(id),
+  FOREIGN KEY (summonerName)            REFERENCES players(name),
   FOREIGN KEY (itemID)              REFERENCES items(id)
 );
 
@@ -125,12 +124,12 @@ CREATE TABLE plays (
 );
 
 CREATE TABLE registers (
-  playerID    INTEGER,
+  summonerName    VARCHAR(16),
   teamID      VARCHAR(6),
   dateJoined  DATE        NOT NULL,
   dateLeft    DATE,
-  PRIMARY KEY (playerID, teamID),
-  FOREIGN KEY (playerID)           REFERENCES players(id),
+  PRIMARY KEY (summonerName, teamID),
+  FOREIGN KEY (summonerName)           REFERENCES players(name),
   FOREIGN KEY (teamID) REFERENCES teams(id)
 );
 

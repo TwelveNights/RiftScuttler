@@ -9,7 +9,7 @@ def team(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT  p.name, t.id "
                        "FROM teams t, registers r, players p "
-                       "WHERE t.id = %s AND t.id = r.teamID AND r.playerID = p.id", [id])
+                       "WHERE t.id = %s AND t.id = r.teamID AND r.summonerName = p.name", [id])
         results = utils.dictfetchall(cursor)
 
     return render(request, "team/team.html", {"data": results})

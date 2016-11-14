@@ -70,7 +70,7 @@ def playdetail(pname):
 
         cursor.execute("SELECT teamID "
                        "FROM players p, registers r "
-                       "WHERE r.playerID =  p.id AND p.name = %s ", [pname])
+                       "WHERE r.summonerName =  p.name AND p.name = %s ", [pname])
         team = cursor.fetchone()
 
 
