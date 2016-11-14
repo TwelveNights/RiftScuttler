@@ -55,10 +55,7 @@ def check_if_pk_exists(cursor, table):
         sql += pk[0] + "=" + "'" + str(table.args[i]) + "'"
     cursor.execute(sql, [])
     data = cursor.fetchall()
-    if not data:
-        return False
-    else:
-        return True
+    return bool(data)
 
 
 def select_data(cursor, tname):
@@ -80,28 +77,16 @@ def reorder_dictionary(table):
 
 
 def get_args(column_list):
-    args = []
-    for cols in column_list:
-        args.append(cols[0])
-    return args
+    return [cols[0] for cols in column_list]
 
 
 def create_context(tname, form, list_of_data, args):
     value = tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = []
-    nav_list_remove = []
-    nav_list_edit = []
-
-    for i, table in enumerate(nav_list_raw):
-        nav_list_add.append(("add-"+table, "Add "+table.title()))
-
-    for i, table in enumerate(nav_list_raw):
-        nav_list_remove.append(("remove-" + table, "Remove " + table.title()))
-
-    for i, table2 in enumerate(nav_list_edit_raw):
-        nav_list_edit.append(("edit-" + table2, "Edit " + table2.title()))
+    nav_list_add = [("add-"+table, "Add "+table.title()) for table in nav_list_raw]
+    nav_list_remove = [("remove-" + table, "Remove " + table.title()) for table in nav_list_raw]
+    nav_list_edit = [("edit-" + table2, "Edit " + table2.title()) for table2 in nav_list_edit_raw]
 
     context = {
         "form": form,
