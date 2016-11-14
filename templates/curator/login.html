@@ -1,19 +1,11 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RiftScuttler: Curator Login</title>
-    <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
-</head>
-<body>
-<h1>RiftScuttler</h1>
-<h2>Curator Login</h2>
-<form action="/login/" method="post">
-    {% csrf_token %}
-    <input type="text" id="username" name="username"  placeholder="Username">
-    <input type="password" name="password" id="password" placeholder="Password">
-    <input type="submit" value="Login">
-</form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>RiftScuttler</h1>
+    <h2>Curator Login</h2>
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        <input type="text" id="username" name="username"  placeholder="Username">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}

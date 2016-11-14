@@ -6,10 +6,7 @@ def insert_data(cursor, table):
     sql = "INSERT INTO " + table.tname + " VALUES ("
     length_args = len(table.args)
     for i, args in enumerate(table.args):
-        if isinstance(args, str):
-            sql += "\'" + args + "\'"
-        else:
-            sql += "\'" + str(args) + "\'"
+        sql += "'" + str(args) + "'"
         if i == (length_args - 1):
             break
         sql += ", "
@@ -23,10 +20,7 @@ def delete_data(cursor, table):
     pk_length = len(table.pk)
     for i, pk in enumerate(table.pk):
         sql += pk[0] + "="
-        if isinstance(table.args[i], str):
-            sql += "\'" + table.args[i] + "\'"
-        else:
-            sql += "\'" + str(table.args[i]) + "\'"
+        sql += "'" + str(table.args[i]) + "'"
         if i == (pk_length - 1):
             break
         sql += " AND "
@@ -39,19 +33,13 @@ def edit_data(cursor, table):
     pk_length = len(table.pk)
     non_pk_length = len(table.non_pk)
     for j, col in enumerate(table.non_pk):
-        if isinstance(table.non_pk_args[j], str):
-            sql += col + "=" + "\'" + table.non_pk_args[j] + "\'"
-        else:
-            sql += col + "=" + "\'" + str(table.non_pk_args[j]) + "\'"
+        sql += col + "=" + "'" + str(table.non_pk_args[j]) + "'"
         if j < (non_pk_length - 1):
             sql += ", "
     sql += " WHERE "
     for i, pk in enumerate(table.pk):
         sql += pk[0] + "="
-        if isinstance(table.args[i], str):
-            sql += "\'" + table.args[i] + "\'"
-        else:
-            sql += "\'" + str(table.args[i]) + "\'"
+        sql += "'" + str(table.args[i]) + "'"
         if i == (pk_length - 1):
             break
         sql += " AND "
@@ -64,10 +52,7 @@ def check_if_pk_exists(cursor, table):
     sql += table.tname
     sql += " WHERE "
     for i, pk in enumerate(table.pk):
-        if isinstance(table.args[i][1], str):
-            sql += pk[0]+"="+"\'"+table.args[i][1]+"\'"
-        else:
-            sql += pk[0] + "=" + "\'" + str(table.args[i][1]) + "\'"
+        sql += pk[0] + "=" + "'" + str(table.args[i]) + "'"
     cursor.execute(sql, [])
     data = cursor.fetchall()
     if not data:
