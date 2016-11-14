@@ -4,7 +4,7 @@
 <ul class="text-center">
     {% for t in tournaments %}
         <h1>
-            <a href="{% url 'tournaments:details' t.id %}">
+            <a href="{% url 'tournaments:detail' t.id %}">
                 {{t.name}} - {{t.year}}
             </a>
         </h1>

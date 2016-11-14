@@ -40,7 +40,7 @@
 
     <img src="{% url 'playerstatistics:plot' name %}" alt="HTML5 Icon" style="width:500px;height:500px;">
     <p>Ranking Point: {{ rank }}</p>
-    <p>Team : <a href="{% url 'team:team' team %}">{{ team }}</a></p>
+    <p>Team : <a href="{% url 'teams:detail' team %}">{{ team }}</a></p>
        <table class="table">
         <thead>
             <tr>

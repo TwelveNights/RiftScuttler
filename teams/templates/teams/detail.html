@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Team of: {{ data.0.id }}</h1>
+<h4 class="text-center"><a href="{% url 'teams:index' %}">Back to teams</a></h4>
+<h1 class="text-center">{{ data.0.id }}</h1>
 
     <table class="table">
         <thead>

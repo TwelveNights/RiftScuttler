@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from common import utils
 from . import helpers
 
-def details(request, id):
+def detail(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, bestOfCount FROM series WHERE id = %s", [id])
         series = utils.dictfetchone(cursor)
