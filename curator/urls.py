@@ -15,12 +15,10 @@ Including another URLconf
 """
 
 from django.conf.urls import url
-from django.contrib import admin
 
 from .views import *
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', curator_home, name='curator-home'),
     url(r'^logout/$', logout_view, name='logout-page'),
     url(r'^add_tournaments/$', add_data_page, name='add-tournaments'),
