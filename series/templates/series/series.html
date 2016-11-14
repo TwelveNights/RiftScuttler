@@ -13,10 +13,10 @@
             <th class="text-center">Purple</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
     {% for match in data.matches %}
     {% with blue=match.blue purple=match.purple %}
-        <tr class="text-center">
+        <tr>
             <td>{{match.number}}</td>
             <td>{{blue.kills}}/{{blue.deaths}}/{{blue.assists}}</td>
             <td>
