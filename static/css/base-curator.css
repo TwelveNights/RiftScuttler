@@ -1,0 +1,94 @@
+h1 {
+    color: #777777;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+table {
+    position: static;
+    margin: auto;
+}
+
+#table {
+    padding: 2em 1em 1em 1em;
+}
+
+td {
+    padding: 1em;
+}
+
+p {
+    display: block;
+}
+
+.form {
+    position: static;
+    margin: auto;
+    padding: 0.75em 0.75em 3em 0.75em;
+    display: block;
+}
+
+#submit {
+    position: static;
+    margin: auto auto auto 47%;
+}
+
+
+/*
+    CSS code below from w3schools.com
+    http://www.w3schools.com/css/css_dropdowns.asp
+
+*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
