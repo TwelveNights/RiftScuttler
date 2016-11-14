@@ -2,6 +2,13 @@
 {% block content %}
 
 <h1 class="text-center">Teams</h1>
+<ul class="list-inline text-center">
+    <li><a href="{% url 'teams:index' %}">ALL</a></li>
+    {% for region in regions %}
+    <li>
+        <a href="{% url 'teams:region' region %}">{{ region }}</a>
+    </li>
+    {% endfor %}
 
 <table class="table">
     <thead>

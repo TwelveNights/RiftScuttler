@@ -14,8 +14,17 @@ def detail(request, id):
 
     return render(request, "teams/detail.html", {"data": results})
 
-def index(request):
+def index(request, region=None):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM teams")
+        if region is None:
+            cursor.execute("SELECT * FROM teams")
+        else:
+            cursor.execute("SELECT * FROM teams WHERE region = %s", [region])
+
         results = utils.dictfetchall(cursor)
-    return render(request, "teams/index.html", {"data": results})
+
+        cursor.execute("SELECT DISTINCT region FROM teams")
+
+        regions = [r["region"] for r in utils.dictfetchall(cursor)]
+
+    return render(request, "teams/index.html", {"data": results, "regions": regions})
