@@ -29,7 +29,7 @@ def add_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/add.html', context)
+    return render(request, 'add.html', context)
 
 
 @login_required(login_url='/login/')
@@ -50,7 +50,7 @@ def remove_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/remove.html', context)
+    return render(request, 'remove.html', context)
 
 
 @login_required(login_url='/login/')
@@ -72,7 +72,7 @@ def edit_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/edit.html', context)
+    return render(request, 'edit.html', context)
 
 
 def login_page(request):
@@ -89,7 +89,7 @@ def login_page(request):
                 if user.is_active:
                     login(request, user)
                     return redirect('/curator/')
-        return render(request, "curator/login.html")
+        return render(request, "login.html")
 
 
 @login_required(login_url='/login/')
@@ -103,4 +103,4 @@ def logout_view(request):
 @user_passes_test(lambda u: u.is_superuser)
 def curator_home(request):
     context = create_context_index()
-    return render(request, "curator/index.html", context)
+    return render(request, "index.html", context)
