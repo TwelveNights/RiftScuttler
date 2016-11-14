@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from common import utils
 
 # Create your views here.
- 
+
 def index(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from tournaments")
@@ -48,5 +48,9 @@ def detail(request, id):
             "score": score["score"]
         }
 
+    with connection.cursor() as cursor:
+        tournament = utils.dictfetchone(
+            cursor.execute("SELECT name, year FROM tournaments WHERE id = %s", [id]))
 
-    return render(request, "tournaments/detail.html", {"data": all_series, "tournament": id})
+    return render(request, "tournaments/detail.html",
+                  {"data": all_series, "tournament": tournament})

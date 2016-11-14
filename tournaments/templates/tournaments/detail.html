@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="text-center">Tournaments</h1>
+<h1 class="text-center">{{ tournament.name }} - {{ tournament.year }}</h1>
 <h4 class="text-center"><a href="{% url 'tournaments:index' %}">Back to tournaments</a></h4>
 
 <table class="table table-hover">
