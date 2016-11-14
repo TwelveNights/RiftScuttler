@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="text-center">{{ data.blue.team }} vs. {{ data.purple.team }}</h1>
-<p class="text-center">Best of {{ data.bestOfCount }}</p>
+<h1 class="text-center">
+    <a href="{% url 'teams:detail' data.blue.team %}">{{ data.blue.team }}</a>
+    vs.
+    <a href="{% url 'teams:detail' data.purple.team %}">{{ data.purple.team }}</a></h1>
+<h3 class="text-center">Best of {{ data.bestOfCount }}</h4>
 
 <table class="table">
     <thead>

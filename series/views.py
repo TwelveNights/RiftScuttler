@@ -66,4 +66,4 @@ def detail(request, id):
                     match_details[color]["assists"] += result["assists"]
             series["matches"].append(match_details)
 
-    return render(request, "series/series.html", {"data": series})
+    return render(request, "series/detail.html", {"data": series})
