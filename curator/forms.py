@@ -12,18 +12,8 @@ class AccessFormInput(forms.Form):
         super(AccessFormInput, self).__init__(*args, **kwargs)
 
         for attribute in extra:
-            if attribute[1] == 'charfield2':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=2)
-            elif attribute[1] == 'charfield6':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=6)
-            elif attribute[1] == 'charfield10':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=10)
-            elif attribute[1] == 'charfield16':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=16)
-            elif attribute[1] == 'charfield64':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=64)
-            elif attribute[1] == 'charfield256':
-                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=256)
+            if attribute[1].find("charfield") != -1:
+                self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=attribute[1][9:])
             elif attribute[1] == 'text':
                 self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=1000)
             elif attribute[1] == 'int':
