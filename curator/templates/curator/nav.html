@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs curator-nav">
     <li role="presentation"><a href="{% url 'curator-home' %}">Home</a></li>
     <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{k}} Add<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add<span class="caret"></span></a>
         <ul class="dropdown-menu">
             {% for item in nav_list_add %}
                 <li><a href="{% url item.0 %}">{{ item.1 }}</a></li>
@@ -9,7 +9,7 @@
         </ul>
     </li>
     <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{k}} Remove<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Remove<span class="caret"></span></a>
         <ul class="dropdown-menu">
             {% for item in nav_list_remove %}
                 <li><a href="{% url item.0 %}">{{ item.1 }}</a></li>
@@ -17,7 +17,7 @@
         </ul>
     </li>
     <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{k}} Edit<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit<span class="caret"></span></a>
         <ul class="dropdown-menu">
             {% for item in nav_list_edit %}
                 <li><a href="{% url item.0 %}">{{ item.1 }}</a></li>
