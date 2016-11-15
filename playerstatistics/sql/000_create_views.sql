@@ -1,6 +1,6 @@
 CREATE VIEW IF NOT EXISTS roles AS
   SELECT
-  summonerName,
+  player,
   role,
   COUNT(*) AS rolecount,
   AVG(wardsPlaced) AS  avgw,
@@ -11,4 +11,4 @@ CREATE VIEW IF NOT EXISTS roles AS
   AVG(enemyJungleMinions) AS avgeJungle,
   AVG(damageDealt) AS avgdmg
   FROM plays
-  GROUP BY summonerName, role;
+  GROUP BY player, role;

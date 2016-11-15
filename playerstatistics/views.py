@@ -52,25 +52,25 @@ def playdetail(pname):
         player = cursor.fetchall()
         cursor.execute("SELECT AVG(ps.kills) AS avgk, AVG(ps.deaths) AS avgd, AVG(ps.assists) AS avga "
                        "FROM players p, plays ps "
-                       "WHERE p.name = %s AND p.name = ps.summonerName ", [pname])
+                       "WHERE p.name = %s AND p.name = ps.player ", [pname])
         avgkda = cursor.fetchall()
         cursor.execute("SELECT MAX(ps.kills) AS maxk, MAX(ps.deaths) AS maxd, MAX(ps.assists) AS maxa "
                        "FROM players p, plays ps "
-                       "WHERE p.name = %s AND p.name = ps.summonerName ", [pname])
+                       "WHERE p.name = %s AND p.name = ps.player ", [pname])
         maxkda = cursor.fetchall()
-        cursor.execute("SELECT summonerName, role, MAX(rolecount), avgw, avgg, avgwd, avgcs, avgtJungle, avgeJungle, avgdmg "
+        cursor.execute("SELECT player, role, MAX(rolecount), avgw, avgg, avgwd, avgcs, avgtJungle, avgeJungle, avgdmg "
                        "FROM roles "
-                       "WHERE summonerName = %s ", [pname])
+                       "WHERE player = %s ", [pname])
         role = utils.dictfetchall(cursor)
 
         cursor.execute("SELECT DISTINCT seriesID "
                        "FROM plays "
-                       "WHERE summonerName = %s", [pname])
+                       "WHERE player = %s", [pname])
         series = utils.dictfetchall(cursor)
 
         cursor.execute("SELECT teamID "
                        "FROM players p, registers r "
-                       "WHERE r.summonerName =  p.name AND p.name = %s ", [pname])
+                       "WHERE r.player =  p.name AND p.name = %s ", [pname])
         team = cursor.fetchone()
 
 

@@ -80,6 +80,7 @@ def edit_data_page(request):
 
 
 def login_page(request):
+    error = None
     if request.user.is_superuser:
         return redirect(reverse('curator-home'))
     else:
@@ -93,7 +94,9 @@ def login_page(request):
                 if user.is_active:
                     login(request, user)
                     return redirect('/curator/')
-        return render(request, 'curator/login.html')
+            else:
+                error = "The username/password is incorrect."
+        return render(request, 'curator/login.html', {"error": error})
 
 
 @login_required(login_url='/login/')
