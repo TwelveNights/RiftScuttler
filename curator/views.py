@@ -29,7 +29,8 @@ def add_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/add.html', context)
+    context["method"] = "Add"
+    return render(request, 'curator/form.html', context)
 
 
 @login_required(login_url='/login/')
@@ -50,7 +51,8 @@ def remove_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/remove.html', context)
+    context["method"] = "Remove"
+    return render(request, 'curator/form.html', context)
 
 
 @login_required(login_url='/login/')
@@ -72,7 +74,9 @@ def edit_data_page(request):
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table.tname, form, list_of_data, args)
-    return render(request, 'curator/edit.html', context)
+    context["method"] = "Edit"
+
+    return render(request, 'curator/form.html', context)
 
 
 def login_page(request):

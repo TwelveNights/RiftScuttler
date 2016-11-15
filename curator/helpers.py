@@ -93,9 +93,11 @@ def create_context(tname, form, list_of_data, args):
         "object_list": list_of_data,
         "title": value,
         "args": args,
-        "nav_list_add": nav_list_add,
-        "nav_list_remove": nav_list_remove,
-        "nav_list_edit": nav_list_edit,
+        "nav_lists": {
+            "Add": nav_list_add,
+            "Remove": nav_list_remove,
+            "Edit": nav_list_edit
+        }
     }
     return context
 
@@ -118,9 +120,11 @@ def create_context_index():
 
     context = {
         "welcome": "Welcome to the curator's home page.",
-        "nav_list_add": nav_list_add,
-        "nav_list_remove": nav_list_remove,
-        "nav_list_edit": nav_list_edit,
+        "nav_lists": {
+            "Add": nav_list_add,
+            "Remove": nav_list_remove,
+            "Edit": nav_list_edit
+        }
     }
     return context
 
