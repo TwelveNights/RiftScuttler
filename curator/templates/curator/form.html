@@ -1,55 +1,39 @@
-<nav>
-    <ul>
-        <li><a href="{% url 'curator-home' %}">Home</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Add Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_add %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Remove Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_remove %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Edit Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_edit %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li><a href="{% url 'logout-page' %}">Logout</a></li>
-    </ul>
-</nav>
+{% extends 'base.html' %}
+{% block content %}
 
-<div class="form">
-    <form method="POST" action="#">
-        <table>
-            {% csrf_token %}
-            <td>{{ form }}</td>
+<h1>Curator Mode</h1>
+<h2>{{ method }} {{ title }}</h2>
+{% include 'curator/nav.html' %}
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="POST" action="#" class="curator-input">
+            <table class="table">
+                {% csrf_token %}
+                {{ form }}
+            </table>
+            <input class="btn btn-primary center-block" id="submit" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                {% for attr in args %}
+                    <th scope="col">{{ attr }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    {% for attr in obj %}
+                    <td>{{ attr }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
         </table>
-        <input id="submit" type="submit" value="Submit">
-    </form>
+    </div>
 </div>
-
-<table>
-  <tr>
-    {% for attr in args %}
-      <th scope="col">{{ attr }}</th>
-    {% endfor %}
-  </tr>
-  {% for obj in object_list %}
-      <tr>
-        {% for attr in obj %}
-          <td>{{ attr }}</td>
-        {% endfor %}
-      </tr>
-  {% endfor %}
-</table>
+{% endblock %}

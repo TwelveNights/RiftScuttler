@@ -1,46 +1,10 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RiftScuttler: Curator</title>
-    <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
-</head>
-<body>
-<h1>RiftScuttler</h1>
-<h2>Curator's Home Page</h2>
-<nav>
-    <ul>
-        <li><a href="{% url 'curator-home' %}">Home</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Add Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_add %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Remove Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_remove %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Edit Data</a>
-            <div class="dropdown-content">
-                {% for item in nav_list_edit %}
-                    <a href="{% url item.0 %}">{{ item.1 }}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li><a href="{% url 'logout-page' %}">Logout</a></li>
-    </ul>
-</nav>
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Curator's Home Page</h2>
+
+{% include 'curator/nav.html' %}
+
 <p>{{ welcome }}</p>
 
-
-</body>
-</html>
+{% endblock %}
