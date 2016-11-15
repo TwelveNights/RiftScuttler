@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="text-center">Teams</h1>
+<h1>Teams</h1>
 <ul class="list-inline text-center">
     <li><a href="{% url 'teams:index' %}">ALL</a></li>
     {% for region in regions %}
@@ -13,11 +13,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th class="text-center">Teams</th>
-            <th class="text-center">Region</th>
+            <th>Teams</th>
+            <th>Region</th>
         </tr>
     </thead>
-    <tbody class="text-center">
+    <tbody>
         {% for t in data %}
         <tr>
             <td><a href="{% url 'teams:detail' t.id %}">{{t.name}}</a></td>

@@ -2,7 +2,7 @@
 {% block content %} 
 
 {% if ranklist %}
-    <h1 class="text-center">Leaderboard</h1>
+    <h1>Leaderboard</h1>
     <div class="list-inline text-center">
         {% if bestAdc.name %}
             <li>Best Adc: <a href="{% url 'playerstatistics:detail' bestAdc.name %}">{{ bestAdc.name }}</a></li>
@@ -38,11 +38,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="text-center">Name</th>
-                <th class="text-center">Ranking</th>
+                <th>Name</th>
+                <th>Ranking</th>
             </tr>
         </thead>
-        <tbody class="text-center">
+        <tbody>
             {% for playerR in ranklist %}
             <tr>
                 <td><a href="{% url 'playerstatistics:detail' playerR.name %}">{{ playerR.name }}</a></td>

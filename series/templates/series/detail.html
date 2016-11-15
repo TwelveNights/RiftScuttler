@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="text-center">
+<h1>
     <a href="{% url 'teams:detail' data.blue.team %}">{{ data.blue.team }}</a>
     vs.
     <a href="{% url 'teams:detail' data.purple.team %}">{{ data.purple.team }}</a></h1>
-<h3 class="text-center">Best of {{ data.bestOfCount }}</h4>
+<h3>Best of {{ data.bestOfCount }}</h4>
 
 <table class="table">
     <thead>
         <tr>
-            <th class="text-center">Number</th>
-            <th class="text-center">Blue</th>
-            <th class="text-center">Bans</th>
-            <th class="text-center">Purple</th>
+            <th>Number</th>
+            <th>Blue</th>
+            <th>Bans</th>
+            <th>Purple</th>
         </tr>
     </thead>
-    <tbody class="text-center">
+    <tbody>
     {% for match in data.matches %}
     {% with blue=match.blue purple=match.purple %}
         <tr>

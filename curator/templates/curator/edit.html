@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RiftScuttler: Edit {{ title }}</title>
+    <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
+</head>
+<body>
+<h1>RiftScuttler</h1>
+<h2>Edit {{ title }}</h2>
+
+{% include 'curator/form.html' %}
+
+</body>
+</html>

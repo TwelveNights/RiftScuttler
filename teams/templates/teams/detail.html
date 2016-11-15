@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="text-center">{{ data.0.id }}</h1>
-<h4 class="text-center"><a href="{% url 'teams:index' %}">Back to teams</a></h4>
+<h1>{{ data.0.id }}</h1>
+<h4><a href="{% url 'teams:index' %}">Back to teams</a></h4>
 
     <table class="table">
         <thead>
             <tr>
-                <th class="text-center">PlayerID</th>
+                <th>PlayerID</th>
             </tr>
         </thead>
-        <tbody class="text-center">
+        <tbody>
             {% for item in data %}
             <tr>
                 <td><a href="{% url 'playerstatistics:detail' item.name %}">{{ item.name }}</a></td>

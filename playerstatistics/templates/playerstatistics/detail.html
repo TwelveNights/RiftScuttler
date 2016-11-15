@@ -4,8 +4,8 @@
 {% if error %}
     <p>{{ error }}</p>
 {% else %}
-    <h1 class="text-center">{{ name }} - <a href="{% url 'teams:detail' team %}">{{ team }}</a></h1>
-    <h2 class="text-center">Ranking Points: {{ rank }}</h2>
+    <h1>{{ name }} - <a href="{% url 'teams:detail' team %}">{{ team }}</a></h1>
+    <h2>Ranking Points: {{ rank }}</h2>
 
     <div class="list-inline text-center">
         <li>Most played role: {{ role }}</li>
@@ -50,10 +50,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="text-center">Series Played (SeriesID)</th>
+                        <th>Series Played (SeriesID)</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
+                <tbody>
                     {% for item in series %}
                     <tr>
                         <td><a href="{% url 'series:detail' item.seriesID %}">{{ item.seriesID }}</a></td>

@@ -1,14 +1,3 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RiftScuttler: Add {{ title }}</title>
-    <link rel="stylesheet" href='{% static "css/base-curator.css" %}' />
-</head>
-<body>
-<h1>RiftScuttler</h1>
-<h2>Add {{ title }}</h2>
 <nav>
     <ul>
         <li><a href="{% url 'curator-home' %}">Home</a></li>
@@ -39,8 +28,8 @@
         <li><a href="{% url 'logout-page' %}">Logout</a></li>
     </ul>
 </nav>
-<div class="form">
 
+<div class="form">
     <form method="POST" action="#">
         <table>
             {% csrf_token %}
@@ -48,8 +37,8 @@
         </table>
         <input id="submit" type="submit" value="Submit">
     </form>
-
 </div>
+
 <table>
   <tr>
     {% for attr in args %}
@@ -64,5 +53,3 @@
       </tr>
   {% endfor %}
 </table>
-</body>
-</html>
