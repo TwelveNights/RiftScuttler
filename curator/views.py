@@ -28,7 +28,7 @@ def add_data_page(request):
     form = AccessFormInput(extra=table.cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table.tname, form, list_of_data, args)
+    context = create_context(table, form, list_of_data, args)
     context["method"] = "Add"
     return render(request, 'curator/form.html', context)
 
@@ -50,7 +50,7 @@ def remove_data_page(request):
     form = AccessFormInput(extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table.tname, form, list_of_data, args)
+    context = create_context(table, form, list_of_data, args)
     context["method"] = "Remove"
     return render(request, 'curator/form.html', context)
 
@@ -73,7 +73,7 @@ def edit_data_page(request):
     form = AccessFormInput(extra=table.cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table.tname, form, list_of_data, args)
+    context = create_context(table, form, list_of_data, args)
     context["method"] = "Edit"
 
     return render(request, 'curator/form.html', context)

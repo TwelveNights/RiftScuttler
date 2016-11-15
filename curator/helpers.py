@@ -80,13 +80,13 @@ def get_args(column_list):
     return [cols[0] for cols in column_list]
 
 
-def create_context(tname, form, list_of_data, args):
-    value = tname.title()
+def create_context(table, form, list_of_data, args):
+    value = table.tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = [("add-"+table, "Add "+table.title()) for table in nav_list_raw]
-    nav_list_remove = [("remove-" + table, "Remove " + table.title()) for table in nav_list_raw]
-    nav_list_edit = [("edit-" + table2, "Edit " + table2.title()) for table2 in nav_list_edit_raw]
+    nav_list_add = [("add-"+tables, "Add "+tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
 
     context = {
         "form": form,
