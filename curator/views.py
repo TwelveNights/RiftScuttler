@@ -24,7 +24,8 @@ def add_data_page(request):
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
             if not check_if_pk_exists(cursor, table):
-                insert_data(cursor, table)
+                if check_constraints(table):
+                    insert_data(cursor, table)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
@@ -67,7 +68,8 @@ def edit_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             table.non_pk_args = get_non_pk_args(table)
-            edit_data(cursor, table)
+            if check_constraints(table):
+                edit_data(cursor, table)
             name = create_reverse_name_edit(table.tname)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(extra=table.pk_labeled_cols)

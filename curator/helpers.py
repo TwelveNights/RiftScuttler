@@ -51,13 +51,11 @@ def check_if_pk_exists(cursor, table):
     sql = "SELECT * FROM "
     sql += table.tname
     sql += " WHERE "
-    print(sql)
     for i, pk in enumerate(table.pk):
         sql += pk[0] + "=" + "'" + str(table.args[i]) + "'"
         if i == len(table.pk)-1:
             break
         sql += " AND "
-    print(sql)
     cursor.execute(sql, [])
     data = cursor.fetchall()
     return bool(data)
@@ -173,6 +171,16 @@ def create_reverse_name_remove(table_name):
 def create_reverse_name_edit(table_name):
     name = "edit-" + table_name
     return name
+
+
+def check_constraints(table):
+    for i, attr in enumerate(table.cols):
+        if attr[0] == "nexus":
+            if table.args[i] == 0 or table.args[i] == 1:
+                return True
+            else:
+                return False
+    return True
 
 
 def check_page_and_return_table(request):
