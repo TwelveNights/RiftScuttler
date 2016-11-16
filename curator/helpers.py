@@ -51,8 +51,13 @@ def check_if_pk_exists(cursor, table):
     sql = "SELECT * FROM "
     sql += table.tname
     sql += " WHERE "
+    print(sql)
     for i, pk in enumerate(table.pk):
         sql += pk[0] + "=" + "'" + str(table.args[i]) + "'"
+        if i == len(table.pk)-1:
+            break
+        sql += " AND "
+    print(sql)
     cursor.execute(sql, [])
     data = cursor.fetchall()
     return bool(data)
