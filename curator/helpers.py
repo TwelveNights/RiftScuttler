@@ -231,9 +231,9 @@ def check_page_and_return_table(request):
         table.pk_labeled_cols = []
     elif abs_url.find("_bans/") != -1:
         table.tname = "bans"
-        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("championId", "int"), ("pickTurn", "int")]
+        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("championID", "int"), ("pickTurn", "int")]
         table.args = []
-        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("championId", "int")]
+        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("championID", "int")]
         table.non_pk = []
         table.non_pk_args = []
         table.pk_labeled_cols = []
@@ -273,8 +273,8 @@ def check_page_and_return_table(request):
         table.pk_labeled_cols = []
     elif abs_url.find("_plays/") != -1:
         table.tname = "plays"
-        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("summonerName", "charfield16"),
-                      ("championId", "int"), ("role", "charfield6"), ("kills", "int"), ("deaths", "int"),
+        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"),
+                      ("championID", "int"), ("role", "charfield6"), ("kills", "int"), ("deaths", "int"),
                       ("assists", "int"), ("damageDealt", "int"), ("wardsPlaced", "int"), ("wardsDestroyed", "int"),
                       ("cs", "int"), ("teamJungleMinions", "int"), ("enemyJungleMinions", "int"), ("gold", "int")]
         table.args = []

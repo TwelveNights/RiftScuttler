@@ -79,16 +79,16 @@ CREATE TABLE competes (
 );
 
 CREATE TABLE interacts (
-  seriesID      INTEGER,
+  seriesID    INTEGER,
   matchNumber INTEGER,
-  summonerName    VARCHAR(16),
+  player      VARCHAR(16),
   itemID      INTEGER,
   time        INTEGER,
   isBuy       INTEGER,
   CHECK (isBuy = 0 OR isBuy = 1),
-  PRIMARY KEY (seriesID, matchNumber, summonerName, itemID, time),
+  PRIMARY KEY (seriesID, matchNumber, player, itemID, time),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (summonerName)            REFERENCES players(name),
+  FOREIGN KEY (player)            REFERENCES players(name),
   FOREIGN KEY (itemID)              REFERENCES items(id)
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE participates (
 CREATE TABLE plays (
   seriesID        INTEGER,
   matchNumber     INTEGER,
-  summonerName    VARCHAR(16),
+  player    VARCHAR(16),
   championID      INTEGER,
   role            VARCHAR(6)    NOT NULL,
   kills           INTEGER       NOT NULL,
@@ -117,19 +117,19 @@ CREATE TABLE plays (
   teamJungleMinions INTEGER NOT NULL,
   enemyJungleMinions INTEGER NOT NULL,
   gold        INTEGER       NOT NULL,
-  PRIMARY KEY (seriesID, matchNumber, summonerName, championID),
+  PRIMARY KEY (seriesID, matchNumber, player, championID),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (summonerName)            REFERENCES players(name),
+  FOREIGN KEY (player)            REFERENCES players(name),
   FOREIGN KEY (championID)            REFERENCES champions(id)
 );
 
 CREATE TABLE registers (
-  summonerName    VARCHAR(16),
+  player    VARCHAR(16),
   teamID      VARCHAR(6),
   dateJoined  DATE        NOT NULL,
   dateLeft    DATE,
-  PRIMARY KEY (summonerName, teamID),
-  FOREIGN KEY (summonerName)           REFERENCES players(name),
+  PRIMARY KEY (player, teamID),
+  FOREIGN KEY (player)           REFERENCES players(name),
   FOREIGN KEY (teamID) REFERENCES teams(id)
 );
 

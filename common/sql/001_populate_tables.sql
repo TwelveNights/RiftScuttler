@@ -28,19 +28,19 @@ INSERT INTO players
 VALUES ('Albis', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Ziv', 'AHQ', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Mountain', 'AHQ', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Westdoor', 'AHQ', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('An', 'AHQ', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Albis', 'AHQ', date('1980-01-01'), date('1980-01-02'));
 
 
@@ -69,19 +69,19 @@ INSERT INTO players
 VALUES ('Moss', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('WarL0ck', 'BKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('007x', 'BKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('G4', 'BKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Lloyd', 'BKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Moss', 'BKT', date('1980-01-01'), date('1980-01-02'));
 
 
@@ -110,19 +110,19 @@ INSERT INTO players
 VALUES ('LemonNation', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Balls', 'C9', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Hai', 'C9', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Incarnati0n', 'C9', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Sneaky', 'C9', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('LemonNation', 'C9', date('1980-01-01'), date('1980-01-02'));
 
 -- Counter Logic Gaming
@@ -150,19 +150,19 @@ INSERT INTO players
 VALUES ('Aphromoo', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('ZionSpartan', 'CLG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Xmithie', 'CLG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Pobelter', 'CLG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Doublelift', 'CLG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Aphromoo', 'CLG', date('1980-01-01'), date('1980-01-02'));
 
 --Edward Gaming
@@ -190,19 +190,19 @@ INSERT INTO players
 VALUES ('Meiko', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Koro1', 'EDG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Clearlove', 'EDG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('PawN', 'EDG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Deft', 'EDG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Meiko', 'EDG', date('1980-01-01'), date('1980-01-02'));
 
 -- Fnatic
@@ -230,19 +230,19 @@ INSERT INTO players
 VALUES ('YellOwStaR', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Huni', 'FNC', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Reignover', 'FNC', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Febiven', 'FNC', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Rekkles', 'FNC', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('YellOwStaR', 'FNC', date('1980-01-01'), date('1980-01-02'));
 
 -- Flash Wolves
@@ -270,19 +270,19 @@ INSERT INTO players
 VALUES ('SwordArt', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Steak', 'FW', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Karsa', 'FW', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Maple', 'FW', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('NL', 'FW', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('SwordArt', 'FW', date('1980-01-01'), date('1980-01-02'));
 
 
@@ -311,19 +311,19 @@ INSERT INTO players
 VALUES ('KaSing', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Odoamne', 'H2K', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('loulex', 'H2K', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Ryu', 'H2K', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Hjarnan', 'H2K', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('KaSing', 'H2K', date('1980-01-01'), date('1980-01-02'));
 
 -- Invictus Gaming
@@ -351,19 +351,19 @@ INSERT INTO players
 VALUES ('Kitties', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Zzitai', 'IG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('KaKAO', 'IG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('RooKie', 'IG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Kid', 'IG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Kitties', 'IG', date('1980-01-01'), date('1980-01-02'));
 
 -- Koo Tigers
@@ -391,19 +391,19 @@ INSERT INTO players
 VALUES ('GorillA', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Smeb', 'KOO', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('hojin', 'KOO', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Kuro', 'KOO', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('PraY', 'KOO', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('GorillA', 'KOO', date('1980-01-01'), date('1980-01-02'));
 
 -- KT Rollster
@@ -431,19 +431,19 @@ INSERT INTO players
 VALUES ('Piccaboo', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Ssumday', 'KT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Score', 'KT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Nagne', 'KT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Arrow', 'KT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Piccaboo', 'KT', date('1980-01-01'), date('1980-01-02'));
 
 -- LGD Gaming
@@ -471,19 +471,19 @@ INSERT INTO players
 VALUES ('Pyl', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Acorn', 'LGD', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('TBQ', 'LGD', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('GODV', 'LGD', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('imp', 'LGD', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Pyl', 'LGD', date('1980-01-01'), date('1980-01-02'));
 
 -- Origen
@@ -511,19 +511,19 @@ INSERT INTO players
 VALUES ('Mithy', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('sOAZ', 'OG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Amazing', 'OG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('xPeke', 'OG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Niels', 'OG', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Mithy', 'OG', date('1980-01-01'), date('1980-01-02'));
 
 -- paiN Gaming
@@ -551,19 +551,19 @@ INSERT INTO players
 VALUES ('Dioud', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Mylon', 'PAIN', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('SirT', 'PAIN', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Kami', 'PAIN', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('brTT', 'PAIN', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Dioud', 'PAIN', date('1980-01-01'), date('1980-01-02'));
 
 -- SK Telecom T1
@@ -591,19 +591,19 @@ INSERT INTO players
 VALUES ('Wolf', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('MaRin', 'SKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('bengi', 'SKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Faker', 'SKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Bang', 'SKT', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Wolf', 'SKT', date('1980-01-01'), date('1980-01-02'));
 
 -- Team SoloMid
@@ -631,19 +631,19 @@ INSERT INTO players
 VALUES ('Lustboy', date('1980-01-01'));
 
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Dyrus', 'TSM', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Santorin', 'TSM', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Bjergsen', 'TSM', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('WildTurtle', 'TSM', date('1980-01-01'), date('1980-01-02'));
 
-INSERT INTO registers (summonerName, teamID, dateJoined, dateLeft)
+INSERT INTO registers
 VALUES ('Lustboy', 'TSM', date('1980-01-01'), date('1980-01-02'));
 
 
@@ -696,50 +696,50 @@ VALUES (1, 1, 16);
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --BKT Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'WarL0ck', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, '007x', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'G4', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Lloyd', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (1, 1, 'Moss', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (1, 1, 'G4', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (1, 1, '007x', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (1, 1, 'WarL0ck', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (1, 1, 'Mountain', 5, 6789);
 
 -- AHQ vs C9:
@@ -789,53 +789,53 @@ VALUES (2, 1, 16);
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --C9 Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Balls', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Hai', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Incarnati0n', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'Sneaky', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (2, 1, 'LemonNation', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (2, 1, 'Balls', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (2, 1, 'Hai', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (2, 1, 'Ziv', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (2, 1, 'Mountain', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (2, 1, 'Sneaky', 5, 6789);
 
 -- AHQ vs CLG:
@@ -885,53 +885,53 @@ VALUES (3, 1, 16);
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --CLG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'ZionSpartan', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Xmithie', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Pobelter', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Doublelift', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (3, 1, 'Aphromoo', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (3, 1, 'ZionSpartan', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (3, 1, 'Xmithie', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (3, 1, 'Ziv', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (3, 1, 'Mountain', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (3, 1, 'Doublelift', 5, 6789);
 
 
@@ -982,53 +982,53 @@ VALUES (4, 1, 16);
 
 --AHQ picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Ziv', 76, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Mountain', 267, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Westdoor', 222, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'An', 104, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Albis', 86, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Koro1', 3, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Clearlove', 122, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'PawN', 51, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Deft', 53, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (4, 1, 'Meiko', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Koro1', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Clearlove', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Ziv', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Mountain', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Deft', 5, 6789);
 
 -- Series between FNC and EDG
@@ -1079,53 +1079,53 @@ VALUES (50, 1, 86);
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 1, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 1, 'Koro1', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 1, 'Clearlove', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 1, 'Clearlove', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 1, 'Deft', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 1, 'Meiko', 5, 6789);
 
 -- FNC vs EDG match 2
@@ -1162,53 +1162,53 @@ VALUES (50, 2, 86);
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 2, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 2, 'Koro1', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 2, 'Clearlove', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 2, 'PawN', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 2, 'Deft', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 2, 'Meiko', 5, 6789);
 
 -- FNC vs EDG match 3
@@ -1245,53 +1245,53 @@ VALUES (50, 3, 86);
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 3, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 3, 'Koro1', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 3, 'Clearlove', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 3, 'PawN', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 3, 'Deft', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 3, 'Meiko', 5, 6789);
 
 -- FND vs EDG match 4
@@ -1328,51 +1328,51 @@ VALUES (50, 4, 86);
 
 --FNC picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Huni', 104, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Reignover', 222, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Febiven', 267, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Rekkles', 76, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'YellOwStaR', 16, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 --EDG Picks
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Koro1', 412, 'top', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Clearlove', 18, 'jungle', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'PawN', 4, 'mid', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Deft', 154, 'adc', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
-INSERT INTO plays (seriesID, matchNumber, summonerName, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
+INSERT INTO plays (seriesID, matchNumber, player, championID, role, kills, deaths, assists, damageDealt, wardsPlaced, wardsDestroyed, cs, teamJungleMinions, enemyJungleMinions, gold)
 VALUES (50, 4, 'Meiko', 238, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700);
 
 -- Item buys/sells
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 4, 'Koro1', 4, 1426);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 4, 'Clearlove', 1, 1928);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 4, 'Clearlove', 2, 2120);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 4, 'Deft', 3, 3848);
 
-INSERT INTO interacts (seriesID, matchNumber, summonerName, itemID, time)
+INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (50, 4, 'Meiko', 5, 6789);

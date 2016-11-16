@@ -25,11 +25,11 @@ def detail(request, id):
         matches = utils.dictfetchall(cursor)
         first_match = matches[0]
 
-        cursor.execute("SELECT summonerName FROM plays WHERE seriesID = %s AND matchNumber = %s",
+        cursor.execute("SELECT player FROM plays WHERE seriesID = %s AND matchNumber = %s",
                        [id, first_match["matchNumber"]])
 
         for result in utils.dictfetchall(cursor):
-            name = result["summonerName"]
+            name = result["player"]
             team = helpers.find_team(name, first_match["matchDate"])
 
             series["blue" if team == series["blue"]["team"] else "purple"]["members"].append(name)
@@ -57,7 +57,7 @@ def detail(request, id):
                 for member in series[color]["members"]:
                     cursor.execute("SELECT p.kills kills, p.deaths deaths, p.assists assists "
                                    "FROM plays p WHERE p.seriesID = %s "
-                                   "AND p.matchNumber = %s AND p.summonerName = %s",
+                                   "AND p.matchNumber = %s AND p.player = %s",
                                    [match["seriesID"], match_number, member])
 
                     result = utils.dictfetchone(cursor)
