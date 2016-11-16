@@ -37,3 +37,7 @@ tbody, th {
 .curator-nav {
     border-bottom: none;
 }
+
+::-webkit-input-placeholder {
+            color: gray;
+}

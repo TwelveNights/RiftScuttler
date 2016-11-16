@@ -15,8 +15,9 @@ from .helpers import *
 def add_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
+    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, extra=table.cols)
+        form = AccessFormInput(request.POST, extra=table.pk_labeled_cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -25,11 +26,10 @@ def add_data_page(request):
             if not check_if_pk_exists(cursor, table):
                 insert_data(cursor, table)
             return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(extra=table.cols)
+    form = AccessFormInput(extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table, form, list_of_data, args)
-    context["method"] = "Add"
     return render(request, 'curator/form.html', context)
 
 
@@ -39,7 +39,7 @@ def remove_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, extra=table.pk)
+        form = AccessFormInputRemove(request.POST, extra=table.pk)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -47,11 +47,10 @@ def remove_data_page(request):
             delete_data(cursor, table)
             name = create_reverse_name_remove(table.tname)
             return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(extra=table.pk)
+    form = AccessFormInputRemove(extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table, form, list_of_data, args)
-    context["method"] = "Remove"
     return render(request, 'curator/form.html', context)
 
 
@@ -60,8 +59,9 @@ def remove_data_page(request):
 def edit_data_page(request):
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
+    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, extra=table.cols)
+        form = AccessFormInput(request.POST, extra=table.pk_labeled_cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -70,12 +70,10 @@ def edit_data_page(request):
             edit_data(cursor, table)
             name = create_reverse_name_edit(table.tname)
             return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(extra=table.cols)
+    form = AccessFormInput(extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
     context = create_context(table, form, list_of_data, args)
-    context["method"] = "Edit"
-
     return render(request, 'curator/form.html', context)
 
 
