@@ -1,5 +1,5 @@
 from .tables import *
-from django.db import transaction
+from django.db import transaction, IntegrityError
 
 
 def insert_data(cursor, table):
@@ -11,8 +11,11 @@ def insert_data(cursor, table):
             break
         sql += ", "
     sql += ")"
-    cursor.execute(sql, [])
-    transaction.commit()
+    try:
+        cursor.execute(sql, [])
+        transaction.commit()
+    except IntegrityError as e:
+        return str(e)
 
 
 def delete_data(cursor, table):
@@ -45,8 +48,12 @@ def edit_data(cursor, table):
         if i == (pk_length - 1):
             break
         sql += " AND "
-    cursor.execute(sql, [])
-    transaction.commit()
+
+    try:
+        cursor.execute(sql, [])
+        transaction.commit()
+    except IntegrityError as e:
+        return str(e)
 
 
 def check_if_pk_exists(cursor, table):
@@ -100,7 +107,6 @@ def create_context(request, table, form, list_of_data, args, e):
     elif abs_url.find("/edit_") != -1:
         method = "Edit"
     nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
-    print(e)
     context = {
         "form": form,
         "object_list": list_of_data,
@@ -179,26 +185,6 @@ def create_reverse_name_remove(table_name):
 def create_reverse_name_edit(table_name):
     name = "edit-" + table_name
     return name
-
-
-def check_constraints(table):
-    for i, attr in enumerate(table.cols):
-        if attr[0] == "nexus":
-            if table.args[i] == 0 or table.args[i] == 1:
-                return True
-            else:
-                return False
-    return True
-
-
-def get_error_message(boolean, error_type):
-    e = ""
-    if boolean:
-        if error_type == "nexus":
-            e = "Nexus must have a 0 or 1 value."
-        elif error_type == "pk_already_exists":
-            e = "The primary keys entered already exist."
-    return e
 
 
 def check_page_and_return_table(request):
@@ -309,7 +295,7 @@ def check_page_and_return_table(request):
                       ("assists", "int"), ("damageDealt", "int"), ("wardsPlaced", "int"), ("wardsDestroyed", "int"),
                       ("cs", "int"), ("teamJungleMinions", "int"), ("enemyJungleMinions", "int"), ("gold", "int")]
         table.args = []
-        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("summonerName", "int"),
+        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"),
                     ("championId", "charfield16")]
         table.non_pk = [("role", "charfield6"), ("kills", "int"), ("deaths", "int"), ("assists", "int"),
                         ("damageDealt", "int"), ("wardsPlaced", "int"), ("wardsDestroyed", "int"),

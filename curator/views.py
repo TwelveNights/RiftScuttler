@@ -13,6 +13,7 @@ from .helpers import *
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_superuser)
 def add_data_page(request):
+    error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
     table.pk_labeled_cols = label_cols_with_pk(table)
@@ -23,27 +24,21 @@ def add_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
-            if not check_constraints(table):
-                e = get_error_message(True, "nexus")
-                form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-                list_of_data = select_data(cursor, table.tname)
-                args = get_args(table.cols)
-                context = create_context(request, table, form, list_of_data, args, e)
-                return render(request, 'curator/form.html', context)
             if check_if_pk_exists(cursor, table):
-                e = get_error_message(True, "pk_already_exists")
+                e = "The primary keys entered already exist."
                 form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
                 list_of_data = select_data(cursor, table.tname)
                 args = get_args(table.cols)
                 context = create_context(request, table, form, list_of_data, args, e)
                 return render(request, 'curator/form.html', context)
             else:
-                insert_data(cursor, table)
-                return redirect(reverse(name), permanent=True)
+                error = insert_data(cursor, table)
+                if error is not None:
+                    return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, "")
+    context = create_context(request, table, form, list_of_data, args, error)
     return render(request, 'curator/form.html', context)
 
 
@@ -71,6 +66,7 @@ def remove_data_page(request):
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_superuser)
 def edit_data_page(request):
+    error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
     table.pk_labeled_cols = label_cols_with_pk(table)
@@ -81,17 +77,13 @@ def edit_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             table.non_pk_args = get_non_pk_args(table)
-            if check_constraints(table):
-                edit_data(cursor, table)
-                e = get_error_message(False, "")
-            else:
-                e = get_error_message(True, "nexus")
+            error = edit_data(cursor, table)
             name = create_reverse_name_edit(table.tname)
-            return redirect(reverse(name), permanent=True)
+
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, "")
+    context = create_context(request, table, form, list_of_data, args, error)
     return render(request, 'curator/form.html', context)
 
 
