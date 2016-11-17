@@ -6,3 +6,11 @@ def find_team(player, date):
         cursor.execute("SELECT teamID, MAX(dateJoined) FROM registers WHERE player = %s "
                        "AND dateJoined <= date(%s) GROUP BY teamID", [player, date])
         return utils.dictfetchone(cursor)["teamID"]
+
+STATISTICS = [
+    "damageDealt",
+    "cs",
+    "wardsPlaced",
+    "wardsDestroyed",
+    "gold"
+]

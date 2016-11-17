@@ -7,6 +7,15 @@
     <a href="{% url 'teams:detail' data.purple.team %}">{{ data.purple.team }}</a></h1>
 <h3>Best of {{ data.bestOfCount }}</h4>
 
+<ul class="list-inline text-center">
+    <li><a href="{% url 'series:detail' data.id  %}">K/D/A</a></li>
+    {% for stats in data.available_stats %}
+    <li>
+        <a href="{% url 'series:detail' data.id stats %}">{{ stats }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
 <table class="table">
     <thead>
         <tr>
