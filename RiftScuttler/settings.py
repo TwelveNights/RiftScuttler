@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'curator.apps.CuratorConfig',
     'playerstatistics.apps.PlayerstatisticsConfig',
+    'champions.apps.ChampionsConfig',
     'teams.apps.TeamsConfig',
     'tournaments.apps.TournamentsConfig',
     'series.apps.SeriesConfig',
