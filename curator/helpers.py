@@ -85,7 +85,7 @@ def get_args(column_list):
     return [cols[0] for cols in column_list]
 
 
-def create_context(request, table, form, list_of_data, args):
+def create_context(request, table, form, list_of_data, args, e):
     value = table.tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
@@ -100,6 +100,7 @@ def create_context(request, table, form, list_of_data, args):
     elif abs_url.find("/edit_") != -1:
         method = "Edit"
     nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
+    print(e)
     context = {
         "form": form,
         "object_list": list_of_data,
@@ -107,6 +108,7 @@ def create_context(request, table, form, list_of_data, args):
         "args": args,
         "nav_list": nav_list,
         "method": method,
+        "error": e,
     }
     return context
 
@@ -187,6 +189,16 @@ def check_constraints(table):
             else:
                 return False
     return True
+
+
+def get_error_message(boolean, error_type):
+    e = ""
+    if boolean:
+        if error_type == "nexus":
+            e = "Nexus must have a 0 or 1 value."
+        elif error_type == "pk_already_exists":
+            e = "The primary keys entered already exist."
+    return e
 
 
 def check_page_and_return_table(request):

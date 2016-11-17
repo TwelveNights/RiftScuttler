@@ -4,34 +4,40 @@
 <h1>Curator Mode</h1>
 <h2>{{ method }} {{ title }}</h2>
 {% include 'curator/nav.html' %}
-
-<div class="row">
-    <form method="POST" action="#" class="curator-input">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      {{error}}
+    </div>
+    {% endif %}
+    <div class="row">
+        <form method="POST" action="#" class="curator-input">
+            <table class="table">
+                {% csrf_token %}
+                {{ form }}
+            </table>
+            <input class="btn btn-primary center-block" id="submit" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="row">
         <table class="table">
-            {% csrf_token %}
-            {{ form }}
-        </table>
-        <input class="btn btn-primary center-block" id="submit" type="submit" value="Submit">
-    </form>
-</div>
-<div class="row">
-    <table class="table">
-        <thead>
-            <tr>
-            {% for attr in args %}
-                <th scope="col">{{ attr }}</th>
-            {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-        {% for obj in object_list %}
-            <tr>
-                {% for attr in obj %}
-                <td>{{ attr }}</td>
+            <thead>
+                <tr>
+                {% for attr in args %}
+                    <th scope="col">{{ attr }}</th>
                 {% endfor %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+                </tr>
+            </thead>
+            <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    {% for attr in obj %}
+                    <td>{{ attr }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

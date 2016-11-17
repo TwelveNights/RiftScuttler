@@ -23,14 +23,27 @@ def add_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
-            if check_constraints(table):
-                if not check_if_pk_exists(cursor, table):
-                    insert_data(cursor, table)
-            return redirect(reverse(name), permanent=True)
+            if not check_constraints(table):
+                e = get_error_message(True, "nexus")
+                form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
+                list_of_data = select_data(cursor, table.tname)
+                args = get_args(table.cols)
+                context = create_context(request, table, form, list_of_data, args, e)
+                return render(request, 'curator/form.html', context)
+            if check_if_pk_exists(cursor, table):
+                e = get_error_message(True, "pk_already_exists")
+                form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
+                list_of_data = select_data(cursor, table.tname)
+                args = get_args(table.cols)
+                context = create_context(request, table, form, list_of_data, args, e)
+                return render(request, 'curator/form.html', context)
+            else:
+                insert_data(cursor, table)
+                return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args, "")
     return render(request, 'curator/form.html', context)
 
 
@@ -51,7 +64,7 @@ def remove_data_page(request):
     form = AccessFormInput(req=request, extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args, "")
     return render(request, 'curator/form.html', context)
 
 
@@ -70,12 +83,15 @@ def edit_data_page(request):
             table.non_pk_args = get_non_pk_args(table)
             if check_constraints(table):
                 edit_data(cursor, table)
+                e = get_error_message(False, "")
+            else:
+                e = get_error_message(True, "nexus")
             name = create_reverse_name_edit(table.tname)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args, "")
     return render(request, 'curator/form.html', context)
 
 
