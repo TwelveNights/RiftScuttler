@@ -1,14 +1,14 @@
 <ul class="nav nav-tabs curator-nav">
     <li role="presentation"><a href="{% url 'curator-home' %}">Home</a></li>
-    {% for k, v in nav_lists.items %}
-    <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{k}} Data<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            {% for item in v %}
-            <li><a href="{% url item.0 %}">{{ item.1 }}</a></li>
-            {% endfor %}
-        </ul>
-    </li>
+    {% for lists, title in nav_list %}
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ title }} Data<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                {% for tup in lists %}
+                    <li><a href="{% url tup.0 %}">{{ tup.1 }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
     {% endfor %}
     <li role="separator" class="divider"></li>
     <li role="presentation"><a href="{% url 'logout-page' %}">Logout</a></li>

@@ -1,5 +1,5 @@
 from .tables import *
-from django.db import transaction
+from django.db import transaction, IntegrityError
 
 
 def insert_data(cursor, table):
@@ -11,8 +11,11 @@ def insert_data(cursor, table):
             break
         sql += ", "
     sql += ")"
-    cursor.execute(sql, [])
-    transaction.commit()
+    try:
+        cursor.execute(sql, [])
+        transaction.commit()
+    except IntegrityError as e:
+        return str(e)
 
 
 def delete_data(cursor, table):
@@ -32,8 +35,10 @@ def edit_data(cursor, table):
     sql = "UPDATE " + table.tname + " SET "
     pk_length = len(table.pk)
     non_pk_length = len(table.non_pk)
+    print(table.non_pk)
+    print(table.non_pk_args)
     for j, col in enumerate(table.non_pk):
-        sql += col + "=" + "'" + str(table.non_pk_args[j]) + "'"
+        sql += col[0] + "=" + "'" + str(table.non_pk_args[j]) + "'"
         if j < (non_pk_length - 1):
             sql += ", "
     sql += " WHERE "
@@ -43,8 +48,12 @@ def edit_data(cursor, table):
         if i == (pk_length - 1):
             break
         sql += " AND "
-    cursor.execute(sql, [])
-    transaction.commit()
+
+    try:
+        cursor.execute(sql, [])
+        transaction.commit()
+    except IntegrityError as e:
+        return str(e)
 
 
 def check_if_pk_exists(cursor, table):
@@ -53,6 +62,9 @@ def check_if_pk_exists(cursor, table):
     sql += " WHERE "
     for i, pk in enumerate(table.pk):
         sql += pk[0] + "=" + "'" + str(table.args[i]) + "'"
+        if i == len(table.pk)-1:
+            break
+        sql += " AND "
     cursor.execute(sql, [])
     data = cursor.fetchall()
     return bool(data)
@@ -80,24 +92,29 @@ def get_args(column_list):
     return [cols[0] for cols in column_list]
 
 
-def create_context(tname, form, list_of_data, args):
-    value = tname.title()
+def create_context(request, table, form, list_of_data, args, e):
+    value = table.tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = [("add-"+table, "Add "+table.title()) for table in nav_list_raw]
-    nav_list_remove = [("remove-" + table, "Remove " + table.title()) for table in nav_list_raw]
-    nav_list_edit = [("edit-" + table2, "Edit " + table2.title()) for table2 in nav_list_edit_raw]
-
+    nav_list_add = [("add-"+tables, "Add "+tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
+    abs_url = request.get_full_path()
+    if abs_url.find("/add_") != -1:
+        method = "Add"
+    elif abs_url.find("/remove_") != -1:
+        method = "Remove"
+    elif abs_url.find("/edit_") != -1:
+        method = "Edit"
+    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "form": form,
         "object_list": list_of_data,
         "title": value,
         "args": args,
-        "nav_lists": {
-            "Add": nav_list_add,
-            "Remove": nav_list_remove,
-            "Edit": nav_list_edit
-        }
+        "nav_list": nav_list,
+        "method": method,
+        "error": e,
     }
     return context
 
@@ -117,14 +134,10 @@ def create_context_index():
 
     for i, table2 in enumerate(nav_list_edit_raw):
         nav_list_edit.append(("edit-" + table2, "Edit " + table2.title()))
-
+    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "welcome": "Welcome to the curator's home page.",
-        "nav_lists": {
-            "Add": nav_list_add,
-            "Remove": nav_list_remove,
-            "Edit": nav_list_edit
-        }
+        "nav_list": nav_list,
     }
     return context
 
@@ -150,6 +163,15 @@ def get_non_pk_args(table):
     return args
 
 
+def label_cols_with_pk(table):
+    list_of_cols_with_pk = []
+    for i, cols in enumerate(table.pk):
+        list_of_cols_with_pk.append([cols[0], cols[1], "pk"])
+    for j, cols in enumerate(table.non_pk):
+        list_of_cols_with_pk.append([cols[0], cols[1], "non-pk"])
+    return list_of_cols_with_pk
+
+
 def create_reverse_name_add(table_name):
     name = "add-" + table_name
     return name
@@ -173,50 +195,57 @@ def check_page_and_return_table(request):
         table.cols = [("id", "charfield16"), ("name", "charfield256"), ("year", "int"), ("location", "text")]
         table.args = []
         table.pk = [("id", "charfield16")]
-        table.non_pk = ["name", "year", "location"]
+        table.non_pk = [("name", "charfield256"), ("year", "int"), ("location", "text")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_series/") != -1:
         table.tname = "series"
         table.cols = [("id", "int"), ("bestOfCount", "int")]
         table.args = []
         table.pk = [("id", "int")]
-        table.non_pk = ["bestOfCount"]
+        table.non_pk = [("bestOfCount", "int")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_champions/") != -1:
         table.tname = "champions"
         table.cols = [("id", "int"), ("name", "charfield16")]
         table.args = []
         table.pk = [("id", "int")]
-        table.non_pk = ["name"]
+        table.non_pk = [("name", "charfield16")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_items/") != -1:
         table.tname = "items"
         table.cols = [("id", "int"), ("name", "text")]
         table.args = []
         table.pk = [("id", "int")]
-        table.non_pk = ["name"]
+        table.non_pk = [("name", "text")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_players/") != -1:
         table.tname = "players"
         table.cols = [("id", "int"), ("name", "charfield16"), ("careerStartDate", "datetime")]
         table.args = []
         table.pk = [("id", "int")]
-        table.non_pk = ["name", "careerStartDate"]
+        table.non_pk = [("name", "charfield16"), ("careerStartDate", "datetime")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_teams/") != -1:
         table.tname = "teams"
         table.cols = [("id", "charfield6"), ("region", "charfield2"), ("name", "text")]
         table.args = []
         table.pk = [("id", "charfield6")]
-        table.non_pk = ["region", "name"]
+        table.non_pk = [("region", "charfield2"), ("name", "text")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_matches/") != -1:
         table.tname = "matches"
         table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("date", "datetime")]
         table.args = []
         table.pk = [("seriesID", "int"), ("matchNumber", "int")]
-        table.non_pk = ["date"]
+        table.non_pk = [("date", "datetime")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_bans/") != -1:
         table.tname = "bans"
         table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("championID", "int"), ("pickTurn", "int")]
@@ -224,20 +253,23 @@ def check_page_and_return_table(request):
         table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("championID", "int")]
         table.non_pk = []
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_organizes/") != -1:
         table.tname = "organizes"
         table.cols = [("tournamentID", "charfield256"), ("seriesID", "int"), ("stage", "text")]
         table.args = []
         table.pk = [("tournamentID", "int"), ("seriesID", "int")]
-        table.non_pk = ["stage"]
+        table.non_pk = [("stage", "text")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_competes/") != -1:
         table.tname = "competes"
         table.cols = [("seriesID", "int"), ("teamID", "charfield6"), ("blueSide", "boolean")]
         table.args = []
         table.pk = [("seriesID", "int"), ("teamID", "charfield6")]
-        table.non_pk = ["blueSide"]
+        table.non_pk = [("blueSide", "boolean")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_interacts/") != -1:
         table.tname = "interacts"
         table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("playerID", "int"), ("itemID", "int"),
@@ -245,15 +277,17 @@ def check_page_and_return_table(request):
         table.args = []
         table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("playerID", "int"), ("itemID", "int"),
                     ("time", "int")]
-        table.non_pk = ["isBuy", "spent"]
+        table.non_pk = [("isBuy", "int")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_participates/") != -1:
         table.tname = "participates"
         table.cols = [("tournamentID", "charfield256"), ("teamID", "charfield6"), ("stageReached", "text")]
         table.args = []
         table.pk = [("tournamentID", "charfield256"), ("teamID", "charfield6")]
-        table.non_pk = ["stage"]
-        table.non_pk_args = ["stageReached"]
+        table.non_pk = [("stageReached", "text")]
+        table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_plays/") != -1:
         table.tname = "plays"
         table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"),
@@ -261,26 +295,31 @@ def check_page_and_return_table(request):
                       ("assists", "int"), ("damageDealt", "int"), ("wardsPlaced", "int"), ("wardsDestroyed", "int"),
                       ("cs", "int"), ("teamJungleMinions", "int"), ("enemyJungleMinions", "int"), ("gold", "int")]
         table.args = []
-        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("player", "int"),
-                    ("championID", "charfield16")]
-        table.non_pk = ["role", "kills", "deaths", "assists", "damageDealt", "wardsPlaced", "wardsDestroyed",
-                        "cs", "teamJungleMinions", "enemyJungleMinions", "gold"]
+        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"),
+                    ("championId", "charfield16")]
+        table.non_pk = [("role", "charfield6"), ("kills", "int"), ("deaths", "int"), ("assists", "int"),
+                        ("damageDealt", "int"), ("wardsPlaced", "int"), ("wardsDestroyed", "int"),
+                        ("cs", "int"), ("teamJungleMinions", "int"), ("enemyJungleMinions", "int"), ("gold", "int")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_registers/") != -1:
         table.tname = "registers"
         table.cols = [("playerID", "int"), ("teamID", "charfield6"), ("dateJoined", "date"),
                       ("dateLeft", "date")]
         table.args = []
         table.pk = [("playerID", "int"), ("teamID", "charfield6")]
-        table.non_pk = ["dateJoined", "dateLeft"]
+        table.non_pk = [("dateJoined", "date"), ("dateLeft", "date")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     elif abs_url.find("_scores/") != -1:
         table.tname = "scores"
         table.cols = [("teamID", "charfield6"), ("seriesID", "int"), ("matchNumber", "int"),
                       ("inhibitors", "int"), ("towers", "int"), ("riftHeralds", "int"), ("barons", "int"),
                       ("dragons", "int"), ("nexus", "int")]
         table.args = []
-        table.pk = [("teamID", "charfield"), ("seriesID", "int"), ("matchNumber", "int")]
-        table.non_pk = ["inhibitors", "towers", "riftHeralds", "barons", "dragons", "nexus"]
+        table.pk = [("teamID", "charfield6"), ("seriesID", "int"), ("matchNumber", "int")]
+        table.non_pk = [("inhibitors", "int"), ("towers", "int"), ("riftHeralds", "int"), ("barons", "int"),
+                        ("dragons", "int"), ("nexus", "int")]
         table.non_pk_args = []
+        table.pk_labeled_cols = []
     return table

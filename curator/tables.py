@@ -5,3 +5,4 @@ class StructData:
     pk = []
     non_pk = []
     non_pk_args = []
+    pk_labeled_cols = []
