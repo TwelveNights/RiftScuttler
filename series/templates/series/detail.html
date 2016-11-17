@@ -10,7 +10,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Number</th>
             <th>Blue</th>
             <th>Bans</th>
             <th>Purple</th>
@@ -20,14 +19,19 @@
     {% for match in data.matches %}
     {% with blue=match.blue purple=match.purple %}
         <tr>
-            <td>{{match.number}}</td>
-            <td>{{blue.kills}}/{{blue.deaths}}/{{blue.assists}}</td>
             <td>
-                {% for ban in match.bans %}
-                    <div>{{ ban }}</div>
-                {% endfor %}
+                {% include 'series/player_details.html' with items=blue.items %}
             </td>
-            <td>{{purple.kills}}/{{purple.deaths}}/{{purple.assists}}</td>
+            <td class="vertical-align">
+                <ul class="list-unstyled">
+                {% for ban in match.bans %}
+                    <li>{{ ban }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>
+                {% include 'series/player_details.html' with items=purple.items %}
+            </td>
         </tr>
     {% endwith %}
     {% endfor %}

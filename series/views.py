@@ -17,7 +17,7 @@ def detail(request, id):
         for result in utils.dictfetchall(cursor):
             series["blue" if result["blueSide"] == 1 else "purple"] = {
                 "team": result["teamID"],
-                "members": []}
+                "members": {}}
 
         cursor.execute("SELECT seriesID, matchNumber, date(matchDate) matchDate "
                        "FROM matches WHERE seriesID = %s ORDER BY matchNumber", [id])
@@ -32,20 +32,11 @@ def detail(request, id):
             name = result["player"]
             team = helpers.find_team(name, first_match["matchDate"])
 
-            series["blue" if team == series["blue"]["team"] else "purple"]["members"].append(name)
+            series["blue" if team == series["blue"]["team"] else "purple"]["members"][name] = {}
 
         for match in matches:
-
             match_number = match["matchNumber"]
-            match_details = {"blue": {
-                "kills": 0,
-                "deaths": 0,
-                "assists": 0
-            }, "purple": {
-                "kills": 0,
-                "deaths": 0,
-                "assists": 0
-            }, "number": match_number}
+            match_details = {"blue": {}, "purple": {}}
             cursor.execute("SELECT c.name name, b.pickTurn "
                            "FROM champions c, bans b "
                            "WHERE b.seriesID = %s AND b.matchNumber = %s AND b.championID = c.id "
@@ -55,15 +46,19 @@ def detail(request, id):
 
             for color in ["blue", "purple"]:
                 for member in series[color]["members"]:
-                    cursor.execute("SELECT p.kills kills, p.deaths deaths, p.assists assists "
-                                   "FROM plays p WHERE p.seriesID = %s "
-                                   "AND p.matchNumber = %s AND p.player = %s",
+                    cursor.execute("SELECT p.kills kills, p.deaths deaths, p.assists assists,"
+                                   "        c.name champion "
+                                   "FROM plays p, champions c WHERE p.seriesID = %s "
+                                   "AND p.matchNumber = %s AND p.player = %s AND c.id = p.championID",
                                    [match["seriesID"], match_number, member])
 
                     result = utils.dictfetchone(cursor)
-                    match_details[color]["kills"] += result["kills"]
-                    match_details[color]["deaths"] += result["deaths"]
-                    match_details[color]["assists"] += result["assists"]
+                    match_details[color][member] = {
+                        "kills": result["kills"],
+                        "deaths": result["deaths"],
+                        "assists": result["assists"],
+                        "champion": result["champion"]
+                    }
             series["matches"].append(match_details)
 
     return render(request, "series/detail.html", {"data": series})
