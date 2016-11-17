@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import connection
 from django.http import HttpResponse, Http404
+from django.urls import reverse
 from common import utils
 from . import helpers
 
@@ -46,6 +47,8 @@ def detail(request, id, stat=None):
             values = ["kills", "deaths", "assists"]
             if stat in helpers.STATISTICS:
                 values = [stat]
+            elif stat is not None:
+                return redirect(reverse('series:detail', args=[id]), permanent=True)
             series["stats"] = values
 
             for color in ["blue", "purple"]:

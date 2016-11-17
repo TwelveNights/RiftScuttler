@@ -9,8 +9,8 @@ def find_team(player, date):
 
 STATISTICS = [
     "damageDealt",
-    "cs",
     "wardsPlaced",
     "wardsDestroyed",
+    "cs",
     "gold"
 ]
