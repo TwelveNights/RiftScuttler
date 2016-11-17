@@ -99,13 +99,13 @@ def create_context(request, table, form, list_of_data, args):
         method = "Remove"
     elif abs_url.find("/edit_") != -1:
         method = "Edit"
-
+    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "form": form,
         "object_list": list_of_data,
         "title": value,
         "args": args,
-        "nav_list": [nav_list_add, nav_list_remove, nav_list_edit],
+        "nav_list": nav_list,
         "method": method,
     }
     return context
@@ -126,10 +126,10 @@ def create_context_index():
 
     for i, table2 in enumerate(nav_list_edit_raw):
         nav_list_edit.append(("edit-" + table2, "Edit " + table2.title()))
-
+    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "welcome": "Welcome to the curator's home page.",
-        "nav_list": [nav_list_add, nav_list_remove, nav_list_edit],
+        "nav_list": nav_list,
     }
     return context
 

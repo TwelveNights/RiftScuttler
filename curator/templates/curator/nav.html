@@ -1,11 +1,11 @@
 <ul class="nav nav-tabs curator-nav">
     <li role="presentation"><a href="{% url 'curator-home' %}">Home</a></li>
-    {% for nav in nav_list %}
+    {% for lists, title in nav_list %}
         <li role="presentation" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ nav.1.1 }}<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ title }} Data<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                {% for item in nav %}
-                    <li><a href="{% url item.0 %}">{{ item.1 }}</a></li>
+                {% for tup in lists %}
+                    <li><a href="{% url tup.0 %}">{{ tup.1 }}</a></li>
                 {% endfor %}
             </ul>
         </li>
