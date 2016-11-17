@@ -31,9 +31,11 @@ def delete_data(cursor, table):
 def edit_data(cursor, table):
     sql = "UPDATE " + table.tname + " SET "
     pk_length = len(table.pk)
-    non_pk_length = len(table.non_pk[0])
-    for j, col in enumerate(table.non_pk[0]):
-        sql += col + "=" + "'" + str(table.non_pk_args[j]) + "'"
+    non_pk_length = len(table.non_pk)
+    print(table.non_pk)
+    print(table.non_pk_args)
+    for j, col in enumerate(table.non_pk):
+        sql += col[0] + "=" + "'" + str(table.non_pk_args[j]) + "'"
         if j < (non_pk_length - 1):
             sql += ", "
     sql += " WHERE "
@@ -115,7 +117,6 @@ def create_context_index():
     nav_list_add = []
     nav_list_remove = []
     nav_list_edit = []
-    methods = ["Add", "Remove", "Edit"]
 
     for i, table in enumerate(nav_list_raw):
         nav_list_add.append(("add-"+table, "Add "+table.title()))
@@ -129,7 +130,6 @@ def create_context_index():
     context = {
         "welcome": "Welcome to the curator's home page.",
         "nav_list": [nav_list_add, nav_list_remove, nav_list_edit],
-        "method": methods,
     }
     return context
 
