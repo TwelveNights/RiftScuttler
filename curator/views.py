@@ -23,14 +23,14 @@ def add_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
-            if not check_if_pk_exists(cursor, table):
-                if check_constraints(table):
+            if check_constraints(table):
+                if not check_if_pk_exists(cursor, table):
                     insert_data(cursor, table)
             return redirect(reverse(name), permanent=True)
     form = AccessFormInput(extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args)
     return render(request, 'curator/form.html', context)
 
 
@@ -51,7 +51,7 @@ def remove_data_page(request):
     form = AccessFormInputRemove(extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args)
     return render(request, 'curator/form.html', context)
 
 
@@ -75,7 +75,7 @@ def edit_data_page(request):
     form = AccessFormInput(extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(table, form, list_of_data, args)
+    context = create_context(request, table, form, list_of_data, args)
     return render(request, 'curator/form.html', context)
 
 

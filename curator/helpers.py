@@ -83,22 +83,28 @@ def get_args(column_list):
     return [cols[0] for cols in column_list]
 
 
-def create_context(table, form, list_of_data, args):
+def create_context(request, table, form, list_of_data, args):
     value = table.tname.title()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
     nav_list_add = [("add-"+tables, "Add "+tables.title()) for tables in nav_list_raw]
     nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
     nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
+    abs_url = request.get_full_path()
+    if abs_url.find("/add_") != -1:
+        method = "Add"
+    elif abs_url.find("/remove_") != -1:
+        method = "Remove"
+    elif abs_url.find("/edit_") != -1:
+        method = "Edit"
 
     context = {
         "form": form,
         "object_list": list_of_data,
         "title": value,
         "args": args,
-        "nav_list_add": nav_list_add,
-        "nav_list_remove": nav_list_remove,
-        "nav_list_edit": nav_list_edit,
+        "nav_list": [nav_list_add, nav_list_remove, nav_list_edit],
+        "method": method,
     }
     return context
 
@@ -109,6 +115,7 @@ def create_context_index():
     nav_list_add = []
     nav_list_remove = []
     nav_list_edit = []
+    methods = ["Add", "Remove", "Edit"]
 
     for i, table in enumerate(nav_list_raw):
         nav_list_add.append(("add-"+table, "Add "+table.title()))
@@ -121,9 +128,8 @@ def create_context_index():
 
     context = {
         "welcome": "Welcome to the curator's home page.",
-        "nav_list_add": nav_list_add,
-        "nav_list_remove": nav_list_remove,
-        "nav_list_edit": nav_list_edit,
+        "nav_list": [nav_list_add, nav_list_remove, nav_list_edit],
+        "method": methods,
     }
     return context
 
