@@ -55,7 +55,15 @@ def edit_data(cursor, table):
         return str(e)
 
 
-def check_if_pk_exists(cursor, table):
+def select_data(cursor, tname):
+    sql = "SELECT * FROM "
+    sql += tname
+    cursor.execute(sql, [])
+    list_of_data = cursor.fetchall()
+    return list_of_data
+
+
+def select_data_with_pk(cursor, table):
     sql = "SELECT * FROM "
     sql += table.tname
     sql += " WHERE "
@@ -66,15 +74,7 @@ def check_if_pk_exists(cursor, table):
         sql += " AND "
     cursor.execute(sql, [])
     data = cursor.fetchall()
-    return bool(data)
-
-
-def select_data(cursor, tname):
-    sql = "SELECT * FROM "
-    sql += tname
-    cursor.execute(sql, [])
-    list_of_data = cursor.fetchall()
-    return list_of_data
+    return data
 
 
 def reorder_dictionary(table):

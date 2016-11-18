@@ -24,17 +24,9 @@ def add_data_page(request):
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
             name = create_reverse_name_add(table.tname)
-            if check_if_pk_exists(cursor, table):
-                e = "The primary keys entered already exist."
-                form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-                list_of_data = select_data(cursor, table.tname)
-                args = get_args(table.cols)
-                context = create_context(request, table, form, list_of_data, args, e)
-                return render(request, 'curator/form.html', context)
-            else:
-                error = insert_data(cursor, table)
-                if error is None:
-                    return redirect(reverse(name), permanent=True)
+            error = insert_data(cursor, table)
+            if error is None:
+                return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
@@ -91,7 +83,7 @@ def edit_data_page(request):
 def login_page(request):
     error = None
     if request.user.is_superuser:
-        return redirect(reverse('curator-home'))
+        return redirect(reverse('curator-home'), permanent=True)
     else:
         if request.POST:
             username = request.POST['username']
