@@ -27,6 +27,7 @@ def delete_data(cursor, table):
         if i == (pk_length - 1):
             break
         sql += " AND "
+    cursor.execute("PRAGMA foreign_keys=ON")
     cursor.execute(sql, [])
     transaction.commit()
 
@@ -35,8 +36,6 @@ def edit_data(cursor, table):
     sql = "UPDATE " + table.tname + " SET "
     pk_length = len(table.pk)
     non_pk_length = len(table.non_pk)
-    print(table.non_pk)
-    print(table.non_pk_args)
     for j, col in enumerate(table.non_pk):
         sql += col[0] + "=" + "'" + str(table.non_pk_args[j]) + "'"
         if j < (non_pk_length - 1):
@@ -224,10 +223,10 @@ def check_page_and_return_table(request):
         table.pk_labeled_cols = []
     elif abs_url.find("_players/") != -1:
         table.tname = "players"
-        table.cols = [("id", "int"), ("name", "charfield16"), ("careerStartDate", "datetime")]
+        table.cols = [("name", "charfield16"), ("careerStartDate", "datetime")]
         table.args = []
-        table.pk = [("id", "int")]
-        table.non_pk = [("name", "charfield16"), ("careerStartDate", "datetime")]
+        table.pk = [("name", "charfield16")]
+        table.non_pk = [("careerStartDate", "datetime")]
         table.non_pk_args = []
         table.pk_labeled_cols = []
     elif abs_url.find("_teams/") != -1:

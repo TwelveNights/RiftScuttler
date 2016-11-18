@@ -44,7 +44,7 @@ CREATE TABLE matches (
   matchNumber INTEGER,
   matchDate   DATE  NOT NULL,
   PRIMARY KEY (seriesID, matchNumber),
-  FOREIGN KEY (seriesID) REFERENCES series(id)
+  FOREIGN KEY (seriesID) REFERENCES series(id) ON DELETE CASCADE
 );
 
 -- Relations
@@ -56,8 +56,8 @@ CREATE TABLE bans (
   championID    INTEGER,
   pickTurn      INTEGER,
   PRIMARY KEY (seriesID, matchNumber, championID),
-  FOREIGN KEY (championID)    REFERENCES  champions(id),
-  FOREIGN KEY (seriesID, matchNumber)  REFERENCES  matches(seriesID, matchNumber)
+  FOREIGN KEY (championID)    REFERENCES  champions(id) ON DELETE CASCADE,
+  FOREIGN KEY (seriesID, matchNumber)  REFERENCES  matches(seriesID, matchNumber) ON DELETE CASCADE
 );
 
 CREATE TABLE organizes (
@@ -65,8 +65,8 @@ CREATE TABLE organizes (
   seriesID      INTEGER,
   stage         TEXT,
   PRIMARY KEY (tournamentID, seriesID),
-  FOREIGN KEY (tournamentID)  REFERENCES tournaments(id),
-  FOREIGN KEY (seriesID)      REFERENCES series(id)
+  FOREIGN KEY (tournamentID)  REFERENCES tournaments(id) ON DELETE CASCADE,
+  FOREIGN KEY (seriesID)      REFERENCES series(id) ON DELETE CASCADE
 );
 
 CREATE TABLE competes (
@@ -74,8 +74,8 @@ CREATE TABLE competes (
   teamID          VARCHAR(6),
   blueSide        BOOLEAN,
   PRIMARY KEY (seriesID, teamID),
-  FOREIGN KEY (seriesID) REFERENCES series(id),
-  FOREIGN KEY (teamID) REFERENCES teams(id)
+  FOREIGN KEY (seriesID) REFERENCES series(id) ON DELETE CASCADE,
+  FOREIGN KEY (teamID) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 CREATE TABLE interacts (
@@ -87,9 +87,9 @@ CREATE TABLE interacts (
   isBuy       INTEGER,
   CHECK (isBuy = 0 OR isBuy = 1),
   PRIMARY KEY (seriesID, matchNumber, player, itemID, time),
-  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (player)            REFERENCES players(name),
-  FOREIGN KEY (itemID)              REFERENCES items(id)
+  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE,
+  FOREIGN KEY (player)            REFERENCES players(name) ON DELETE CASCADE,
+  FOREIGN KEY (itemID)              REFERENCES items(id) ON DELETE CASCADE
 );
 
 CREATE TABLE participates (
@@ -97,8 +97,8 @@ CREATE TABLE participates (
   teamID        VARCHAR(6),
   stageReached  TEXT NOT NULL,
   PRIMARY KEY (tournamentID, teamID),
-  FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
-  FOREIGN KEY (teamID) REFERENCES teams(id)
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
+  FOREIGN KEY (teamID) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 CREATE TABLE plays (
@@ -118,9 +118,9 @@ CREATE TABLE plays (
   enemyJungleMinions INTEGER NOT NULL,
   gold        INTEGER       NOT NULL,
   PRIMARY KEY (seriesID, matchNumber, player, championID),
-  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber),
-  FOREIGN KEY (player)            REFERENCES players(name),
-  FOREIGN KEY (championID)            REFERENCES champions(id)
+  FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE,
+  FOREIGN KEY (player)            REFERENCES players(name) ON DELETE CASCADE,
+  FOREIGN KEY (championID)            REFERENCES champions(id) ON DELETE CASCADE
 );
 
 CREATE TABLE registers (
@@ -129,8 +129,8 @@ CREATE TABLE registers (
   dateJoined  DATE        NOT NULL,
   dateLeft    DATE,
   PRIMARY KEY (player, teamID),
-  FOREIGN KEY (player)           REFERENCES players(name),
-  FOREIGN KEY (teamID) REFERENCES teams(id)
+  FOREIGN KEY (player) REFERENCES players(name) ON DELETE CASCADE,
+  FOREIGN KEY (teamID) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 CREATE TABLE scores (
@@ -145,6 +145,6 @@ CREATE TABLE scores (
   nexus       INTEGER NOT NULL,
   CHECK (nexus = 0 OR nexus = 1),
   PRIMARY KEY (teamID, seriesID, matchNumber),
-  FOREIGN KEY (teamID)   REFERENCES teams(id),
-  FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber)
+  FOREIGN KEY (teamID)   REFERENCES teams(id) ON DELETE CASCADE,
+  FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE
 );

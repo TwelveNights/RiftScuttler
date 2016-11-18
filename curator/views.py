@@ -33,7 +33,7 @@ def add_data_page(request):
                 return render(request, 'curator/form.html', context)
             else:
                 error = insert_data(cursor, table)
-                if error is not None:
+                if error is None:
                     return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
@@ -79,7 +79,8 @@ def edit_data_page(request):
             table.non_pk_args = get_non_pk_args(table)
             error = edit_data(cursor, table)
             name = create_reverse_name_edit(table.tname)
-
+            if error is None:
+                return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
