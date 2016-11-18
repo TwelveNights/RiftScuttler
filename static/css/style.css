@@ -41,3 +41,7 @@ tbody, th {
 ::-webkit-input-placeholder {
             color: gray;
 }
+
+.vertical-align {
+    vertical-align: middle !important;
+}

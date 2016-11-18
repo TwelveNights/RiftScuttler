@@ -16,11 +16,11 @@
 <body>
     <ul class="nav nav-tabs">
         <li><img draggable="false" src="{% static 'img/riftscuttler.jpg' %}" height="40" width="40"/></li>
-        <li><a href="/">Home</a></li>
-        <li><a href="{% url 'champions:index' %}">Champions</a></li>
-        <li><a href="{% url 'teams:index' %}">Teams</a></li>
-        <li><a href="{% url 'playerstatistics:index' %}">Statistics</a></li>
-        <li><a href="{% url 'curator-login' %}">Curator</a></li>
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="{% url 'champions:index' %}">Champions</a></li>
+        <li role="presentation"><a href="{% url 'teams:index' %}">Teams</a></li>
+        <li role="presentation"><a href="{% url 'playerstatistics:index' %}">Statistics</a></li>
+        <li role="presentation"><a href="{% url 'curator-login' %}">Curator</a></li>
     </ul>
 
     <div id="content" class="container">

@@ -51,10 +51,7 @@ def detailView(request, cid):
             "  FROM plays ps, registers r, participates pt, tournaments t"
             "  WHERE c.id = ps.championID AND ps.player = r.player AND r.teamID = pt.teamID AND pt.tournamentID = t.id AND c.id = %s ) ", [cid])
         parti = cursor.fetchone()
-        if parti is None:
-            context.update({'parti': False})
-        else:
-            context.update({'parti': True})
+        context.update({'parti': bool(parti)})
         cursor.execute(
             "SELECT c.name "
             "FROM champions c "
