@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ name }}</h1>
+    {% if parti %}
+    <div align="center">
+            <div style="width:600px;height:200px;overflow:hidden">
+            <img src="https://lolstatic-a.akamaihd.net/game-info/1.1.9/images/champion/backdrop/bg-{{ urlname }}.jpg" style="width:600px" />
+            </div>
+        <img src="https://elo-boost.net/images/tiers/diamond_1.png"
+             alt="AllT Icon" style="width:165px;height:150px;">
+    <p>This Champion appeared in all Tournaments</p>
+    </div>
+    {% else %}
+        <div align="center">
+            <div style="width:600px;height:200px;overflow:hidden">
+            <img src="https://lolstatic-a.akamaihd.net/game-info/1.1.9/images/champion/backdrop/bg-{{ urlname }}.jpg" style="width:600px" />
+            </div>
+            <img src="https://eloboosteu.es/file/2015/06/unranked.png"
+             alt="NoneT Icon" style="width:180px;height:130px;">
+    <p>This Champion did not appear in all Tournaments</p>
+    </div>
+    {% endif %}
+    {% if bestplayer %}
+        <div class="text-center">
+        <p>Who played <b>{{ name }}</b> the most:</p>
+        {% for player in bestplayer %}
+            <p><a href="{% url 'playerstatistics:detail' player %}">{{ player }}</a></p>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+        <p>No players played <b>{{ name }}</b> ever</p>
+        </div>
+    {% endif %}
+    <div class="text-center">
+        See More Details from <a target="_blank" href="http://gameinfo.na.leagueoflegends.com/en/game-info/champions/{{ urlname }}/">League of Legends Official Site</a>?
+    </div>
+{% endblock %}
