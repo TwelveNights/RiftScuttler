@@ -27,9 +27,12 @@ def delete_data(cursor, table):
         if i == (pk_length - 1):
             break
         sql += " AND "
-    cursor.execute("PRAGMA foreign_keys=ON")
-    cursor.execute(sql, [])
-    transaction.commit()
+    try:
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.execute(sql, [])
+        transaction.commit()
+    except IntegrityError as e:
+        return str(e)
 
 
 def edit_data(cursor, table):
@@ -47,7 +50,6 @@ def edit_data(cursor, table):
         if i == (pk_length - 1):
             break
         sql += " AND "
-
     try:
         cursor.execute(sql, [])
         transaction.commit()
