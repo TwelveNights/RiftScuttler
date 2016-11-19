@@ -11,7 +11,6 @@ class AccessFormInput(forms.Form):
         extra = kwargs.pop('extra')
         self.req = kwargs.pop('req', None)
         super(AccessFormInput, self).__init__(*args, **kwargs)
-        print(extra)
         for attribute in extra:
             if attribute[1].find("charfield") != -1:
                 self.fields['%s' % attribute[0]] = forms.CharField(label=attribute[0], max_length=attribute[1][9:])
