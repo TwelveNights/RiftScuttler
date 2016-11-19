@@ -92,20 +92,20 @@ def get_args(column_list):
 
 
 def create_context(request, table, form, list_of_data, args, e):
-    value = table.tname.title()
+    abs_url = request.get_full_path()
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = [("add-"+tables, "Add "+tables.title()) for tables in nav_list_raw]
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
     nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
     nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
-    abs_url = request.get_full_path()
+    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
+    value = table.tname.title()
     if abs_url.find("/add_") != -1:
         method = "Add"
     elif abs_url.find("/remove_") != -1:
         method = "Remove"
     elif abs_url.find("/edit_") != -1:
         method = "Edit"
-    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "form": form,
         "object_list": list_of_data,
@@ -121,36 +121,15 @@ def create_context(request, table, form, list_of_data, args, e):
 def create_context_index():
     nav_list_raw = get_nav_list_raw()
     nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = []
-    nav_list_remove = []
-    nav_list_edit = []
-
-    for i, table in enumerate(nav_list_raw):
-        nav_list_add.append(("add-"+table, "Add "+table.title()))
-
-    for i, table in enumerate(nav_list_raw):
-        nav_list_remove.append(("remove-" + table, "Remove " + table.title()))
-
-    for i, table2 in enumerate(nav_list_edit_raw):
-        nav_list_edit.append(("edit-" + table2, "Edit " + table2.title()))
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
     nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "welcome": "Welcome to the curator's home page.",
         "nav_list": nav_list,
     }
     return context
-
-
-def get_nav_list_raw():
-    nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
-                    "competes", "interacts", "participates", "plays", "registers", "scores"]
-    return nav_list_raw
-
-
-def get_nav_list_edit_raw():
-    nav_list_edit_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches",
-                         "organizes", "competes", "interacts", "participates", "plays", "registers", "scores"]
-    return nav_list_edit_raw
 
 
 def get_non_pk_args(table):
@@ -171,19 +150,29 @@ def label_cols_with_pk(table):
     return list_of_cols_with_pk
 
 
-def create_reverse_name_add(table_name):
-    name = "add-" + table_name
+def create_reverse_name(request, table_name):
+    abs_url = request.get_full_path()
+    name = ""
+    if abs_url.find("/add_") != -1:
+        name = "add-" + table_name
+        return name
+    elif abs_url.find("/remove_") != -1:
+        name = "remove-" + table_name
+    elif abs_url.find("/edit_") != -1:
+        name = "edit-" + table_name
     return name
 
 
-def create_reverse_name_remove(table_name):
-    name = "remove-" + table_name
-    return name
+def get_nav_list_raw():
+    nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
+                    "competes", "interacts", "participates", "plays", "registers", "scores"]
+    return nav_list_raw
 
 
-def create_reverse_name_edit(table_name):
-    name = "edit-" + table_name
-    return name
+def get_nav_list_edit_raw():
+    nav_list_edit_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches",
+                         "organizes", "competes", "interacts", "participates", "plays", "registers", "scores"]
+    return nav_list_edit_raw
 
 
 def check_page_and_return_table(request):

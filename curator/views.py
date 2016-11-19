@@ -23,7 +23,7 @@ def add_data_page(request):
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
-            name = create_reverse_name_add(table.tname)
+            name = create_reverse_name(request, table.tname)
             error = insert_data(cursor, table)
             if error is None:
                 return redirect(reverse(name), permanent=True)
@@ -37,6 +37,7 @@ def add_data_page(request):
 @login_required(login_url='/login/')
 @user_passes_test(lambda u: u.is_superuser)
 def remove_data_page(request):
+    error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
     if request.method == 'POST':
@@ -45,13 +46,14 @@ def remove_data_page(request):
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
-            delete_data(cursor, table)
-            name = create_reverse_name_remove(table.tname)
-            return redirect(reverse(name), permanent=True)
+            name = create_reverse_name(request, table.tname)
+            error = delete_data(cursor, table)
+            if error is None:
+                return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk)
     list_of_data = select_data(cursor, table.tname)
     args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, "")
+    context = create_context(request, table, form, list_of_data, args, error)
     return render(request, 'curator/form.html', context)
 
 
@@ -70,7 +72,7 @@ def edit_data_page(request):
             table.args = reorder_dictionary(table)
             table.non_pk_args = get_non_pk_args(table)
             error = edit_data(cursor, table)
-            name = create_reverse_name_edit(table.tname)
+            name = create_reverse_name(request, table.tname)
             if error is None:
                 return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
