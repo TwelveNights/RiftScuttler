@@ -89,7 +89,7 @@ CREATE TABLE interacts (
   PRIMARY KEY (seriesID, matchNumber, player, itemID, time),
   FOREIGN KEY (seriesID, matchNumber) REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE,
   FOREIGN KEY (player)            REFERENCES players(name) ON DELETE CASCADE,
-  FOREIGN KEY (itemID)              REFERENCES items(id) ON DELETE CASCADE
+  FOREIGN KEY (itemID)              REFERENCES items(id) ON DELETE RESTRICT
 );
 
 CREATE TABLE participates (

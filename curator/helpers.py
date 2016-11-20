@@ -262,10 +262,10 @@ def check_page_and_return_table(request):
         table.pk_labeled_cols = []
     elif abs_url.find("_interacts/") != -1:
         table.tname = "interacts"
-        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("playerID", "int"), ("itemID", "int"),
+        table.cols = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"), ("itemID", "int"),
                       ("time", "int"), ("isBuy", "int")]
         table.args = []
-        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("playerID", "int"), ("itemID", "int"),
+        table.pk = [("seriesID", "int"), ("matchNumber", "int"), ("player", "charfield16"), ("itemID", "int"),
                     ("time", "int")]
         table.non_pk = [("isBuy", "int")]
         table.non_pk_args = []
@@ -294,10 +294,10 @@ def check_page_and_return_table(request):
         table.pk_labeled_cols = []
     elif abs_url.find("_registers/") != -1:
         table.tname = "registers"
-        table.cols = [("playerID", "int"), ("teamID", "charfield6"), ("dateJoined", "date"),
+        table.cols = [("playerID", "charfield16"), ("teamID", "charfield6"), ("dateJoined", "date"),
                       ("dateLeft", "date")]
         table.args = []
-        table.pk = [("playerID", "int"), ("teamID", "charfield6")]
+        table.pk = [("playerID", "charfield16"), ("teamID", "charfield6")]
         table.non_pk = [("dateJoined", "date"), ("dateLeft", "date")]
         table.non_pk_args = []
         table.pk_labeled_cols = []
