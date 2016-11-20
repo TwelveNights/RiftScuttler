@@ -17,7 +17,7 @@
                 <a href="{% url 'playerstatistics:detail' player %}">{{ player }}</a>
             </td>
             <td>
-                {{details.champion}}
+                <a href="{% url 'champions:detail' details.champion.id %}">{{details.champion.name}}</a>
             </td>
             <td>
             {% if data.stats|length > 1 %}

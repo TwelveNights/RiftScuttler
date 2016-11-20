@@ -34,7 +34,7 @@
             <td class="vertical-align">
                 <ul class="list-unstyled">
                 {% for ban in match.bans %}
-                    <li>{{ ban }}</li>
+                    <li><a href="{% url 'champions:detail' ban.0 %}">{{ ban.1 }}</a></li>
                 {% endfor %}
                 </ul>
             </td>

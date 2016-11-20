@@ -38,12 +38,12 @@ def detail(request, id, stat=None):
         for match in matches:
             match_number = match["matchNumber"]
             match_details = {"blue": {}, "purple": {}}
-            cursor.execute("SELECT c.name name, b.pickTurn "
+            cursor.execute("SELECT c.id id, c.name name, b.pickTurn "
                            "FROM champions c, bans b "
                            "WHERE b.seriesID = %s AND b.matchNumber = %s AND b.championID = c.id "
                            "ORDER BY b.pickTurn", [id, match_number])
 
-            match_details["bans"] = [result["name"] for result in utils.dictfetchall(cursor)]
+            match_details["bans"] = [(result["id"], result["name"]) for result in utils.dictfetchall(cursor)]
             values = ["kills", "deaths", "assists"]
             if stat in helpers.STATISTICS:
                 values = [stat]
@@ -61,13 +61,16 @@ def detail(request, id, stat=None):
                         else:
                             sql += ", p.{0} {0}".format(value)
 
-                    cursor.execute("SELECT " + sql + ", c.name champion "
+                    cursor.execute("SELECT " + sql + ", c.name name, c.id id "
                                    "FROM plays p, champions c WHERE p.seriesID = %s "
                                    "AND p.matchNumber = %s AND p.player = %s AND c.id = p.championID",
                                    [match["seriesID"], match_number, member])
 
                     result = utils.dictfetchone(cursor)
-                    match_details[color][member] = {"champion": result["champion"]}
+                    match_details[color][member] = {"champion": {
+                        "name": result["name"],
+                        "id": result["id"]
+                        }}
                     if len(values) == 1:
                         match_details[color][member]['stat'] = result[value]
                     else:
