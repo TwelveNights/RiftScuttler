@@ -134,9 +134,10 @@ def pid_to_sname(json_object, pid):
     return json_object['participantIdentities'][pid - 1]['player']['summonerName']
 
 
-def crawl_tournament():
+def crawl_tournament(tournament_name, tournament_location):
     sql_statements = []
-    class Tournament_Parser:
+
+    class TournamentParser:
         def __init__(self, dump_file, queue_file, seen_file, data_file, do_load):
             self.do_load = do_load
             self.dump_file = dump_file
@@ -201,12 +202,17 @@ def crawl_tournament():
 
             for link in links:
                 h = link.get('href')
-                if h and re.search('matches/|schedule/', h):
+                if h and 'matches/' in h:
+                    if (pfx + h) not in self.seen_urls and (pfx + h) not in self.urls:
+                        self.urls.append(pfx + h)
+                elif h and 'schedule/' in h:
                     if (pfx + h) not in self.seen_urls and (pfx + h) not in self.urls:
                         self.urls.append(pfx + h)
                 elif h and 'match-details' in h:
                     print('Found match details for {0}'.format(url))
                     self.match_details.append({'parent_url': url, 'link': h})
+                elif h and 'stats/' in h:
+                    self.match_details.append({'parent_url': 'STATS', 'link': h})
                 else:
                     continue
             if len(self.urls) > 0:
@@ -216,6 +222,18 @@ def crawl_tournament():
                 print('They are available in {0}'.format(self.data_file))
                 with open(self.data_file, 'w', encoding='utf-8') as df:
                     json.dump(self.match_details, df)
+                seen_series = []
+                for match in match_data:
+                    match_par = match.get('parent_url')
+                    if match_par not in seen_series:
+                        best_ofs = (1 for m in match_data if m.get('parent_url') == match_par)
+                        best_of_count = sum(best_ofs)
+                        url_bits = match['parent_url'].split('/')
+                        series_id = ord(url_bits[8]) #convert the unique bit of the url to an integer
+                        sql_statements.append("INSERT INTO series VALUES({0}, {1})\n".format(
+                        series_id, best_of_count))
+                        seen_series.append(match_par)
+
                 sys.exit(0)
 
     if __name__ == '__main__':
@@ -241,13 +259,17 @@ def crawl_tournament():
         else:
             do_load = False
 
+        url_bits = starter_url.split('/')
+        t_id = url_bits[5]
+        t_year = re.match('[1-3][0-9]{3}', t_id)
+        t_name = tournament_name
+        t_loc = tournament_location
 
-        # url_bits = starter_url.split('/')
-        # tournament_id = url_bits[5]
-        #
-        # sql_statements.append("INSERT INTO tournaments VALUES({0}, {1}, {2}, {3})\n".format())
+        sql_statements.append("INSERT INTO tournaments VALUES({0}, {1}, {2}, {3})\n".format(
+            t_id, t_year, t_name, t_loc
+        ))
 
-        parser = Tournament_Parser(dump_file, url_queue_file, seen_url_file, match_data_file, do_load)
+        parser = TournamentParser(dump_file, url_queue_file, seen_url_file, match_data_file, do_load)
         parser.parse_it(starter_url)
         
 
