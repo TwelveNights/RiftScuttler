@@ -731,16 +731,16 @@ VALUES (1, 1, 'Moss', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 14700
 -- Item buys/sells
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (1, 1, 'G4', 4, 1426);
+VALUES (1, 1, 'G4', 1001, 1426);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (1, 1, '007x', 1, 1928);
+VALUES (1, 1, '007x', 1004, 1928);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (1, 1, 'WarL0ck', 2, 2120);
+VALUES (1, 1, 'WarL0ck', 1006, 2120);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (1, 1, 'Mountain', 5, 6789);
+VALUES (1, 1, 'Mountain', 1011, 6789);
 
 -- AHQ vs C9:
 
@@ -824,19 +824,19 @@ VALUES (2, 1, 'LemonNation', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400
 -- Item buys/sells
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (2, 1, 'Balls', 4, 1426);
+VALUES (2, 1, 'Balls', 1018, 1426);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (2, 1, 'Hai', 1, 1928);
+VALUES (2, 1, 'Hai', 1026, 1928);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (2, 1, 'Ziv', 2, 2120);
+VALUES (2, 1, 'Ziv', 1027, 2120);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (2, 1, 'Mountain', 3, 3848);
+VALUES (2, 1, 'Mountain', 1028, 3848);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (2, 1, 'Sneaky', 5, 6789);
+VALUES (2, 1, 'Sneaky', 1029, 6789);
 
 -- AHQ vs CLG:
 
@@ -920,19 +920,19 @@ VALUES (3, 1, 'Aphromoo', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 1
 -- Item buys/sells
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (3, 1, 'ZionSpartan', 4, 1426);
+VALUES (3, 1, 'ZionSpartan', 1031, 1426);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (3, 1, 'Xmithie', 1, 1928);
+VALUES (3, 1, 'Xmithie', 1033, 1928);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (3, 1, 'Ziv', 2, 2120);
+VALUES (3, 1, 'Ziv', 1036, 2120);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (3, 1, 'Mountain', 3, 3848);
+VALUES (3, 1, 'Mountain', 1037, 3848);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (3, 1, 'Doublelift', 5, 6789);
+VALUES (3, 1, 'Doublelift', 1038, 6789);
 
 
 -- AHQ vs EDG:
@@ -1017,10 +1017,10 @@ VALUES (4, 1, 'Meiko', 32, 'support', 10, 7, 15, 27000, 23, 15, 8, 19, 400, 1470
 -- Item buys/sells
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (4, 1, 'Koro1', 4, 1426);
+VALUES (4, 1, 'Koro1', 1039, 1426);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
-VALUES (4, 1, 'Clearlove', 1, 1928);
+VALUES (4, 1, 'Clearlove', 1041, 1928);
 
 INSERT INTO interacts (seriesID, matchNumber, player, itemID, time)
 VALUES (4, 1, 'Ziv', 2, 2120);
