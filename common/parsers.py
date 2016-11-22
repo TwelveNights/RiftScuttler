@@ -271,5 +271,5 @@ def crawl_tournament(tournament_name, tournament_location):
 
         parser = TournamentParser(dump_file, url_queue_file, seen_url_file, match_data_file, do_load)
         parser.parse_it(starter_url)
-        
+
 
