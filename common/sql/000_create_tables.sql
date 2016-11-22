@@ -20,7 +20,7 @@ CREATE TABLE items (
 
 CREATE TABLE players (
   name              VARCHAR(16) NOT NULL,
-  careerStartDate   DATE    NOT NULL,
+  careerStartDate   DATE,
   PRIMARY KEY (name)
 );
 

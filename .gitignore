@@ -4,3 +4,7 @@
 db.sqlite3
 RiftScuttler/__pycache__/
 matplotlib/
+
+tournament_scraper/seen_urls.json
+
+tournament_scraper/url_queue.json

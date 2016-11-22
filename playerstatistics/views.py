@@ -59,8 +59,12 @@ def playdetail(pname):
                        "WHERE p.name = %s AND p.name = ps.player ", [pname])
         maxkda = cursor.fetchall()
         cursor.execute("SELECT player, role, MAX(rolecount), avgw, avgg, avgwd, avgcs, avgtJungle, avgeJungle, avgdmg "
-                       "FROM roles "
-                       "WHERE player = %s ", [pname])
+                       "FROM "
+                        "(SELECT player, role, COUNT(*) AS rolecount, AVG(wardsPlaced) AS  avgw, AVG(gold) AS avgg,AVG(wardsDestroyed) AS avgwd,AVG(cs) AS avgcs,AVG(teamJungleMinions) AS avgtJungle,AVG(enemyJungleMinions) AS avgeJungle,AVG(damageDealt) AS avgdmg "
+                        "FROM plays "
+                        "GROUP BY player, role)"
+                       "WHERE player = %s "
+                       "GROUP BY player", [pname])
         role = utils.dictfetchall(cursor)
 
         cursor.execute("SELECT DISTINCT seriesID "
@@ -77,7 +81,7 @@ def playdetail(pname):
 
         if not player:
             return Context({'error': 'There is no such player with SummonerName: %s' % pname})
-        elif role[0]['role'] is None:
+        elif not role:
             return Context({'error': 'The player: %s, has not played any game before' % pname})
         else:
             rank = calcranking(avgkda[0][0], avgkda[0][1], avgkda[0][2],

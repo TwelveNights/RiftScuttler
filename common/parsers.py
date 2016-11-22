@@ -1,4 +1,7 @@
 import json
+import sys
+import re
+import subprocess
 from urllib import request
 from bs4 import BeautifulSoup
 
@@ -45,7 +48,7 @@ def retrieve_match(seriesID, matchNumber, team1Id, team2Id, match_path):
 
     split_path = match_path.split('?')
     timeline_url = 'https://acs.leagueoflegends.com/v1/stats/game/' + split_path[0] + '/timeline?' + split_path[1]
-    raw_timeline = urllib.request.urlopen(timeline_url).read()
+    raw_timeline = request.urlopen(timeline_url).read()
     raw_timeline = raw_timeline.decode('utf-8')
     json_timeline = json.loads(raw_timeline)
 
@@ -131,9 +134,142 @@ def pid_to_sname(json_object, pid):
     return json_object['participantIdentities'][pid - 1]['player']['summonerName']
 
 
+def crawl_tournament(tournament_name, tournament_location):
+    sql_statements = []
+
+    class TournamentParser:
+        def __init__(self, dump_file, queue_file, seen_file, data_file, do_load):
+            self.do_load = do_load
+            self.dump_file = dump_file
+            self.queue_file = queue_file
+            self.seen_file = seen_file
+            self.data_file = data_file
+            self.urls = []
+            self.seen_urls = []
+            self.match_details = []
+
+        def parse_it(self, url):
+            starting_url = url
+            if self.do_load:
+                with open(self.queue_file, 'r', encoding='utf-8') as qf:
+                    self.urls = json.load(qf)
+                with open(self.seen_file, 'r', encoding='utf-8') as sf:
+                    self.seen_urls = json.load(sf)
+                with open(self.data_file, 'r', encoding='utf-8') as df:
+                    self.match_details = json.load(df)
+                self.do_load = False
+                starting_url = self.urls.pop(0)
+
+            print('Parsing {0}'.format(starting_url))
+            self.seen_urls.append(starting_url)
+            args = ['python', 'render.py', url, self.dump_file]
+            # QT is a piece of sh*t library and prone to crashes, try it again
+            # and dump progress to files if it can't recover:
+            try:
+                subprocess.check_call(args)
+            except:
+                print('Live! LIIIIVE!')
+                try:
+                    subprocess.check_call(args)
+                except:
+                    print('Snake? Snake?! SNAAAAAAAKE')
+                    self.urls.append(url)
+                    self.seen_urls.remove(url)
+                    with open(self.queue_file, 'w', encoding='utf-8') as qf:
+                        json.dump(self.urls, qf)
+                    with open(self.seen_file, 'w', encoding='utf-8') as sf:
+                        json.dump(self.seen_urls, sf)
+                    with open(self.data_file, 'w', encoding='utf-8') as df:
+                        json.dump(self.match_details, df)
+                    print('Dumped progress to files, add file names and "True" to \
+                           end of command line arguments and rerun.')
+                    sys.exit(1)
+            self.parse_helper(url)
+
+        def parse_helper(self, url):
+            global urls
+            global seen_urls
+            global match_data
 
 
-def tournament_crawler(starting_url):
-    html = request.urlopen(starting_url).read()
-    soup = BeautifulSoup(html)
+
+
+            with open(self.dump_file, 'r', encoding='utf-8') as html_dump:
+                html = html_dump.read()
+            pfx = 'http://www.lolesports.com'
+            soup = BeautifulSoup(html, 'html.parser')
+            links = [link for link in soup.find_all('a')]
+
+            for link in links:
+                h = link.get('href')
+                if h and 'matches/' in h:
+                    if (pfx + h) not in self.seen_urls and (pfx + h) not in self.urls:
+                        self.urls.append(pfx + h)
+                elif h and 'schedule/' in h:
+                    if (pfx + h) not in self.seen_urls and (pfx + h) not in self.urls:
+                        self.urls.append(pfx + h)
+                elif h and 'match-details' in h:
+                    print('Found match details for {0}'.format(url))
+                    self.match_details.append({'parent_url': url, 'link': h})
+                elif h and 'stats/' in h:
+                    self.match_details.append({'parent_url': 'STATS', 'link': h})
+                else:
+                    continue
+            if len(self.urls) > 0:
+                self.parse_it(self.urls.pop(0))
+            else:
+                print('Found {0} match data'.format(len(self.match_details)))
+                print('They are available in {0}'.format(self.data_file))
+                with open(self.data_file, 'w', encoding='utf-8') as df:
+                    json.dump(self.match_details, df)
+                seen_series = []
+                for match in match_data:
+                    match_par = match.get('parent_url')
+                    if match_par not in seen_series:
+                        best_ofs = (1 for m in match_data if m.get('parent_url') == match_par)
+                        best_of_count = sum(best_ofs)
+                        url_bits = match['parent_url'].split('/')
+                        series_id = ord(url_bits[8]) #convert the unique bit of the url to an integer
+                        sql_statements.append("INSERT INTO series VALUES({0}, {1})\n".format(
+                        series_id, best_of_count))
+                        seen_series.append(match_par)
+
+                sys.exit(0)
+
+    if __name__ == '__main__':
+        starter_url = sys.argv[1]
+        if len(sys.argv) > 2:
+            dump_file = sys.argv[2]
+        else:
+            dump_file = 'html_dump.html'
+        if len(sys.argv) > 3:
+            url_queue_file = sys.argv[3]
+        else:
+            url_queue_file = 'url_queue.json'
+        if len(sys.argv) > 4:
+            seen_url_file = sys.argv[4]
+        else:
+            seen_url_file = 'seen_urls.json'
+        if len(sys.argv) > 5:
+            match_data_file = sys.argv[5]
+        else:
+            match_data_file = 'match_data.json'
+        if len(sys.argv) > 6:
+            do_load = sys.argv[6]
+        else:
+            do_load = False
+
+        url_bits = starter_url.split('/')
+        t_id = url_bits[5]
+        t_year = re.match('[1-3][0-9]{3}', t_id)
+        t_name = tournament_name
+        t_loc = tournament_location
+
+        sql_statements.append("INSERT INTO tournaments VALUES({0}, {1}, {2}, {3})\n".format(
+            t_id, t_year, t_name, t_loc
+        ))
+
+        parser = TournamentParser(dump_file, url_queue_file, seen_url_file, match_data_file, do_load)
+        parser.parse_it(starter_url)
+        
 
