@@ -44,10 +44,10 @@ def detailView(request, cid):
             "SELECT c.name "
             "FROM champions c "
             "WHERE NOT EXISTS "
-            " (SELECT DISTINCT t.year, t.name "
+            " (SELECT t.id "
             "  FROM tournaments t"
             "  EXCEPT "
-            "  SELECT DISTINCT t.year, t.name"
+            "  SELECT t.id"
             "  FROM plays ps, registers r, participates pt, tournaments t"
             "  WHERE c.id = ps.championID AND ps.player = r.player AND r.teamID = pt.teamID AND pt.tournamentID = t.id AND c.id = %s ) ", [cid])
         parti = cursor.fetchone()
