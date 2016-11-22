@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+        <th>Player</th>
+        <th>Champion</th>
+        <th>
+        {% if data.stats|length > 1 %}
+            K/D/A
+        {% else %}
+            {{data.stats.0}}
+        {% endif %}
+        </th>
+    </thead>
+    <tbody>
+        {% for player, details in items %}
+        <tr>
+            <td>
+                <a href="{% url 'playerstatistics:detail' player %}">{{ player }}</a>
+            </td>
+            <td>
+                <a href="{% url 'champions:detail' details.champion.id %}">{{details.champion.name}}</a>
+            </td>
+            <td>
+            {% if data.stats|length > 1 %}
+                {{details.kills}}/{{details.deaths}}/{{details.assists}}
+            {% else %}
+                {{details.stat}}
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Champion List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Icon</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for champion in championlist %}
+            <tr>
+                <td><a href="{% url 'champions:detail' champion.id %}">{{ champion.name }}</a></td>
+                <td><img src = "http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/{{ champion.urlname }}.png"
+                         alt="{{ champion.name }} Icon" style="width:60px;height:60px;"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

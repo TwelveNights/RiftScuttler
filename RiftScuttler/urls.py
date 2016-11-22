@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.conf.urls import include, url
-from django.contrib import admin
+from curator.views import login_page
 from tournaments.views import index
 
 urlpatterns = [
@@ -23,5 +23,9 @@ urlpatterns = [
     url(r'^tournaments/', include('tournaments.urls')),
     url(r'series/', include('series.urls')),
     url(r'^playerstatistics/', include('playerstatistics.urls')),
-    # url(r'^admin/', admin.site.urls),
+    url(r'^curator/', include("curator.urls")),
+    url(r'^login/$', login_page, name='curator-login'),
+    #url(r'^team/', include('team.urls')),
+    url(r'^champions/', include('champions.urls')),
+    url(r'^teams/', include('teams.urls')),
 ]

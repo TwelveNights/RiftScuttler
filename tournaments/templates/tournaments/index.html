@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<ul class="text-center">
+<h1 class="row">Welcome to RiftScuttler</h1>
+
+<div class="row">
     {% for t in tournaments %}
-        <a href="{% url 'tournaments:details' t.id %}">
-            {{t.name}} - {{t.year}}
-        </a>
+        <h3>
+            <a href="{% url 'tournaments:detail' t.id %}">
+                {{t.name}} - {{t.year}}
+            </a>
+        </h3>
     {% empty %}
         <div>Sorry, no tournaments available</div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

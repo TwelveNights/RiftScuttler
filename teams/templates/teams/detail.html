@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ data.0.id }}</h1>
+<h4><a href="{% url 'teams:index' %}">Back to teams</a></h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Members</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td><a href="{% url 'playerstatistics:detail' item.name %}">{{ item.name }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

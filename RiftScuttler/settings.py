@@ -32,7 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
+    'curator.apps.CuratorConfig',
     'playerstatistics.apps.PlayerstatisticsConfig',
+    'champions.apps.ChampionsConfig',
+    'teams.apps.TeamsConfig',
     'tournaments.apps.TournamentsConfig',
     'series.apps.SeriesConfig',
     'django.contrib.admin',
@@ -122,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]

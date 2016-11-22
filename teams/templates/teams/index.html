@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Teams</h1>
+<ul class="list-inline text-center">
+    <li><a href="{% url 'teams:index' %}">ALL</a></li>
+    {% for region in regions %}
+    <li>
+        <a href="{% url 'teams:region' region %}">{{ region }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Teams</th>
+            <th>Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in data %}
+        <tr>
+            <td><a href="{% url 'teams:detail' t.id %}">{{t.name}}</a></td>
+            <td>{{t.region}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

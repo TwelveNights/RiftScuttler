@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-{% block content %} 
+{% block content %}
+
+<h1>{{ tournament.name }} - {{ tournament.year }}</h1>
+<h4><a href="{% url 'tournaments:index' %}">Back to tournaments</a></h4>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -12,10 +16,10 @@
     <tbody>
     {% for k, v in data.items %}
         <tr>
-                <td>{{ v.blue.team }}</td>
+                <td><a href="{% url 'teams:detail' v.blue.team %}">{{ v.blue.team }}</a></td>
                 <td>{{ v.blue.score }} - {{ v.purple.score }}</td>
-                <td>{{ v.purple.team }}</td>
-                <td><a href="{% url 'series:series' k %}">See Details</a></td>
+                <td><a href="{% url 'teams:detail' v.purple.team %}">{{ v.purple.team }}</a></td>
+                <td><a href="{% url 'series:detail' k %}">See Details</a></td>
             </tr>
     {% endfor %}
     </tbody>
