@@ -187,3 +187,17 @@ WHEN OLD.nexus = 1
 BEGIN
     UPDATE wins SET wins=wins-1 WHERE teamID=OLD.teamID;
 END;
+
+CREATE TRIGGER trigger_update_wins_on_updating_scores1 AFTER UPDATE
+ON scores
+WHEN NEW.nexus = 1 AND OLD.nexus = 0
+BEGIN
+    UPDATE wins SET wins=wins+1 WHERE teamID=OLD.teamID;
+END;
+
+CREATE TRIGGER trigger_update_wins_on_updating_scores2 AFTER UPDATE
+ON scores
+WHEN NEW.nexus = 0 AND OLD.nexus = 1
+BEGIN
+    UPDATE wins SET wins=wins-1 WHERE teamID=NEW.teamID;
+END;
