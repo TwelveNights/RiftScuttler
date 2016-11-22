@@ -12,7 +12,10 @@ def detail(request, id):
                        "WHERE t.id = %s AND t.id = r.teamID AND r.player = p.name", [id])
         results = utils.dictfetchall(cursor)
 
-    return render(request, "teams/detail.html", {"data": results})
+        cursor.execute("SELECT wins FROM wins WHERE teamID = %s", [id])
+        wins = utils.dictfetchone(cursor)["wins"]
+
+    return render(request, "teams/detail.html", {"data": results, "wins": wins})
 
 def index(request, region=None):
     with connection.cursor() as cursor:
