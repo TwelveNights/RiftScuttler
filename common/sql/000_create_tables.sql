@@ -47,6 +47,14 @@ CREATE TABLE matches (
   FOREIGN KEY (seriesID) REFERENCES series(id) ON DELETE CASCADE
 );
 
+CREATE TABLE wins (
+  teamID    VARCHAR(6),
+  wins      INTEGER NOT NULL,
+  CHECK (wins >= 0),
+  PRIMARY KEY (teamID),
+  FOREIGN KEY (teamID) REFERENCES teams(id)
+);
+
 -- Relations
 
 -- Add ban order?
@@ -148,3 +156,34 @@ CREATE TABLE scores (
   FOREIGN KEY (teamID)   REFERENCES teams(id) ON DELETE CASCADE,
   FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE
 );
+
+
+-- Triggers
+
+CREATE TRIGGER trigger_add_team_to_wins AFTER INSERT
+ON teams
+BEGIN
+   INSERT INTO wins(teamID, wins) VALUES (new.id, 0);
+END;
+
+
+CREATE TRIGGER trigger_delete_teams_from_win AFTER DELETE
+ON teams
+BEGIN
+   DELETE FROM wins WHERE teamID=OLD.id;
+END;
+
+
+CREATE TRIGGER trigger_update_wins_on_adding_scores AFTER INSERT
+ON scores
+WHEN NEW.nexus = 1
+BEGIN
+    UPDATE wins SET wins=wins+1 WHERE teamID=NEW.teamID;
+END;
+
+CREATE TRIGGER trigger_update_wins_on_deleting_scores AFTER DELETE
+ON scores
+WHEN OLD.nexus = 1
+BEGIN
+    UPDATE wins SET wins=wins-1 WHERE teamID=OLD.teamID;
+END;

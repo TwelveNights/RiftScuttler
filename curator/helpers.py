@@ -167,13 +167,13 @@ def create_reverse_name(request, table_name):
 
 def get_nav_list_raw():
     nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
-                    "competes", "interacts", "participates", "plays", "registers", "scores"]
+                    "competes", "interacts", "participates", "plays", "registers", "scores", "wins"]
     return nav_list_raw
 
 
 def get_nav_list_edit_raw():
     nav_list_edit_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches",
-                         "organizes", "competes", "interacts", "participates", "plays", "registers", "scores"]
+                         "organizes", "competes", "interacts", "participates", "plays", "registers", "scores", "wins"]
     return nav_list_edit_raw
 
 
@@ -310,6 +310,14 @@ def check_page_and_return_table(request):
         table.pk = [("teamID", "charfield6"), ("seriesID", "int"), ("matchNumber", "int")]
         table.non_pk = [("inhibitors", "int"), ("towers", "int"), ("riftHeralds", "int"), ("barons", "int"),
                         ("dragons", "int"), ("nexus", "int")]
+        table.non_pk_args = []
+        table.pk_labeled_cols = []
+    elif abs_url.find("_wins/") != -1:
+        table.tname = "wins"
+        table.cols = [("teamID", "charfield6"), ("wins", "int")]
+        table.args = []
+        table.pk = [("teamID", "charfield6")]
+        table.non_pk = [("wins", "int")]
         table.non_pk_args = []
         table.pk_labeled_cols = []
     return table

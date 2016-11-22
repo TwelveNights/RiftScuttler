@@ -65,4 +65,7 @@ urlpatterns = [
     url(r'^add_organizes/$', add_data_page, name='add-organizes'),
     url(r'^remove_organizes/$', remove_data_page, name='remove-organizes'),
     url(r'^edit_organizes/$', edit_data_page, name='edit-organizes'),
+    url(r'^add_wins/$', add_data_page, name='add-wins'),
+    url(r'^remove_wins/$', remove_data_page, name='remove-wins'),
+    url(r'^edit_wins/$', edit_data_page, name='edit-wins'),
 ]
