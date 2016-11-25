@@ -35,6 +35,9 @@ class AccessFormInput(forms.Form):
                     self.fields['%s' % attribute[0]].widget.attrs.update({
                         "class": "non-pk",
                     })
+            if abs_url.find("/edit_") != -1:
+                if attribute[2] == "non-pk":
+                    self.fields['%s' % attribute[0]].required = False
 
     def extra_attributes(self):
         for name, value in self.cleaned_data.items():

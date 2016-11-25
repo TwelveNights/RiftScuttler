@@ -44,6 +44,7 @@ urlpatterns = [
     url(r'^edit_matches/$', edit_data_page, name='edit-matches'),
     url(r'^add_bans/$', add_data_page, name='add-bans'),
     url(r'^remove_bans/$', remove_data_page, name='remove-bans'),
+    url(r'^edit_bans/$', edit_data_page, name='edit-bans'),
     url(r'^add_competes/$', add_data_page, name='add-competes'),
     url(r'^remove_competes/$', remove_data_page, name='remove-competes'),
     url(r'^edit_competes/$', edit_data_page, name='edit-competes'),

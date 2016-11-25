@@ -16,9 +16,8 @@ def add_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
-    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk_labeled_cols)
+        form = AccessFormInput(request.POST, req=request, extra=table.cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -27,10 +26,8 @@ def add_data_page(request):
             error = insert_data(cursor, table)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
+    form = AccessFormInput(req=request, extra=table.cols)
+    context = create_context(request, table, form, error)
     return render(request, 'curator/form.html', context)
 
 
@@ -40,8 +37,9 @@ def remove_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
+    pk = filter_cols_with_pk(table.cols)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk)
+        form = AccessFormInput(request.POST, req=request, extra=pk)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -50,10 +48,8 @@ def remove_data_page(request):
             error = delete_data(cursor, table)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
+    form = AccessFormInput(req=request, extra=pk)
+    context = create_context(request, table, form, error)
     return render(request, 'curator/form.html', context)
 
 
@@ -63,22 +59,19 @@ def edit_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
-    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk_labeled_cols)
+        form = AccessFormInput(request.POST, req=request, extra=table.cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
-            table.non_pk_args = get_non_pk_args(table)
+            table.args = check_and_replace_none(table)
             error = edit_data(cursor, table)
             name = create_reverse_name(request, table.tname)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
+    form = AccessFormInput(req=request, extra=table.cols)
+    context = create_context(request, table, form, error)
     return render(request, 'curator/form.html', context)
 
 
