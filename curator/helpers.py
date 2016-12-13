@@ -223,16 +223,6 @@ def get_nav_list_raw():
     return table_info[1]
 
 
-def get_nav_list_form_raw():
-    nav_list_raw = get_nav_list_raw()
-    return nav_list_raw
-
-
-def get_nav_list_view_raw():
-    nav_list_raw = get_nav_list_raw()
-    return nav_list_raw
-
-
 def check_page_and_return_table(request):
     abs_url = request.get_full_path()
     list_of_tables = parse_tables()
