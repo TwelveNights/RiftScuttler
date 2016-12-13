@@ -229,14 +229,12 @@ def get_nav_list_raw():
 
 
 def get_nav_list_form_raw():
-    nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
-                    "competes", "interacts", "participates", "plays", "registers", "scores"]
+    nav_list_raw = get_nav_list_raw()
     return nav_list_raw
 
 
 def get_nav_list_view_raw():
-    nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
-                    "competes", "interacts", "participates", "plays", "registers", "scores", "wins"]
+    nav_list_raw = get_nav_list_raw()
     return nav_list_raw
 
 
@@ -245,6 +243,8 @@ def parse_tables():
     list_of_table_names = []
     list_of_cols_final = []
     list_of_pk_final = []
+    # list_of_checks = []
+    # list_of_checks_final = []
     sql_script = getcwd() + "/common/sql/000_create_tables.sql"
     sql = open(sql_script, 'r')
     parsed = sqlparse.parse(sql)
@@ -263,9 +263,17 @@ def parse_tables():
                         table_name += content[k]
                     list_of_table_names.append(table_name)
 
-
-                    # Find a way to extract attributes, types, primary keys, and CHECKs
                     text = content.split()
+
+                    """
+                    for k, entry in enumerate(text):
+                        if entry == 'CHECK':
+                            list = [(text[k+1],text[k+2],text[k+3])]
+                            if text[k+4] == 'OR':
+                                list.append((text[k+5],text[k+6],text[k+7]))
+                            list_of_checks.append(list)
+                    """
+
 
                     list_of_pk = extract_pk(text)
                     list_of_pk_final.append(list_of_pk)
@@ -293,25 +301,35 @@ def parse_tables():
 
     for k, row in enumerate(list_of_cols_final):
         table = Table()
-        table.tname = ""
+        table.tname = list_of_table_names[k]
         table.cols = []
         for p, entry in enumerate(row):
             if p % 2 == 1:
                 continue
             cols = (entry, row[p+1], 'non-pk')
-            for m, pk_row in enumerate(list_of_pk_final):
-                for n, pk in enumerate(pk_row):
-                    if entry == pk:
-                        table = Table()
-                        cols = (row[p], row[p+1], 'pk')
-                        break
+            pk_row = list_of_pk_final[k]
+            for n, pk in enumerate(pk_row):
+                if entry == pk:
+                    cols = (entry, row[p+1], 'pk')
+                    break
             table.cols.append(cols)
-        table.tname = list_of_table_names[k]
         list_of_tables.append(table)
 
-    for table in list_of_tables:
-        print(table.tname)
-        print(table.cols)
+    """
+        for i, list in enumerate(list_of_checks):
+        temp_list = []
+        for j, tuple in enumerate(list):
+            for k, entry in enumerate(tuple):
+                if '(' in entry:
+                    temp1 = entry[1:]
+                if '),' in entry:
+                    temp3 = entry[:-2]
+                if k == 1:
+                    temp2 = entry
+            temp_list.append((temp1, temp2, temp3))
+        list_of_checks_final.append(temp_list)
+    """
+
     return [list_of_tables, list_of_table_names]
 
 
@@ -360,6 +378,15 @@ def remove_irrelevant(text):
 
 
 def check_page_and_return_table(request):
+    abs_url = request.get_full_path()
+    list_of_tables = parse_tables()
+    for i, table in enumerate(list_of_tables[0]):
+        if abs_url.find("_"+table.tname+"/") != -1:
+            return table
+    return
+
+"""
+def check_page_and_return_table2(request):
     abs_url = request.get_full_path()
     table = Table()
     if abs_url.find("_tournaments/") != -1:
@@ -439,3 +466,5 @@ def check_page_and_return_table(request):
         table.cols = [("teamID", "charfield6", "pk"), ("wins", "int", "non-pk")]
         table.args = []
     return table
+
+"""
