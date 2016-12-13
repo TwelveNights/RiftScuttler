@@ -1,5 +1,7 @@
-from .tables import *
+from os import getcwd
+from .tables import Table
 from django.db import connection, transaction, IntegrityError
+import sqlparse
 
 
 def insert_data(cursor, table):
@@ -14,7 +16,7 @@ def insert_data(cursor, table):
     try:
         cursor.execute(sql, [])
         transaction.commit()
-    except IntegrityError as e:
+    except IntegrityError or Warning as e:
         return str(e)
 
 
@@ -31,7 +33,7 @@ def delete_data(cursor, table):
         cursor.execute("PRAGMA foreign_keys=ON")
         cursor.execute(sql, [])
         transaction.commit()
-    except IntegrityError as e:
+    except IntegrityError or Warning as e:
         return str(e)
 
 
@@ -53,7 +55,7 @@ def edit_data(cursor, table):
     try:
         cursor.execute(sql, [])
         transaction.commit()
-    except IntegrityError as e:
+    except IntegrityError or Warning as e:
         return str(e)
 
 
@@ -133,12 +135,13 @@ def create_context(request, table, form, e):
     connection.close()
     args = get_args(table.cols)
     abs_url = request.get_full_path()
-    nav_list_raw = get_nav_list_raw()
-    nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
-    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
-    nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
-    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
+    nav_list_form_raw = get_nav_list_raw()
+    nav_list_view_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     value = table.tname.title()
     if abs_url.find("/add_") != -1:
         method = "Add"
@@ -146,6 +149,8 @@ def create_context(request, table, form, e):
         method = "Remove"
     elif abs_url.find("/edit_") != -1:
         method = "Edit"
+    elif abs_url.find("/view_") != -1:
+        method = "View"
     context = {
         "form": form,
         "object_list": list_of_data,
@@ -158,13 +163,46 @@ def create_context(request, table, form, e):
     return context
 
 
+def create_context_view(request, table):
+    cursor = connection.cursor()
+    list_of_data = select_data(cursor, table.tname)
+    connection.close()
+    args = get_args(table.cols)
+    abs_url = request.get_full_path()
+    nav_list_form_raw = get_nav_list_raw()
+    nav_list_view_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
+    value = table.tname.title()
+    if abs_url.find("/add_") != -1:
+        method = "Add"
+    elif abs_url.find("/remove_") != -1:
+        method = "Remove"
+    elif abs_url.find("/edit_") != -1:
+        method = "Edit"
+    elif abs_url.find("/view_") != -1:
+        method = "View"
+    context = {
+        "object_list": list_of_data,
+        "title": value,
+        "args": args,
+        "nav_list": nav_list,
+        "method": method,
+    }
+    return context
+
+
 def create_context_index():
-    nav_list_raw = get_nav_list_raw()
-    nav_list_edit_raw = get_nav_list_edit_raw()
-    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
-    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
-    nav_list_edit = [("edit-" + tables2, "Edit " + tables2.title()) for tables2 in nav_list_edit_raw]
-    nav_list = [(nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
+    nav_list_form_raw = get_nav_list_raw()
+    nav_list_view_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "welcome": "Welcome to the curator's home page.",
         "nav_list": nav_list,
@@ -186,20 +224,127 @@ def create_reverse_name(request, table_name):
 
 
 def get_nav_list_raw():
+    table_info = parse_tables()
+    return table_info[1]
+
+
+def get_nav_list_form_raw():
+    nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
+                    "competes", "interacts", "participates", "plays", "registers", "scores"]
+    return nav_list_raw
+
+
+def get_nav_list_view_raw():
     nav_list_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches", "bans", "organizes",
                     "competes", "interacts", "participates", "plays", "registers", "scores", "wins"]
     return nav_list_raw
 
 
-def get_nav_list_edit_raw():
-    nav_list_edit_raw = ["tournaments", "series", "champions", "items", "players", "teams", "matches",
-                         "organizes", "competes", "interacts", "participates", "plays", "registers", "scores", "wins"]
-    return nav_list_edit_raw
+def parse_tables():
+    list_of_tables = []
+    list_of_table_names = []
+    sql_script = getcwd() + "/common/sql/000_create_tables.sql"
+    sql = open(sql_script, 'r')
+    parsed = sqlparse.parse(sql)
+    for i, stmt in enumerate(parsed):
+        for j, val in enumerate(stmt.tokens):
+            if (parsed[i].tokens[j].ttype is None
+                and parsed[i].tokens[j-2].ttype in sqlparse.tokens.Keyword
+                and parsed[i].tokens[j-2].value.upper() == 'TABLE'
+                and parsed[i].tokens[j-4].ttype in sqlparse.tokens.Keyword
+                and parsed[i].tokens[j-4].value.upper() == 'CREATE'):
+                    content = str(val)
+                    table_name = ""
+                    for k, letter in enumerate(content):
+                        if letter == " ":
+                            break
+                        table_name += content[k]
+                    list_of_table_names.append(table_name)
+
+
+                    # Find a way to extract attributes, types, primary keys, and CHECKs
+                    text = content.split()
+
+                    list_of_pk = extract_pk(text)
+                    # print(list_of_pk)
+
+                    text = remove_irrelevant(text)
+                    list_of_cols = []
+                    for k, entry in enumerate(text):
+                        if entry == 'end':
+                            continue
+                        elif text[k-1] == 'end':
+                            continue
+                        else:
+                            list_of_cols.append(entry)
+                    list_of_cols2 = []
+                    for k, word in enumerate(list_of_cols):
+                        if word == 'NULL' or word == 'NULL,':
+                            continue
+                        elif ',' in word:
+                            new_word = word[:-1]
+                            list_of_cols2.append(new_word)
+                        else:
+                            list_of_cols2.append(word)
+                    print(list_of_cols2)
+
+
+
+
+                    table = Table()
+                    list_of_tables.append(table)
+    # for table in list_of_tables:
+        # print(table.tname)
+    return [list_of_tables, list_of_table_names]
+
+
+def extract_pk(text):
+    for i, entry in enumerate(text):
+        if entry.upper() == 'PRIMARY':
+            text = text[i:]
+    for i, entry in enumerate(text):
+        if entry == ')':
+            text = text[:i]
+    for i, entry in enumerate(text):
+        if entry.upper() == 'FOREIGN':
+            text = text[:i]
+    del text[0]
+    del text[0]
+    list_of_words = []
+    for i, word in enumerate(text):
+        if '(' in word and ')' in word:
+            new_word = word[1:-1]
+            list_of_words.append(new_word)
+        elif '(' in word:
+            new_word = word[1:-1]
+            list_of_words.append(new_word)
+        elif ')' in word:
+            new_word = word[:-2]
+            list_of_words.append(new_word)
+        else:
+            new_word = word[:-1]
+            list_of_words.append(new_word)
+    return list_of_words
+
+
+def remove_irrelevant(text):
+    for i, string in enumerate(text):
+        if string.upper() == 'CHECK':
+            text = text[:i]
+            text.insert(i, "end")
+    for i, string in enumerate(text):
+        if string.upper() == 'PRIMARY':
+            text = text[:i]
+            text.insert(i, "end")
+    for i, string in enumerate(text):
+        if string == '(' or string == ')' or text[i] == 'NOT' or text[i] == 'UNIQUE,':
+            text.remove(string)
+    return text
 
 
 def check_page_and_return_table(request):
     abs_url = request.get_full_path()
-    table = StructData()
+    table = Table()
     if abs_url.find("_tournaments/") != -1:
         table.tname = "tournaments"
         table.cols = [("id", "charfield16", "pk"), ("name", "charfield256", "non-pk"), ("year", "int", "non-pk"),
@@ -219,7 +364,7 @@ def check_page_and_return_table(request):
         table.args = []
     elif abs_url.find("_players/") != -1:
         table.tname = "players"
-        table.cols = [("name", "charfield16", "pk"), ("careerStartDate", "datetime", "non-pk")]
+        table.cols = [("name", "charfield16", "pk"), ("careerStartDate", "date", "non-pk")]
         table.args = []
     elif abs_url.find("_teams/") != -1:
         table.tname = "teams"
@@ -227,7 +372,7 @@ def check_page_and_return_table(request):
         table.args = []
     elif abs_url.find("_matches/") != -1:
         table.tname = "matches"
-        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("date", "datetime", "non-pk")]
+        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("date", "date", "non-pk")]
         table.args = []
     elif abs_url.find("_bans/") != -1:
         table.tname = "bans"

@@ -13,11 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-
 from django.conf.urls import url
+from .views import curator_home, logout_view, add_data_page, remove_data_page, edit_data_page, view_data_page
+from .helpers import get_nav_list_raw
 
-from .views import *
 
+urlpatterns = [
+        url(r'^$', curator_home, name='curator-home'),
+        url(r'^logout/$', logout_view, name='logout-page'),
+        # url(r'^add_(?P<table_name>[\w])$', add_data_page, name='add-data'),
+        # url(r'^remove_(?P<table_name>[\w])$', remove_data_page, name='remove-data'),
+        # url(r'^edit_(?P<table_name>[\w])$', edit_data_page, name='edit-data'),
+        # url(r'^view_(?P<table_name>[\w])$', view_data_page, name='view-data'),
+]
+
+url_nav_list = get_nav_list_raw()
+urlpatterns_add = [url(r'^add_'+table_name+'/$', add_data_page, name='add-'+table_name) for i, table_name in enumerate(url_nav_list)]
+urlpatterns_remove = [url(r'^remove_' + table_name + '/$', remove_data_page, name='remove-' + table_name) for i, table_name in enumerate(url_nav_list)]
+urlpatterns_edit = [url(r'^edit_' + table_name + '/$', edit_data_page, name='edit-' + table_name) for i, table_name in enumerate(url_nav_list)]
+urlpatterns_view = [url(r'^view_' + table_name + '/$', view_data_page, name='view-' + table_name) for i, table_name in enumerate(url_nav_list)]
+
+urlpatterns.extend(urlpatterns_add)
+urlpatterns.extend(urlpatterns_remove)
+urlpatterns.extend(urlpatterns_edit)
+urlpatterns.extend(urlpatterns_view)
+
+
+"""
 urlpatterns = [
     url(r'^$', curator_home, name='curator-home'),
     url(r'^logout/$', logout_view, name='logout-page'),
@@ -66,7 +88,27 @@ urlpatterns = [
     url(r'^add_organizes/$', add_data_page, name='add-organizes'),
     url(r'^remove_organizes/$', remove_data_page, name='remove-organizes'),
     url(r'^edit_organizes/$', edit_data_page, name='edit-organizes'),
-    url(r'^add_wins/$', add_data_page, name='add-wins'),
-    url(r'^remove_wins/$', remove_data_page, name='remove-wins'),
-    url(r'^edit_wins/$', edit_data_page, name='edit-wins'),
+    # url(r'^add_wins/$', add_data_page, name='add-wins'),
+    # url(r'^remove_wins/$', remove_data_page, name='remove-wins'),
+    # url(r'^edit_wins/$', edit_data_page, name='edit-wins'),
+
+    url(r'^view_tournaments/$', view_data_page, name='view-tournaments'),
+    url(r'^view_series/$', view_data_page, name='view-series'),
+    url(r'^view_champions/$', view_data_page, name='view-champions'),
+    url(r'^view_items/$', view_data_page, name='view-items'),
+    url(r'^view_players/$', view_data_page, name='view-players'),
+    url(r'^view_teams/$', view_data_page, name='view-teams'),
+    url(r'^view_matches/$', view_data_page, name='view-matches'),
+    url(r'^view_bans/$', view_data_page, name='view-bans'),
+    url(r'^view_competes/$', view_data_page, name='view-competes'),
+    url(r'^view_interacts/$', view_data_page, name='view-interacts'),
+    url(r'^view_participates/$', view_data_page, name='view-participates'),
+    url(r'^view_plays/$', view_data_page, name='view-plays'),
+    url(r'^view_registers/$', view_data_page, name='view-registers'),
+    url(r'^view_scores/$', view_data_page, name='view-scores'),
+    url(r'^view_organizes/$', view_data_page, name='view-organizes'),
+    url(r'^view_wins/$', view_data_page, name='view-wins'),
 ]
+
+"""
+

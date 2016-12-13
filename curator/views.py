@@ -4,10 +4,21 @@ from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .forms import *
-from .helpers import *
+from .forms import AccessFormInput
+from .helpers import (insert_data, delete_data, edit_data, check_page_and_return_table, create_context_view,
+                      create_context, create_reverse_name, reorder_dictionary, filter_cols_with_pk,
+                      check_and_replace_none, create_context_index, parse_tables)
 
 # Create your views here.
+
+
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
+def view_data_page(request):
+    table = check_page_and_return_table(request)
+    context = create_context_view(request, table)
+    parse_tables()
+    return render(request, 'curator/view-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -28,7 +39,7 @@ def add_data_page(request):
                 return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.cols)
     context = create_context(request, table, form, error)
-    return render(request, 'curator/form.html', context)
+    return render(request, 'curator/form-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -50,7 +61,7 @@ def remove_data_page(request):
                 return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=pk)
     context = create_context(request, table, form, error)
-    return render(request, 'curator/form.html', context)
+    return render(request, 'curator/form-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -72,7 +83,7 @@ def edit_data_page(request):
                 return redirect(reverse(name), permanent=True)
     form = AccessFormInput(req=request, extra=table.cols)
     context = create_context(request, table, form, error)
-    return render(request, 'curator/form.html', context)
+    return render(request, 'curator/form-page.html', context)
 
 
 def login_page(request):
