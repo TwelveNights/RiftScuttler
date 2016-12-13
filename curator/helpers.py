@@ -243,6 +243,8 @@ def get_nav_list_view_raw():
 def parse_tables():
     list_of_tables = []
     list_of_table_names = []
+    list_of_cols_final = []
+    list_of_pk_final = []
     sql_script = getcwd() + "/common/sql/000_create_tables.sql"
     sql = open(sql_script, 'r')
     parsed = sqlparse.parse(sql)
@@ -266,7 +268,7 @@ def parse_tables():
                     text = content.split()
 
                     list_of_pk = extract_pk(text)
-                    # print(list_of_pk)
+                    list_of_pk_final.append(list_of_pk)
 
                     text = remove_irrelevant(text)
                     list_of_cols = []
@@ -278,6 +280,7 @@ def parse_tables():
                         else:
                             list_of_cols.append(entry)
                     list_of_cols2 = []
+
                     for k, word in enumerate(list_of_cols):
                         if word == 'NULL' or word == 'NULL,':
                             continue
@@ -286,15 +289,29 @@ def parse_tables():
                             list_of_cols2.append(new_word)
                         else:
                             list_of_cols2.append(word)
-                    print(list_of_cols2)
+                    list_of_cols_final.append(list_of_cols2)
 
+    for k, row in enumerate(list_of_cols_final):
+        table = Table()
+        table.tname = ""
+        table.cols = []
+        for p, entry in enumerate(row):
+            if p % 2 == 1:
+                continue
+            cols = (entry, row[p+1], 'non-pk')
+            for m, pk_row in enumerate(list_of_pk_final):
+                for n, pk in enumerate(pk_row):
+                    if entry == pk:
+                        table = Table()
+                        cols = (row[p], row[p+1], 'pk')
+                        break
+            table.cols.append(cols)
+        table.tname = list_of_table_names[k]
+        list_of_tables.append(table)
 
-
-
-                    table = Table()
-                    list_of_tables.append(table)
-    # for table in list_of_tables:
-        # print(table.tname)
+    for table in list_of_tables:
+        print(table.tname)
+        print(table.cols)
     return [list_of_tables, list_of_table_names]
 
 
