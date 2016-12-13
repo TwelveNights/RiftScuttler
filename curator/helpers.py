@@ -261,10 +261,8 @@ def parse_tables():
                         table_name += content[k]
                     list_of_table_names.append(table_name)
 
-
                     # Find a way to extract attributes, types, primary keys, and CHECKs
                     text = content.split()
-
                     list_of_pk = extract_pk(text)
                     # print(list_of_pk)
 
