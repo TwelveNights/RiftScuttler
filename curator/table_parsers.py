@@ -53,13 +53,13 @@ def parse_tables():
     parsed = sqlparse.parse(sql)
     for i, stmt in enumerate(parsed):
         for j, val in enumerate(stmt.tokens):
-            if sys.version_info < (3, 0):
+            if 'conda' in sys.version:
                 content = anaconda3_parser(parsed, i, j, val)
                 if content is None:
                     continue
                 content = content[0]
                 list_of_table_names = anaconda3_generate_table_names(list_of_table_names, content)
-            elif sys.version_info >= (3, 0):
+            else:
                 content = python3_parser(parsed, i, j)
                 if content is None:
                     continue
@@ -86,7 +86,7 @@ def parse_tables():
             for k, entry in enumerate(text):
                 if entry == 'end':
                     continue
-                elif sys.version_info < (3, 0) and text[k-1] == 'end':
+                elif 'conda' in sys.version and text[k-1] == 'end':
                     continue
                 else:
                     list_of_cols.append(entry)
