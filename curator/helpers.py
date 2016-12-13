@@ -140,6 +140,7 @@ def create_context(request, table, form, e):
     nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_raw]
     nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     value = table.tname.title()
+    method = ""
     if abs_url.find("/add_") != -1:
         method = "Add"
     elif abs_url.find("/remove_") != -1:
@@ -173,6 +174,7 @@ def create_context_view(request, table):
     nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_raw]
     nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     value = table.tname.title()
+    method = ""
     if abs_url.find("/add_") != -1:
         method = "Add"
     elif abs_url.find("/remove_") != -1:
@@ -210,7 +212,6 @@ def create_reverse_name(request, table_name):
     name = ""
     if abs_url.find("/add_") != -1:
         name = "add-" + table_name
-        return name
     elif abs_url.find("/remove_") != -1:
         name = "remove-" + table_name
     elif abs_url.find("/edit_") != -1:

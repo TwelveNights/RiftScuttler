@@ -23,11 +23,14 @@ urlpatterns = [
         url(r'^logout/$', logout_view, name='logout-page'),
 ]
 
-url_nav_list = get_nav_list_raw()
-urlpatterns_add = [url(r'^add_'+table_name+'/$', add_data_page, name='add-'+table_name) for i, table_name in enumerate(url_nav_list)]
-urlpatterns_remove = [url(r'^remove_' + table_name + '/$', remove_data_page, name='remove-' + table_name) for i, table_name in enumerate(url_nav_list)]
-urlpatterns_edit = [url(r'^edit_' + table_name + '/$', edit_data_page, name='edit-' + table_name) for i, table_name in enumerate(url_nav_list)]
-urlpatterns_view = [url(r'^view_' + table_name + '/$', view_data_page, name='view-' + table_name) for i, table_name in enumerate(url_nav_list)]
+urlpatterns_add = [url(r'^add_'+table_name+'/$', add_data_page,
+                       name='add-'+table_name) for table_name in get_nav_list_raw()]
+urlpatterns_remove = [url(r'^remove_' + table_name + '/$', remove_data_page,
+                          name='remove-' + table_name) for table_name in get_nav_list_raw()]
+urlpatterns_edit = [url(r'^edit_' + table_name + '/$', edit_data_page,
+                        name='edit-' + table_name) for table_name in get_nav_list_raw()]
+urlpatterns_view = [url(r'^view_' + table_name + '/$', view_data_page,
+                        name='view-' + table_name) for table_name in get_nav_list_raw()]
 urlpatterns.extend(urlpatterns_add)
 urlpatterns.extend(urlpatterns_remove)
 urlpatterns.extend(urlpatterns_edit)
