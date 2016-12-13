@@ -9,9 +9,9 @@ def anaconda3_parser(parsed, i, j, val):
         and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
         and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
         and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
-        and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
-        content = str(val)
-        return [content]
+            and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
+                content = str(val)
+                return [content]
     return None
 
 
@@ -20,7 +20,7 @@ def python3_parser(parsed, i, j):
         and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
         and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
         and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
-        and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
+            and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
         content = str(parsed[i].tokens[j+2])
         return [content, str(parsed[i].tokens[j])]
     return None
@@ -46,8 +46,6 @@ def parse_tables():
     list_of_table_names = []
     list_of_cols_final = []
     list_of_pk_final = []
-    # list_of_checks = []
-    # list_of_checks_final = []
     sql_script = getcwd() + "/common/sql/000_create_tables.sql"
     sql = open(sql_script, 'r')
     parsed = sqlparse.parse(sql)
@@ -68,15 +66,6 @@ def parse_tables():
                 list_of_table_names = python3_generate_table_names(list_of_table_names, table_name_string)
 
             text = content.split()
-
-            """
-            for k, entry in enumerate(text):
-                if entry == 'CHECK':
-                    list = [(text[k+1],text[k+2],text[k+3])]
-                    if text[k+4] == 'OR':
-                        list.append((text[k+5],text[k+6],text[k+7]))
-                    list_of_checks.append(list)
-            """
 
             list_of_pk = extract_pk(text)
             list_of_pk_final.append(list_of_pk)
@@ -117,21 +106,6 @@ def parse_tables():
                     break
             table.cols.append(cols)
         list_of_tables.append(table)
-
-    """
-        for i, list in enumerate(list_of_checks):
-        temp_list = []
-        for j, tuple in enumerate(list):
-            for k, entry in enumerate(tuple):
-                if '(' in entry:
-                    temp1 = entry[1:]
-                if '),' in entry:
-                    temp3 = entry[:-2]
-                if k == 1:
-                    temp2 = entry
-            temp_list.append((temp1, temp2, temp3))
-        list_of_checks_final.append(temp_list)
-    """
     return [list_of_tables, list_of_table_names]
 
 

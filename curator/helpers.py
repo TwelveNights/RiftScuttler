@@ -236,8 +236,6 @@ def get_nav_list_view_raw():
     return nav_list_raw
 
 
-
-
 def check_page_and_return_table(request):
     abs_url = request.get_full_path()
     list_of_tables = parse_tables()
@@ -245,87 +243,3 @@ def check_page_and_return_table(request):
         if abs_url.find("_"+table.tname+"/") != -1:
             return table
     return
-
-"""
-def check_page_and_return_table2(request):
-    abs_url = request.get_full_path()
-    table = Table()
-    if abs_url.find("_tournaments/") != -1:
-        table.tname = "tournaments"
-        table.cols = [("id", "charfield16", "pk"), ("name", "charfield256", "non-pk"), ("year", "int", "non-pk"),
-                      ("location", "text", "non-pk")]
-        table.args = []
-    elif abs_url.find("_series/") != -1:
-        table.tname = "series"
-        table.cols = [("id", "int", "pk"), ("bestOfCount", "int", "non-pk")]
-        table.args = []
-    elif abs_url.find("_champions/") != -1:
-        table.tname = "champions"
-        table.cols = [("id", "int", "pk"), ("name", "charfield16", "non-pk")]
-        table.args = []
-    elif abs_url.find("_items/") != -1:
-        table.tname = "items"
-        table.cols = [("id", "int", "pk"), ("name", "text", "non-pk")]
-        table.args = []
-    elif abs_url.find("_players/") != -1:
-        table.tname = "players"
-        table.cols = [("name", "charfield16", "pk"), ("careerStartDate", "date", "non-pk")]
-        table.args = []
-    elif abs_url.find("_teams/") != -1:
-        table.tname = "teams"
-        table.cols = [("id", "charfield6", "pk"), ("region", "charfield2", "non-pk"), ("name", "text", "non-pk")]
-        table.args = []
-    elif abs_url.find("_matches/") != -1:
-        table.tname = "matches"
-        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("date", "date", "non-pk")]
-        table.args = []
-    elif abs_url.find("_bans/") != -1:
-        table.tname = "bans"
-        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("championID", "int", "pk"),
-                      ("pickTurn", "int", "non-pk")]
-        table.args = []
-    elif abs_url.find("_organizes/") != -1:
-        table.tname = "organizes"
-        table.cols = [("tournamentID", "charfield256", "pk"), ("seriesID", "int", "pk"), ("stage", "text", "non-pk")]
-        table.args = []
-    elif abs_url.find("_competes/") != -1:
-        table.tname = "competes"
-        table.cols = [("seriesID", "int", "pk"), ("teamID", "charfield6", "pk"), ("blueSide", "boolean", "non-pk")]
-        table.args = []
-    elif abs_url.find("_interacts/") != -1:
-        table.tname = "interacts"
-        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("player", "charfield16", "pk"),
-                      ("itemID", "int", "pk"), ("time", "int", "pk"), ("isBuy", "int", "non-pk")]
-        table.args = []
-    elif abs_url.find("_participates/") != -1:
-        table.tname = "participates"
-        table.cols = [("tournamentID", "charfield256", "pk"), ("teamID", "charfield6", "pk"),
-                      ("stageReached", "text", "non-pk")]
-        table.args = []
-    elif abs_url.find("_plays/") != -1:
-        table.tname = "plays"
-        table.cols = [("seriesID", "int", "pk"), ("matchNumber", "int", "pk"), ("player", "charfield16", "pk"),
-                      ("championID", "int", "pk"), ("role", "charfield6", "non-pk"), ("kills", "int", "non-pk"),
-                      ("deaths", "int", "non-pk"), ("assists", "int", "non-pk"), ("damageDealt", "int", "non-pk"),
-                      ("wardsPlaced", "int", "non-pk"), ("wardsDestroyed", "int", "non-pk"), ("cs", "int", "non-pk"),
-                      ("teamJungleMinions", "int", "non-pk"), ("enemyJungleMinions", "int", "non-pk"),
-                      ("gold", "int", "non-pk")]
-        table.args = []
-    elif abs_url.find("_registers/") != -1:
-        table.tname = "registers"
-        table.cols = [("playerID", "charfield16", "pk"), ("teamID", "charfield6", "pk"), ("dateJoined", "date", "non-pk"),
-                      ("dateLeft", "date", "non-pk")]
-        table.args = []
-    elif abs_url.find("_scores/") != -1:
-        table.tname = "scores"
-        table.cols = [("teamID", "charfield6", "pk"), ("seriesID", "int", "pk"), ("matchNumber", "int", "pk"),
-                      ("inhibitors", "int", "non-pk"), ("towers", "int", "non-pk"), ("riftHeralds", "int", "non-pk"),
-                      ("barons", "int", "non-pk"), ("dragons", "int", "non-pk"), ("nexus", "int", "non-pk")]
-        table.args = []
-    elif abs_url.find("_wins/") != -1:
-        table.tname = "wins"
-        table.cols = [("teamID", "charfield6", "pk"), ("wins", "int", "non-pk")]
-        table.args = []
-    return table
-
-"""
