@@ -133,12 +133,11 @@ def create_context(request, table, form, e):
     connection.close()
     args = get_args(table.cols)
     abs_url = request.get_full_path()
-    nav_list_form_raw = get_nav_list_raw()
-    nav_list_view_raw = get_nav_list_raw()
-    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_raw]
     nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     value = table.tname.title()
     if abs_url.find("/add_") != -1:
@@ -167,12 +166,11 @@ def create_context_view(request, table):
     connection.close()
     args = get_args(table.cols)
     abs_url = request.get_full_path()
-    nav_list_form_raw = get_nav_list_raw()
-    nav_list_view_raw = get_nav_list_raw()
-    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_raw]
     nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     value = table.tname.title()
     if abs_url.find("/add_") != -1:
@@ -194,12 +192,11 @@ def create_context_view(request, table):
 
 
 def create_context_index():
-    nav_list_form_raw = get_nav_list_raw()
-    nav_list_view_raw = get_nav_list_raw()
-    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_form_raw]
-    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_view_raw]
+    nav_list_raw = get_nav_list_raw()
+    nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
+    nav_list_remove = [("remove-" + tables, "Remove " + tables.title()) for tables in nav_list_raw]
+    nav_list_edit = [("edit-" + tables, "Edit " + tables.title()) for tables in nav_list_raw]
+    nav_list_view = [("view-" + tables, "View " + tables.title()) for tables in nav_list_raw]
     nav_list = [(nav_list_view, "View"), (nav_list_add, "Add"), (nav_list_remove, "Remove"), (nav_list_edit, "Edit")]
     context = {
         "welcome": "Welcome to the curator's home page.",
