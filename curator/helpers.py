@@ -1,4 +1,4 @@
-from django.db import connection, transaction, IntegrityError
+from django.db import connection, transaction, IntegrityError, OperationalError
 from .table_parsers import parse_tables
 
 

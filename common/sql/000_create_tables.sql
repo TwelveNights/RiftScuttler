@@ -157,6 +157,13 @@ CREATE TABLE scores (
   FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE
 );
 
+-- Test tables
+
+CREATE TABLE test (
+  testID    INTEGER,
+  PRIMARY KEY (testID)
+);
+
 
 -- Triggers
 
@@ -201,3 +208,10 @@ WHEN NEW.nexus = 0 AND OLD.nexus = 1
 BEGIN
     UPDATE wins SET wins=wins-1 WHERE teamID=NEW.teamID;
 END;
+
+-- Alter Table
+ALTER TABLE test
+ADD COLUMN testCol INTEGER;
+
+ALTER TABLE test
+RENAME TO test2;
