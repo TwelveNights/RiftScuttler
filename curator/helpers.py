@@ -134,7 +134,6 @@ def fix_column_titles(args):
         cols = titleize(name)
         if name.find('ID') != -1:
             cols += " ID"
-        print(cols)
         list_of_cols.append(cols)
     return list_of_cols
 
