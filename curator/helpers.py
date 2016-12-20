@@ -1,5 +1,6 @@
-from django.db import connection, transaction, IntegrityError, OperationalError
+from django.db import connection, transaction, IntegrityError
 from .table_parsers import parse_tables
+from inflection import titleize
 
 
 def insert_data(cursor, table):
@@ -127,11 +128,23 @@ def get_args(column_list):
     return [cols[0] for cols in column_list]
 
 
+def fix_column_titles(args):
+    list_of_cols = []
+    for i, name in enumerate(args):
+        cols = titleize(name)
+        if name.find('ID') != -1:
+            cols += " ID"
+        print(cols)
+        list_of_cols.append(cols)
+    return list_of_cols
+
+
 def create_context(request, table, form, e):
     cursor = connection.cursor()
     list_of_data = select_data(cursor, table.tname)
     connection.close()
     args = get_args(table.cols)
+    args = fix_column_titles(args)
     abs_url = request.get_full_path()
     nav_list_raw = get_nav_list_raw()
     nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
@@ -166,6 +179,7 @@ def create_context_view(request, table):
     list_of_data = select_data(cursor, table.tname)
     connection.close()
     args = get_args(table.cols)
+    args = fix_column_titles(args)
     abs_url = request.get_full_path()
     nav_list_raw = get_nav_list_raw()
     nav_list_add = [("add-" + tables, "Add " + tables.title()) for tables in nav_list_raw]
