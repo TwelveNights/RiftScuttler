@@ -4,10 +4,21 @@ from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .forms import *
-from .helpers import *
+from .forms import AccessFormInput
+from .helpers import (insert_data, delete_data, edit_data, check_page_and_return_table, create_context_view,
+                      create_context, create_reverse_name, reorder_dictionary, filter_cols_with_pk,
+                      check_and_replace_none, create_context_index, parse_tables)
 
 # Create your views here.
+
+
+@login_required(login_url='/login/')
+@user_passes_test(lambda u: u.is_superuser)
+def view_data_page(request):
+    table = check_page_and_return_table(request)
+    context = create_context_view(request, table)
+    parse_tables()
+    return render(request, 'curator/view-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -16,9 +27,8 @@ def add_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
-    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk_labeled_cols)
+        form = AccessFormInput(request.POST, req=request, extra=table.cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -27,11 +37,9 @@ def add_data_page(request):
             error = insert_data(cursor, table)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
-    return render(request, 'curator/form.html', context)
+    form = AccessFormInput(req=request, extra=table.cols)
+    context = create_context(request, table, form, error)
+    return render(request, 'curator/form-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -40,8 +48,9 @@ def remove_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
+    pk = filter_cols_with_pk(table.cols)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk)
+        form = AccessFormInput(request.POST, req=request, extra=pk)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
@@ -50,11 +59,9 @@ def remove_data_page(request):
             error = delete_data(cursor, table)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
-    return render(request, 'curator/form.html', context)
+    form = AccessFormInput(req=request, extra=pk)
+    context = create_context(request, table, form, error)
+    return render(request, 'curator/form-page.html', context)
 
 
 @login_required(login_url='/login/')
@@ -63,23 +70,20 @@ def edit_data_page(request):
     error = None
     cursor = connection.cursor()
     table = check_page_and_return_table(request)
-    table.pk_labeled_cols = label_cols_with_pk(table)
     if request.method == 'POST':
-        form = AccessFormInput(request.POST, req=request, extra=table.pk_labeled_cols)
+        form = AccessFormInput(request.POST, req=request, extra=table.cols)
         if form.is_valid():
             for (attribute, value) in form.extra_attributes():
                 table.args.append([attribute, value])
             table.args = reorder_dictionary(table)
-            table.non_pk_args = get_non_pk_args(table)
+            table.args = check_and_replace_none(table)
             error = edit_data(cursor, table)
             name = create_reverse_name(request, table.tname)
             if error is None:
                 return redirect(reverse(name), permanent=True)
-    form = AccessFormInput(req=request, extra=table.pk_labeled_cols)
-    list_of_data = select_data(cursor, table.tname)
-    args = get_args(table.cols)
-    context = create_context(request, table, form, list_of_data, args, error)
-    return render(request, 'curator/form.html', context)
+    form = AccessFormInput(req=request, extra=table.cols)
+    context = create_context(request, table, form, error)
+    return render(request, 'curator/form-page.html', context)
 
 
 def login_page(request):

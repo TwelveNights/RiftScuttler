@@ -157,7 +157,6 @@ CREATE TABLE scores (
   FOREIGN KEY (seriesID, matchNumber)  REFERENCES matches(seriesID, matchNumber) ON DELETE CASCADE
 );
 
-
 -- Triggers
 
 CREATE TRIGGER trigger_add_team_to_wins AFTER INSERT

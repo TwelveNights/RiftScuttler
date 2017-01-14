@@ -1,0 +1,20 @@
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+            {% for attr in args %}
+                <th scope="col">{{ attr }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for obj in object_list %}
+            <tr>
+                {% for attr in obj %}
+                <td>{{ attr }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
