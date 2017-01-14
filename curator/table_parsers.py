@@ -7,6 +7,7 @@ This module is only guaranteed to be compatible with sqlite3 and the Python 3.5.
 from os import getcwd
 from .tables import Table
 import sqlparse
+import sys
 
 
 def python3_parser(parsed, i, j):
@@ -15,15 +16,23 @@ def python3_parser(parsed, i, j):
         and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
         and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
             and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
-        content = str(parsed[i].tokens[j+2])
+        content = str(parsed[i].tokens[j+2]).split()
         name = str(parsed[i].tokens[j])
         return [content, name]
     return None
 
 
-def python3_generate_table_names(list_of_table_names, table_name_string):
-    list_of_table_names.append(table_name_string)
-    return list_of_table_names
+def anaconda3_parser(parsed, i, j):
+    if (parsed[i].tokens[j].ttype is None
+        and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
+        and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
+        and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
+            and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
+                content = str(parsed[i].tokens[j]).split()
+                name = content[0]
+                del content[0]
+                return [content, name]
+    return None
 
 
 def parse_tables():
@@ -43,14 +52,17 @@ def parse_create_table(sql_script):
     parsed = sqlparse.parse(sql)
     for i, stmt in enumerate(parsed):
         for j, val in enumerate(stmt.tokens):
-            content = python3_parser(parsed, i, j)
+            if 'conda' in sys.version:
+                content = anaconda3_parser(parsed, i, j)
+            else:
+                content = python3_parser(parsed, i, j)
+
             if content is None:
                 continue
             table_name_string = content[1]
-            content = content[0]
-            list_of_table_names = python3_generate_table_names(list_of_table_names, table_name_string)
+            list_of_table_names.append(table_name_string)
 
-            text = str(content).split()
+            text = content[0]
 
             list_of_pk = extract_pk(text)
             list_of_pk_final.append(list_of_pk)
