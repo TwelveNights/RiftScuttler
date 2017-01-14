@@ -1,12 +1,12 @@
+"""
+
+Only supports the storage classes INTEGER, REAL, TEXT, and data types VARCHAR, BOOLEAN, DATE, and DATETIME.
+
+"""
+
 from django import forms
 
 from curator.helpers import fix_single_column_title
-
-"""
-
-Only supports the storage classes INTEGER, REAL, TEXT, and data types VARCHAR, BOOLEAN, DATE, DATETIME
-
-"""
 
 
 class AccessFormInput(forms.Form):
