@@ -1,24 +1,12 @@
 """
 
-This module is only guaranteed to be compatible with sqlite3.
+This module is only guaranteed to be compatible with sqlite3 and the Python 3.5.2 interpreter.
 
 """
 
 from os import getcwd
 from .tables import Table
 import sqlparse
-import sys
-
-
-def anaconda3_parser(parsed, i, j, val):
-    if (parsed[i].tokens[j].ttype is None
-        and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
-        and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
-        and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
-            and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
-                content = str(val)
-                return [content]
-    return None
 
 
 def python3_parser(parsed, i, j):
@@ -27,19 +15,15 @@ def python3_parser(parsed, i, j):
         and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
         and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
             and parsed[i].tokens[j - 4].value.upper() == 'CREATE'):
-        content = str(parsed[i].tokens[j+2])
-        return [content, str(parsed[i].tokens[j])]
+        content = str(parsed[i].tokens[j])
+        name = parse_table_name(content)
+        return [content, name]
     return None
 
 
-def anaconda3_generate_table_names(list_of_table_names, content):
-    table_name = ""
-    for k, letter in enumerate(content):
-        if letter == " ":
-            break
-        table_name += content[k]
-    list_of_table_names.append(table_name)
-    return list_of_table_names
+def parse_table_name(content):
+    name = content.split()
+    return name[0]
 
 
 def python3_generate_table_names(list_of_table_names, table_name_string):
@@ -51,58 +35,7 @@ def parse_tables():
     create_table_sql = getcwd() + "/common/sql/000_create_tables.sql"
     result_from_create_table = parse_create_table(create_table_sql)
     list_of_tables = result_from_create_table[0]
-    alter_table_sql = getcwd() + "/common/sql/000_create_tables.sql"
-    result_from_alter_table = parse_alter_table(alter_table_sql, list_of_tables, result_from_create_table[1])
-    list_of_tables = result_from_alter_table[0]
-    list_of_table_names = result_from_alter_table[1]
-    return [list_of_tables, list_of_table_names]
-
-
-def parse_alter_table(sql_script, list_of_tables, list_of_table_names):
-    list_of_content = []
-    sql = open(sql_script, 'r')
-    parsed = sqlparse.parse(sql)
-    for i, stmt in enumerate(parsed):
-        for j, val in enumerate(stmt.tokens):
-            if False: # 'conda' in sys.version:
-                if (parsed[i].tokens[j].ttype is None
-                    and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
-                    and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
-                    and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
-                        and parsed[i].tokens[j - 4].value.upper() == 'ALTER'):
-                    content = str(val)
-                else:
-                    content = None
-            else:
-                if (parsed[i].tokens[j].ttype is None
-                    and parsed[i].tokens[j - 2].ttype in sqlparse.tokens.Keyword
-                    and parsed[i].tokens[j - 2].value.upper() == 'TABLE'
-                    and parsed[i].tokens[j - 4].ttype in sqlparse.tokens.Keyword
-                        and parsed[i].tokens[j - 4].value.upper() == 'ALTER'):
-                        if parsed[i].tokens[j+2].value.upper() == 'ADD':
-                            content = (str(parsed[i].tokens[j]), str(parsed[i].tokens[j+2]), str(parsed[i].tokens[j+6]),
-                                       str(parsed[i].tokens[j+8]))
-                        else:
-                            content = (str(parsed[i].tokens[j]), str(parsed[i].tokens[j + 2]),
-                                       str(parsed[i].tokens[j + 6]))
-                        list_of_content.append(content)
-                else:
-                    content = None
-            if content is None:
-                continue
-    for i, table in enumerate(list_of_tables):
-        for j, content in enumerate(list_of_content):
-            if table.tname == list_of_content[j][0]:
-                if list_of_content[j][1].upper() == 'ADD':
-                    table.cols.append((list_of_content[j][2], list_of_content[j][3], 'non-pk'))
-                elif list_of_content[j][1].upper() == 'RENAME':
-                    table.tname = list_of_content[j][2]
-                    list_of_table_names[i] = list_of_content[j][2]
-
-    #for i, table in enumerate(list_of_tables):
-    #    print(table.tname)
-    #    print(table.cols)
-    #print(list_of_table_names)
+    list_of_table_names = result_from_create_table[1]
     return [list_of_tables, list_of_table_names]
 
 
@@ -115,19 +48,12 @@ def parse_create_table(sql_script):
     parsed = sqlparse.parse(sql)
     for i, stmt in enumerate(parsed):
         for j, val in enumerate(stmt.tokens):
-            if 'conda' in sys.version:
-                content = anaconda3_parser(parsed, i, j, val)
-                if content is None:
-                    continue
-                content = content[0]
-                list_of_table_names = anaconda3_generate_table_names(list_of_table_names, content)
-            else:
-                content = python3_parser(parsed, i, j)
-                if content is None:
-                    continue
-                table_name_string = content[1]
-                content = content[0]
-                list_of_table_names = python3_generate_table_names(list_of_table_names, table_name_string)
+            content = python3_parser(parsed, i, j)
+            if content is None:
+                continue
+            table_name_string = content[1]
+            content = content[0]
+            list_of_table_names = python3_generate_table_names(list_of_table_names, table_name_string)
 
             text = content.split()
 
@@ -152,6 +78,7 @@ def parse_create_table(sql_script):
             list_of_cols_final.append(list_of_cols2)
 
     for k, row in enumerate(list_of_cols_final):
+        del row[0]
         table = Table()
         table.tname = list_of_table_names[k]
         table.cols = []

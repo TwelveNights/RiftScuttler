@@ -3,7 +3,6 @@ from django import forms
 """
 References:
 https://jacobian.org/writing/dynamic-form-generation/
-http://hexonio.com/blog/2012/03/07/calendar-picker-django-forms/
 """
 
 
