@@ -3,8 +3,9 @@ from django import forms
 from curator.helpers import fix_single_column_title
 
 """
-References:
-https://jacobian.org/writing/dynamic-form-generation/
+
+Only supports the storage classes INTEGER, REAL, TEXT, and data types VARCHAR, BOOLEAN, DATE, DATETIME
+
 """
 
 
@@ -30,6 +31,8 @@ class AccessFormInput(forms.Form):
                                                                       min_value=0, max_value=1)
             elif attribute[1].upper() == 'DATE':
                 self.fields['%s' % attribute[0]] = forms.DateField(label=fix_single_column_title(attribute[0]))
+            elif attribute[1].upper() == 'REAL':
+                self.fields['%s' % attribute[0]] = forms.FloatField(label=fix_single_column_title(attribute[0]))
             abs_url = self.req.get_full_path()
             if abs_url.find("/add_") != -1 or abs_url.find("/edit_") != -1:
                 if attribute[2] == "pk":
