@@ -138,6 +138,13 @@ def fix_column_titles(args):
     return list_of_cols
 
 
+def fix_single_column_title(name):
+    col = titleize(name)
+    if name.find('ID') != -1:
+        col += " ID"
+    return col
+
+
 def create_context(request, table, form, e):
     cursor = connection.cursor()
     list_of_data = select_data(cursor, table.tname)
